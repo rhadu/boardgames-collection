@@ -193,8 +193,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
         language={language}
         open={contactDialogOpen}
         onOpenChange={setContactDialogOpen}
-        context="game"
-        gameTitle={game.title}
+        game={game}
       />
     </Card>
   )

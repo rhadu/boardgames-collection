@@ -100,6 +100,7 @@ export const translations = {
     emailBodyGame: "Bună ziua,\n\nAș dori să întreb despre jocul",
     whatsAppMessageSelection: "Bună ziua! Aș dori să întreb despre selecția de jocuri.",
     whatsAppMessageGame: "Bună ziua! Aș dori să întreb despre jocul",
+    priceLabel: "Preț",
   },
   en: {
     // Hero Section
@@ -200,6 +201,7 @@ export const translations = {
     emailBodyGame: "Hello,\n\nI would like to ask about the game",
     whatsAppMessageSelection: "Hello! I would like to ask about the game selection.",
     whatsAppMessageGame: "Hello! I would like to ask about the game",
+    priceLabel: "Price",
   },
 }
 

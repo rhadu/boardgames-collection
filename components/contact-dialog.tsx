@@ -11,21 +11,22 @@ import {
 import { Mail, MessageCircle, Phone, Copy, Check } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
 import { contactInfo, getEmailLink, getWhatsAppLink } from "@/lib/contact"
+import { type Game } from "@/lib/types"
 
 type ContactDialogProps = {
   language: Language
   open: boolean
   onOpenChange: (open: boolean) => void
-  context?: "game" | "selection"
-  gameTitle?: string
+  game?: Game
+  selectedGames?: Game[]
 }
 
 export function ContactDialog({
   language,
   open,
   onOpenChange,
-  context = "game",
-  gameTitle,
+  game,
+  selectedGames,
 }: ContactDialogProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) =>
     getTranslation(language, key)
@@ -45,20 +46,38 @@ export function ContactDialog({
     window.location.href = `tel:${contactInfo.phone.replace(/\s+/g, "")}`
   }
 
-  // Generate context-specific messages
-  const emailSubject =
-    context === "selection"
-      ? t("emailSubjectSelection")
-      : `${t("emailSubjectGame")}: ${gameTitle || ""}`
-  const emailBody =
-    context === "selection"
-      ? t("emailBodySelection")
-      : `${t("emailBodyGame")} "${gameTitle || ""}".\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+  // Format game details for messages
+  const formatGameDetails = (games: Game[]): string => {
+    return games
+      .map((g, index) => {
+        const price = `${g.price.toLocaleString()} ${g.currency}`
+        return `${index + 1}. ${g.title}${g.year ? ` (${g.year})` : ""} - ${price}`
+      })
+      .join("\n")
+  }
 
-  const whatsAppMessage =
-    context === "selection"
-      ? t("whatsAppMessageSelection")
-      : `${t("whatsAppMessageGame")} "${gameTitle || ""}".`
+  // Calculate total price
+  const calculateTotal = (games: Game[]): string => {
+    const total = games.reduce((sum, g) => sum + g.price, 0)
+    const currency = games[0]?.currency || "RON"
+    return `${total.toLocaleString()} ${currency}`
+  }
+
+  // Generate context-specific messages
+  const isSelection = selectedGames && selectedGames.length > 0
+  const games = isSelection ? selectedGames : game ? [game] : []
+
+  const emailSubject = isSelection
+    ? t("emailSubjectSelection")
+    : `${t("emailSubjectGame")}: ${game?.title || ""}`
+
+  const emailBody = isSelection
+    ? `${t("emailBodySelection")}\n\n${t("gamesSelected")}:\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+    : `${t("emailBodyGame")} "${game?.title || ""}".\n\n${game ? `${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+
+  const whatsAppMessage = isSelection
+    ? `${t("whatsAppMessageSelection")}\n\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}`
+    : `${t("whatsAppMessageGame")} "${game?.title || ""}".${game ? ` ${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}`
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -70,7 +89,7 @@ export function ContactDialog({
           {/* Email Option */}
           <Button
             variant="outline"
-            className="w-full justify-start gap-3 h-auto py-3"
+            className="w-full justify-start gap-3 h-auto py-3 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground transition-colors"
             asChild
           >
             <a
@@ -90,7 +109,7 @@ export function ContactDialog({
           {/* WhatsApp Option */}
           <Button
             variant="outline"
-            className="w-full justify-start gap-3 h-auto py-3"
+            className="w-full justify-start gap-3 h-auto py-3 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground transition-colors"
             asChild
           >
             <a
@@ -113,7 +132,7 @@ export function ContactDialog({
           <div className="flex gap-2">
             <Button
               variant="outline"
-              className="flex-1 justify-start gap-3 h-auto py-3"
+              className="flex-1 justify-start gap-3 h-auto py-3 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground transition-colors"
               onClick={handleCopyPhone}
             >
               {copied ? (
@@ -132,7 +151,7 @@ export function ContactDialog({
             </Button>
             <Button
               variant="outline"
-              className="shrink-0 px-4 h-auto py-3"
+              className="shrink-0 px-4 h-auto py-3 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground transition-colors"
               onClick={handleCall}
               aria-label={t("callPhone")}
             >

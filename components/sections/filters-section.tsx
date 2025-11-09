@@ -11,6 +11,7 @@ import { Badge } from "@components/ui/badge"
 import { Search, X, Filter, SlidersHorizontal } from "lucide-react"
 import { type Language, getTranslation, translations } from "@/lib/i18n"
 import { ContactDialog } from "@components/contact-dialog"
+import { type Game } from "@/lib/types"
 
 type FiltersSectionProps = {
   language: Language
@@ -30,6 +31,7 @@ type FiltersSectionProps = {
   onClearSelection: () => void
   onSelectAllFiltered: () => void
   onClearAllFilters: () => void
+  allGames: Game[]
 }
 
 export function FiltersSection({
@@ -50,10 +52,16 @@ export function FiltersSection({
   onClearSelection,
   onSelectAllFiltered,
   onClearAllFilters,
+  allGames,
 }: FiltersSectionProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+
+  // Get selected game objects
+  const selectedGamesList = Array.from(selectedGames)
+    .map((id) => allGames.find((g) => g.id === id))
+    .filter((g): g is Game => g !== undefined)
 
   // Calculate active filters count
   const activeFiltersCount =
@@ -146,7 +154,7 @@ export function FiltersSection({
             </span>
           </div>
           <div className="flex gap-2 w-full sm:w-auto">
-            <Button variant="outline" size="sm" onClick={onClearSelection} className="flex-1 sm:flex-none">
+            <Button variant="outline" size="sm" onClick={onClearSelection} className="flex-1 sm:flex-none border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
               <X className="w-4 h-4 mr-1" />
               {t("clear")}
             </Button>
@@ -158,7 +166,7 @@ export function FiltersSection({
       )}
 
       <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-        <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="shadow-sm hover:shadow transition-shadow">
+        <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="shadow-sm hover:shadow transition-shadow border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
           {t("selectAllVisible")}
         </Button>
         <span className="text-sm text-muted-foreground font-medium">
@@ -232,7 +240,7 @@ export function FiltersSection({
                 {t("showing")} <span className="text-foreground font-semibold">{filteredGamesCount}</span> {t("of")}{" "}
                 <span className="text-foreground font-semibold">{totalGamesCount}</span> {t("games")}
               </span>
-              <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="h-7 text-xs">
+              <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="h-7 text-xs border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
                 {t("selectAllVisible")}
               </Button>
             </div>
@@ -258,7 +266,7 @@ export function FiltersSection({
                   {t("total")}: <span className="text-foreground font-bold">{selectedGamesPrice.toLocaleString()} RON</span>
                 </span>
               </div>
-              <Button variant="outline" size="icon" onClick={onClearSelection} className="shrink-0 h-8 w-8">
+              <Button variant="outline" size="icon" onClick={onClearSelection} className="shrink-0 h-8 w-8 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
                 <X className="w-4 h-4" />
               </Button>
             </div>
@@ -340,7 +348,7 @@ export function FiltersSection({
             </div>
 
             <div className="flex gap-2 pt-4 border-t">
-              <Button variant="outline" onClick={onClearAllFilters} className="flex-1">
+              <Button variant="outline" onClick={onClearAllFilters} className="flex-1 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
                 {t("clearAllFilters")}
               </Button>
               <Button onClick={() => setMobileFiltersOpen(false)} className="flex-1">
@@ -356,7 +364,7 @@ export function FiltersSection({
         language={language}
         open={contactDialogOpen}
         onOpenChange={setContactDialogOpen}
-        context="selection"
+        selectedGames={selectedGamesList}
       />
     </>
   )

@@ -342,8 +342,7 @@ export function GameDetailView({
         language={language}
         open={contactDialogOpen}
         onOpenChange={setContactDialogOpen}
-        context="game"
-        gameTitle={game.title}
+        game={game}
       />
     </>
   )
