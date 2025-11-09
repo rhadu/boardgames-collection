@@ -1,3 +1,23 @@
+export enum GameCondition {
+  FACTORY_SEALED = "FACTORY_SEALED",
+  OPENED_UNPLAYED = "OPENED_UNPLAYED",
+  LIKE_NEW = "LIKE_NEW",
+  VERY_GOOD = "VERY_GOOD",
+  GOOD = "GOOD",
+}
+
+// Helper function to map GameCondition enum to translation keys
+export const getConditionTranslationKey = (condition: GameCondition): string => {
+  const translationMap: Record<GameCondition, string> = {
+    [GameCondition.FACTORY_SEALED]: "factorySealed",
+    [GameCondition.OPENED_UNPLAYED]: "openedUnplayed",
+    [GameCondition.LIKE_NEW]: "likeNew",
+    [GameCondition.VERY_GOOD]: "veryGood",
+    [GameCondition.GOOD]: "good",
+  }
+  return translationMap[condition]
+}
+
 export type Game = {
   id: string
   title: string
@@ -5,7 +25,7 @@ export type Game = {
   language: string
   players?: string
   playtime?: string
-  condition: "Factory Sealed" | "Opened but Unplayed" | "Like New" | "Very Good" | "Good"
+  condition: GameCondition
   price: number
   currency: string
   tags: string[]

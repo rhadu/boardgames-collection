@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import { type Language } from "@/lib/i18n"
 import { GAMES } from "@/lib/data"
-import { type Game } from "@/lib/types"
+import { type Game, GameCondition } from "@/lib/types"
 import { HeroSection } from "@components/sections/hero-section"
 import { FiltersSection } from "@components/sections/filters-section"
 import { GamesGrid } from "@components/games-grid"
@@ -48,7 +48,7 @@ export default function BoardGameCollection() {
       const matchesSearch =
         game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         game.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-      const matchesCondition = selectedCondition === "all" || game.condition === selectedCondition
+      const matchesCondition = selectedCondition === "all" || game.condition === (selectedCondition as GameCondition)
       const matchesKickstarter = !showKickstarterOnly || game.isKickstarter
       const matchesTag = selectedTag === "all" || game.tags.includes(selectedTag)
 

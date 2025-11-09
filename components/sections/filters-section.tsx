@@ -11,7 +11,7 @@ import { Badge } from "@components/ui/badge"
 import { Search, X, Filter, SlidersHorizontal } from "lucide-react"
 import { type Language, getTranslation, translations } from "@/lib/i18n"
 import { ContactDialog } from "@components/contact-dialog"
-import { type Game } from "@/lib/types"
+import { type Game, GameCondition, getConditionTranslationKey } from "@/lib/types"
 
 type FiltersSectionProps = {
   language: Language
@@ -73,14 +73,12 @@ export function FiltersSection({
   // Helper to get condition translation
   const getConditionLabel = (condition: string) => {
     if (condition === "all") return t("allConditions")
-    const conditionMap: Record<string, keyof (typeof translations)["en"]> = {
-      "Factory Sealed": "factorySealed",
-      "Opened but Unplayed": "openedUnplayed",
-      "Like New": "likeNew",
-      "Very Good": "veryGood",
-      "Good": "good",
+    try {
+      const conditionEnum = condition as GameCondition
+      return t(getConditionTranslationKey(conditionEnum) as keyof (typeof translations)["en"])
+    } catch {
+      return condition
     }
-    return conditionMap[condition] ? t(conditionMap[condition]) : condition
   }
 
   const FilterContent = () => (
@@ -105,10 +103,10 @@ export function FiltersSection({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t("allConditions")}</SelectItem>
-              <SelectItem value="Factory Sealed">{t("factorySealed")}</SelectItem>
-              <SelectItem value="Opened but Unplayed">{t("openedUnplayed")}</SelectItem>
-              <SelectItem value="Like New">{t("likeNew")}</SelectItem>
-              <SelectItem value="Very Good">{t("veryGood")}</SelectItem>
+              <SelectItem value={GameCondition.FACTORY_SEALED}>{t("factorySealed")}</SelectItem>
+              <SelectItem value={GameCondition.OPENED_UNPLAYED}>{t("openedUnplayed")}</SelectItem>
+              <SelectItem value={GameCondition.LIKE_NEW}>{t("likeNew")}</SelectItem>
+              <SelectItem value={GameCondition.VERY_GOOD}>{t("veryGood")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -309,10 +307,10 @@ export function FiltersSection({
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">{t("allConditions")}</SelectItem>
-                    <SelectItem value="Factory Sealed">{t("factorySealed")}</SelectItem>
-                    <SelectItem value="Opened but Unplayed">{t("openedUnplayed")}</SelectItem>
-                    <SelectItem value="Like New">{t("likeNew")}</SelectItem>
-                    <SelectItem value="Very Good">{t("veryGood")}</SelectItem>
+                    <SelectItem value={GameCondition.FACTORY_SEALED}>{t("factorySealed")}</SelectItem>
+                    <SelectItem value={GameCondition.OPENED_UNPLAYED}>{t("openedUnplayed")}</SelectItem>
+                    <SelectItem value={GameCondition.LIKE_NEW}>{t("likeNew")}</SelectItem>
+                    <SelectItem value={GameCondition.VERY_GOOD}>{t("veryGood")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

@@ -7,7 +7,7 @@ import { Card, CardContent } from "@components/ui/card"
 import { ImageCarousel } from "@components/ui/image-carousel"
 import { CheckCircle2 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
-import { type Game } from "@/lib/types"
+import { type Game, GameCondition } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import { ContactDialog } from "@components/contact-dialog"
@@ -66,12 +66,12 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
 
         {/* Condition Badge */}
         <div className="absolute top-3 right-3 z-20">
-          {game.condition === "Factory Sealed" && (
+          {game.condition === GameCondition.FACTORY_SEALED && (
             <Badge className="bg-sealed text-white shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
               🎁 {t("sealed")}
             </Badge>
           )}
-          {game.condition === "Opened but Unplayed" && (
+          {game.condition === GameCondition.OPENED_UNPLAYED && (
             <Badge className="bg-primary text-primary-foreground shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
               ✨ {t("unplayed")}
             </Badge>

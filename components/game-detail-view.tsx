@@ -20,7 +20,7 @@ import {
   Tag,
 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
-import { type Game } from "@/lib/types"
+import { type Game, GameCondition, getConditionTranslationKey } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import KSHover from "@components/ui/icons/ks-hover"
@@ -59,14 +59,14 @@ export function GameDetailView({
   }
 
   const getConditionBadge = () => {
-    if (game.condition === "Factory Sealed") {
+    if (game.condition === GameCondition.FACTORY_SEALED) {
       return (
         <Badge className="bg-primary text-primary-foreground shadow-lg border-0 px-3 py-1.5 text-sm opacity-100">
           🎁 {t("sealed")}
         </Badge>
       )
     }
-    if (game.condition === "Opened but Unplayed") {
+    if (game.condition === GameCondition.OPENED_UNPLAYED) {
       return (
         <Badge className="bg-primary text-primary-foreground shadow-lg border-0 px-3 py-1.5 text-sm opacity-100">
           ✨ {t("unplayed")}
@@ -75,7 +75,7 @@ export function GameDetailView({
     }
     return (
       <Badge variant="secondary" className="px-3 py-1.5 text-sm opacity-100">
-        {game.condition}
+        {t(getConditionTranslationKey(game.condition) as Parameters<typeof getTranslation>[1])}
       </Badge>
     )
   }
@@ -242,7 +242,7 @@ export function GameDetailView({
                   <ul className="space-y-2 overflow-y-auto xl:flex-1 min-h-0">
                     {game.highlights.map((highlight, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <span className="text-primary mt-1 font-bold shrink-0">
+                        <span className="text-primary text-sm font-bold shrink-0">
                           •
                         </span>
                         <span className="text-sm leading-relaxed">

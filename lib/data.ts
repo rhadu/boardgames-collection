@@ -1,4 +1,4 @@
-import { type Game } from "./types"
+import { type Game, GameCondition } from "./types"
 
 // Sample data - replace with your actual collection
 export const GAMES: Game[] = [
@@ -9,7 +9,7 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1-4",
     playtime: "200+ hours (campaign)",
-    condition: "Factory Sealed",
+    condition: GameCondition.FACTORY_SEALED,
     price: 0,
     currency: "N/A",
     tags: [
@@ -51,7 +51,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "1-4",
     playtime: "30-120 min",
-    condition: "Factory Sealed",
+    condition: GameCondition.FACTORY_SEALED,
     price: 350,
     currency: "RON",
     tags: ["Campaign", "Dungeon Crawler", "Fantasy"],
@@ -72,7 +72,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "1-5",
     playtime: "40-70 min",
-    condition: "Opened but Unplayed",
+    condition: GameCondition.OPENED_UNPLAYED,
     price: 180,
     currency: "RON",
     tags: ["Engine Building", "Animals", "Card Game"],
@@ -98,7 +98,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "1-4",
     playtime: "90-120 min",
-    condition: "Like New",
+    condition: GameCondition.LIKE_NEW,
     price: 420,
     currency: "RON",
     tags: ["Cooperative", "Strategy", "Fantasy"],
@@ -127,7 +127,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "2-4",
     playtime: "60-120 min",
-    condition: "Factory Sealed",
+    condition: GameCondition.FACTORY_SEALED,
     price: 480,
     currency: "RON",
     tags: ["Economic", "Industry", "Network Building"],
@@ -163,7 +163,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "1-5",
     playtime: "120 min",
-    condition: "Very Good",
+    condition: GameCondition.VERY_GOOD,
     price: 280,
     currency: "RON",
     tags: ["Science Fiction", "Economic", "Card Game"],
@@ -187,7 +187,7 @@ export const GAMES: Game[] = [
     language: "EN",
     players: "1-5",
     playtime: "90-115 min",
-    condition: "Factory Sealed",
+    condition: GameCondition.FACTORY_SEALED,
     price: 520,
     currency: "RON",
     tags: ["Area Control", "Economic", "Sci-Fi"],
