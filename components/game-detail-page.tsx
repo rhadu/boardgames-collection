@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { startViewTransition } from "@components/view-transition"
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
 import { ImageCarousel } from "@components/ui/image-carousel"
@@ -70,7 +71,11 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
         <div className="sticky top-0 z-10 bg-background container mx-auto px-4 py-6 max-w-[1280px]">
           <Button
             variant="ghost"
-            onClick={() => router.push("/")}
+            onClick={() => {
+              startViewTransition(() => {
+                router.push("/")
+              })
+            }}
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {language === "ro" ? "Înapoi la colecție" : "Back to collection"}

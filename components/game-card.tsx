@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { startViewTransition } from "@components/view-transition"
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
 import { Card, CardContent } from "@components/ui/card"
@@ -58,7 +59,9 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
     }
     // Save scroll position before navigating
     sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
-    router.push(gameUrl)
+    startViewTransition(() => {
+      router.push(gameUrl)
+    })
   }
 
   return (
@@ -119,9 +122,13 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         <div className="mb-4">
           <Link 
             href={gameUrl}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
               // Save scroll position before navigating
               sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
+              startViewTransition(() => {
+                router.push(gameUrl)
+              })
             }}
           >
             <h3 className="font-bold text-xl mb-2 leading-tight text-balance group-hover:text-primary transition-colors cursor-pointer">
