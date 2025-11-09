@@ -21,6 +21,7 @@ export default function BoardGameCollection() {
   const [selectedGames, setSelectedGames] = useState<Set<string>>(new Set())
   const [selectedGameForDetails, setSelectedGameForDetails] = useState<Game | null>(null)
   const [bulkDealDialogOpen, setBulkDealDialogOpen] = useState(false)
+  const [contactDialogOpen, setContactDialogOpen] = useState(false)
 
   // Calculate totals
   const totalInventoryValue = useMemo(() => GAMES.reduce((sum, game) => sum + game.price, 0), [])
@@ -124,7 +125,7 @@ export default function BoardGameCollection() {
         />
       </section>
 
-      <ContactSection language={language} />
+      <ContactSection language={language} onContact={() => setContactDialogOpen(true)} />
 
       <Footer language={language} />
 
@@ -152,6 +153,13 @@ export default function BoardGameCollection() {
         open={bulkDealDialogOpen}
         onOpenChange={setBulkDealDialogOpen}
         isBulkDeal={true}
+      />
+
+      {/* General Contact Dialog */}
+      <ContactDialog
+        language={language}
+        open={contactDialogOpen}
+        onOpenChange={setContactDialogOpen}
       />
     </div>
   )

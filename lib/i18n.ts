@@ -66,6 +66,7 @@ export const translations = {
     readyToAdd: "Gata să adaugi la colecția ta?",
     contactDescription:
       "Ridicare locală în București sau livrare disponibilă. Contactează-mă pentru fotografii, detalii sau pentru a face o ofertă.",
+    contactMe: "Contactează-mă",
     email: "Email: adresa.ta@example.com",
     whatsapp: "WhatsApp / Telefon",
     contactFooter:
@@ -103,6 +104,9 @@ export const translations = {
     emailSubjectBulkDeal: "Întrebare despre oferta colecției complete",
     emailBodyBulkDeal: "Bună ziua,\n\nSunt interesat de oferta pentru colecția completă.\n\nMulțumesc!",
     whatsAppMessageBulkDeal: "Bună ziua! Sunt interesat de oferta pentru colecția completă.",
+    emailSubjectGeneral: "Întrebare despre colecția de jocuri",
+    emailBodyGeneral: "Bună ziua,\n\nAș dori să întreb despre colecția de jocuri.\n\nMulțumesc!",
+    whatsAppMessageGeneral: "Bună ziua! Aș dori să întreb despre colecția de jocuri.",
     priceLabel: "Preț",
   },
   en: {
@@ -170,6 +174,7 @@ export const translations = {
     readyToAdd: "Ready to add to your collection?",
     contactDescription:
       "Local pickup in Bucharest or shipping available. Contact me for photos, details, or to make an offer.",
+    contactMe: "Contact Me",
     email: "Email: your.email@example.com",
     whatsapp: "WhatsApp / Phone",
     contactFooter:
@@ -207,6 +212,9 @@ export const translations = {
     emailSubjectBulkDeal: "Question about complete collection offer",
     emailBodyBulkDeal: "Hello,\n\nI am interested in the bulk deal offer for the complete collection.\n\nThank you!",
     whatsAppMessageBulkDeal: "Hello! I am interested in the bulk deal offer for the complete collection.",
+    emailSubjectGeneral: "Question about board game collection",
+    emailBodyGeneral: "Hello,\n\nI would like to ask about the board game collection.\n\nThank you!",
+    whatsAppMessageGeneral: "Hello! I would like to ask about the board game collection.",
     priceLabel: "Price",
   },
 }

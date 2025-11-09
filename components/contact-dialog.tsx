@@ -68,24 +68,31 @@ export function ContactDialog({
   // Generate context-specific messages
   const isSelection = selectedGames && selectedGames.length > 0
   const games = isSelection ? selectedGames : game ? [game] : []
+  const isGeneral = !isBulkDeal && !isSelection && !game
 
   const emailSubject = isBulkDeal
     ? t("emailSubjectBulkDeal")
     : isSelection
       ? t("emailSubjectSelection")
-      : `${t("emailSubjectGame")}: ${game?.title || ""}`
+      : isGeneral
+        ? t("emailSubjectGeneral")
+        : `${t("emailSubjectGame")}: ${game?.title || ""}`
 
   const emailBody = isBulkDeal
     ? t("emailBodyBulkDeal")
     : isSelection
       ? `${t("emailBodySelection")}\n\n${t("gamesSelected")}:\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
-      : `${t("emailBodyGame")} "${game?.title || ""}".\n\n${game ? `${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+      : isGeneral
+        ? t("emailBodyGeneral")
+        : `${t("emailBodyGame")} "${game?.title || ""}".\n\n${game ? `${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
 
   const whatsAppMessage = isBulkDeal
     ? t("whatsAppMessageBulkDeal")
     : isSelection
       ? `${t("whatsAppMessageSelection")}\n\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}`
-      : `${t("whatsAppMessageGame")} "${game?.title || ""}".${game ? ` ${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}`
+      : isGeneral
+        ? t("whatsAppMessageGeneral")
+        : `${t("whatsAppMessageGame")} "${game?.title || ""}".${game ? ` ${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}`
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
