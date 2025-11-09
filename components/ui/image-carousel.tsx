@@ -101,7 +101,7 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
   return (
     <>
       <div className={cn("relative group", className)}>
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className={cn("overflow-hidden", className)} ref={emblaRef}>
           <div className="flex">
             {images.map((image, index) => {
               const imageSrc = image || "/placeholder.svg"
@@ -137,33 +137,29 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
 
       {/* Navigation Buttons */}
       {canScrollPrev && (
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white/90 hover:bg-white shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        <button
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollPrev()
           }}
           aria-label="Previous image"
         >
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
+          <ChevronLeft className="h-5 w-5 text-black group-hover/btn:text-primary-foreground transition-colors" />
+        </button>
       )}
 
       {canScrollNext && (
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-white/90 hover:bg-white shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        <button
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollNext()
           }}
           aria-label="Next image"
         >
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+          <ChevronRight className="h-5 w-5 text-black group-hover/btn:text-primary-foreground transition-colors" />
+        </button>
       )}
 
       {/* Dots Indicator */}
@@ -173,7 +169,7 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
             <button
               key={index}
               className={cn(
-                "h-1.5 rounded-full transition-all",
+                "h-1.5 rounded-full transition-all cursor-pointer",
                 index === selectedIndex
                   ? "w-6 bg-white"
                   : "w-1.5 bg-white/50 hover:bg-white/75"

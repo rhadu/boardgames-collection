@@ -20,14 +20,15 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
 
   return (
     <Card
-      className={`group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-muted-foreground/20 ${
+      className={`group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-muted-foreground/20 p-0 ${
         isSelected ? "ring-2 ring-primary ring-offset-2 shadow-lg" : ""
       }`}
     >
-      <div className="relative overflow-hidden rounded-t-lg">
+      <div className="relative overflow-hidden rounded-t-xl">
         <ImageCarousel
           images={game.images || [game.image]}
           alt={game.title}
+          className="rounded-t-xl"
         />
 
         {/* Selection Checkbox */}

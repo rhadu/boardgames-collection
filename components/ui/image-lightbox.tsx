@@ -183,7 +183,7 @@ export function ImageLightbox({
                 <button
                   key={index}
                   className={cn(
-                    "h-2 rounded-full transition-all",
+                    "h-2 rounded-full transition-all cursor-pointer",
                     index === selectedIndex
                       ? "w-8 bg-white"
                       : "w-2 bg-white/50 hover:bg-white/75"
