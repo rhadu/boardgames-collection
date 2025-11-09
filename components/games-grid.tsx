@@ -9,6 +9,7 @@ type GamesGridProps = {
   selectedGames: Set<string>
   onToggleGameSelection: (id: string) => void
   onClearAllFilters: () => void
+  onViewGameDetails?: (game: Game) => void
 }
 
 export function GamesGrid({
@@ -17,6 +18,7 @@ export function GamesGrid({
   selectedGames,
   onToggleGameSelection,
   onClearAllFilters,
+  onViewGameDetails,
 }: GamesGridProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
 
@@ -40,6 +42,7 @@ export function GamesGrid({
           language={language}
           isSelected={selectedGames.has(game.id)}
           onToggleSelection={() => onToggleGameSelection(game.id)}
+          onViewDetails={() => onViewGameDetails?.(game)}
         />
       ))}
     </div>

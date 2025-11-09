@@ -12,6 +12,8 @@ type ImageCarouselProps = {
   images: string[]
   alt: string
   className?: string
+  onImageClick?: (index: number) => void
+  objectFit?: "cover" | "contain"
 }
 
 // Check if image is an external URL
@@ -19,7 +21,7 @@ const isExternalUrl = (src: string): boolean => {
   return src.startsWith("http://") || src.startsWith("https://")
 }
 
-export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
+export function ImageCarousel({ images, alt, className, onImageClick, objectFit = "cover" }: ImageCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
@@ -64,67 +66,112 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
   if (images.length <= 1) {
     const imageSrc = images[0] || "/placeholder.svg"
     const isExternal = isExternalUrl(imageSrc)
+    const imageFitClass = objectFit === "contain" ? "object-contain" : "object-cover"
+    const containerClass = objectFit === "contain" 
+      ? "relative overflow-hidden bg-muted cursor-pointer flex items-center justify-center h-full"
+      : "relative aspect-square overflow-hidden bg-muted cursor-pointer"
     
     return (
       <>
         <div
-          className={cn("relative aspect-square overflow-hidden bg-muted cursor-pointer", className)}
-          onClick={() => openLightbox(0)}
+          className={cn(containerClass, "w-full", className)}
+          onClick={() => onImageClick ? onImageClick(0) : openLightbox(0)}
         >
           {isExternal ? (
             <img
               src={imageSrc}
               alt={alt}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              className={cn(
+                objectFit === "contain" 
+                  ? "max-w-full max-h-full w-auto h-auto"
+                  : "absolute inset-0 w-full h-full",
+                imageFitClass,
+                "transition-transform duration-300 hover:scale-105"
+              )}
             />
+          ) : objectFit === "contain" ? (
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src={imageSrc}
+                alt={alt}
+                width={800}
+                height={800}
+                className={cn(imageFitClass, "transition-transform duration-300 hover:scale-105 max-w-full max-h-full")}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
           ) : (
             <Image
               src={imageSrc}
               alt={alt}
               fill
-              className="object-cover transition-transform duration-300 hover:scale-105"
+              className={cn(imageFitClass, "transition-transform duration-300 hover:scale-105")}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
         </div>
-        <ImageLightbox
-          images={images}
-          alt={alt}
-          initialIndex={lightboxIndex}
-          open={lightboxOpen}
-          onOpenChange={setLightboxOpen}
-        />
+        {!onImageClick && (
+          <ImageLightbox
+            images={images}
+            alt={alt}
+            initialIndex={lightboxIndex}
+            open={lightboxOpen}
+            onOpenChange={setLightboxOpen}
+          />
+        )}
       </>
     )
   }
 
+  const imageFitClass = objectFit === "contain" ? "object-contain" : "object-cover"
+  const slideContainerClass = objectFit === "contain"
+    ? "relative overflow-hidden bg-muted cursor-pointer flex items-center justify-center"
+    : "relative aspect-square overflow-hidden bg-muted cursor-pointer"
+
   return (
     <>
-      <div className={cn("relative group", className)}>
-        <div className={cn("overflow-hidden", className)} ref={emblaRef}>
-          <div className="flex">
+      <div className={cn("relative group w-full", className)}>
+        <div className={cn("overflow-hidden w-full", objectFit === "contain" && "h-full", className)} ref={emblaRef}>
+          <div className={cn("flex w-full", objectFit === "contain" && "h-full")}>
             {images.map((image, index) => {
               const imageSrc = image || "/placeholder.svg"
               const isExternal = isExternalUrl(imageSrc)
               
               return (
-                <div key={index} className="flex-[0_0_100%] min-w-0">
+                <div key={index} className={cn("flex-[0_0_100%] min-w-0 w-full", objectFit === "contain" && "h-full")}>
                   <div
-                    className="relative aspect-square overflow-hidden bg-muted cursor-pointer"
-                    onClick={() => openLightbox(index)}
+                    className={cn(slideContainerClass, objectFit === "contain" && "h-full w-full")}
+                    onClick={() => onImageClick ? onImageClick(index) : openLightbox(index)}
                   >
                     {isExternal ? (
                       <img
                         src={imageSrc}
                         alt={`${alt} - Image ${index + 1}`}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className={cn(
+                          objectFit === "contain"
+                            ? "max-w-full max-h-full w-auto h-auto"
+                            : "absolute inset-0 w-full h-full",
+                          imageFitClass,
+                          "transition-transform duration-500 group-hover:scale-110"
+                        )}
                       />
+                    ) : objectFit === "contain" ? (
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        <Image
+                          src={imageSrc}
+                          alt={`${alt} - Image ${index + 1}`}
+                          width={800}
+                          height={800}
+                          className={cn(imageFitClass, "transition-transform duration-500 group-hover:scale-110 max-w-full max-h-full")}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
                     ) : (
                       <Image
                         src={imageSrc}
                         alt={`${alt} - Image ${index + 1}`}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className={cn(imageFitClass, "transition-transform duration-500 group-hover:scale-110")}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     )}
@@ -138,7 +185,7 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
       {/* Navigation Buttons */}
       {canScrollPrev && (
         <button
-          className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollPrev()
@@ -151,7 +198,7 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
 
       {canScrollNext && (
         <button
-          className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-0 group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollNext()
@@ -187,13 +234,15 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
-      <ImageLightbox
-        images={images}
-        alt={alt}
-        initialIndex={lightboxIndex}
-        open={lightboxOpen}
-        onOpenChange={setLightboxOpen}
-      />
+      {!onImageClick && (
+        <ImageLightbox
+          images={images}
+          alt={alt}
+          initialIndex={lightboxIndex}
+          open={lightboxOpen}
+          onOpenChange={setLightboxOpen}
+        />
+      )}
     </>
   )
 }

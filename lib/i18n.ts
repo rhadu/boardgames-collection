@@ -76,6 +76,16 @@ export const translations = {
 
     // Language
     language: "Limbă",
+
+    // Game Detail View
+    gameDetails: "Detalii joc",
+    players: "Jucători",
+    playtime: "Durată",
+    tags: "Categorii",
+    highlights: "Puncte forte",
+    notes: "Notițe",
+    selectGame: "Selectează joc",
+    deselectGame: "Deselectează joc",
   },
   en: {
     // Hero Section
@@ -152,6 +162,16 @@ export const translations = {
 
     // Language
     language: "Language",
+
+    // Game Detail View
+    gameDetails: "Game Details",
+    players: "Players",
+    playtime: "Playtime",
+    tags: "Tags",
+    highlights: "Highlights",
+    notes: "Notes",
+    selectGame: "Select game",
+    deselectGame: "Deselect game",
   },
 }
 

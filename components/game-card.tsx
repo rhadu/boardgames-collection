@@ -13,16 +13,29 @@ type GameCardProps = {
   language: Language
   isSelected: boolean
   onToggleSelection: () => void
+  onViewDetails?: () => void
 }
 
-export function GameCard({ game, language, isSelected, onToggleSelection }: GameCardProps) {
+export function GameCard({ game, language, isSelected, onToggleSelection, onViewDetails }: GameCardProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
 
   return (
     <Card
-      className={`group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-muted-foreground/20 p-0 ${
+      className={`group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-muted-foreground/20 p-0 cursor-pointer ${
         isSelected ? "ring-2 ring-primary ring-offset-2 shadow-lg" : ""
       }`}
+      onClick={(e) => {
+        // Don't open details if clicking on selection checkbox or action buttons
+        const target = e.target as HTMLElement
+        if (
+          target.closest('button') ||
+          target.closest('a') ||
+          target.closest('[role="button"]')
+        ) {
+          return
+        }
+        onViewDetails?.()
+      }}
     >
       <div className="relative overflow-hidden rounded-t-xl">
         <ImageCarousel
@@ -33,7 +46,10 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
 
         {/* Selection Checkbox */}
         <button
-          onClick={onToggleSelection}
+          onClick={(e) => {
+            e.stopPropagation()
+            onToggleSelection()
+          }}
           className={`absolute top-3 left-3 w-7 h-7 rounded-md border-2 flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-20 ${
             isSelected
               ? "bg-primary border-primary scale-110"
@@ -155,7 +171,14 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
           </div>
         </div>
 
-        <Button className="w-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]" variant="default">
+        <Button 
+          className="w-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]" 
+          variant="default"
+          onClick={(e) => {
+            e.stopPropagation()
+            onViewDetails?.()
+          }}
+        >
           {t("inquireGame")}
         </Button>
       </CardContent>

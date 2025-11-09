@@ -3,11 +3,13 @@
 import { useState, useMemo } from "react"
 import { type Language } from "@/lib/i18n"
 import { GAMES } from "@/lib/data"
+import { type Game } from "@/lib/types"
 import { HeroSection } from "@components/sections/hero-section"
 import { FiltersSection } from "@components/sections/filters-section"
 import { GamesGrid } from "@components/games-grid"
 import { ContactSection } from "@components/sections/contact-section"
 import { Footer } from "@components/footer"
+import { GameDetailView } from "@components/game-detail-view"
 
 export default function BoardGameCollection() {
   const [language, setLanguage] = useState<Language>("ro")
@@ -16,6 +18,7 @@ export default function BoardGameCollection() {
   const [showKickstarterOnly, setShowKickstarterOnly] = useState(false)
   const [selectedTag, setSelectedTag] = useState<string>("all")
   const [selectedGames, setSelectedGames] = useState<Set<string>>(new Set())
+  const [selectedGameForDetails, setSelectedGameForDetails] = useState<Game | null>(null)
 
   // Calculate totals
   const totalInventoryValue = useMemo(() => GAMES.reduce((sum, game) => sum + game.price, 0), [])
@@ -113,12 +116,31 @@ export default function BoardGameCollection() {
           selectedGames={selectedGames}
           onToggleGameSelection={toggleGameSelection}
           onClearAllFilters={clearAllFilters}
+          onViewGameDetails={setSelectedGameForDetails}
         />
       </section>
 
       <ContactSection language={language} />
 
       <Footer language={language} />
+
+      {/* Game Detail View */}
+      <GameDetailView
+        game={selectedGameForDetails}
+        language={language}
+        open={selectedGameForDetails !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedGameForDetails(null)
+          }
+        }}
+        isSelected={selectedGameForDetails ? selectedGames.has(selectedGameForDetails.id) : false}
+        onToggleSelection={() => {
+          if (selectedGameForDetails) {
+            toggleGameSelection(selectedGameForDetails.id)
+          }
+        }}
+      />
     </div>
   )
 }
