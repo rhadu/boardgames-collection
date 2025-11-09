@@ -5,7 +5,7 @@ import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "./button"
-import { Dialog, DialogContent } from "./dialog"
+import { Dialog, DialogContent, DialogTitle } from "./dialog"
 import { cn } from "@/lib/utils"
 
 type ImageLightboxProps = {
@@ -93,6 +93,9 @@ export function ImageLightbox({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
+        <DialogTitle className="sr-only">
+          {alt} - Image {selectedIndex + 1} of {images.length}
+        </DialogTitle>
         <div className="relative w-full h-full flex items-center justify-center">
           {/* Close Button */}
           <Button
