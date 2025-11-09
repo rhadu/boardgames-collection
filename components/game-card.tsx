@@ -1,6 +1,7 @@
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
 import { Card, CardContent } from "@components/ui/card"
+import { ImageCarousel } from "@components/ui/image-carousel"
 import { CheckCircle2 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
 import { type Game } from "@/lib/types"
@@ -23,20 +24,16 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         isSelected ? "ring-2 ring-primary ring-offset-2 shadow-lg" : ""
       }`}
     >
-      <div className="relative overflow-hidden">
-        <div className="relative aspect-square overflow-hidden bg-muted">
-          <img
-            src={game.image || "/placeholder.svg"}
-            alt={game.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
+      <div className="relative overflow-hidden rounded-t-lg">
+        <ImageCarousel
+          images={game.images || [game.image]}
+          alt={game.title}
+        />
 
         {/* Selection Checkbox */}
         <button
           onClick={onToggleSelection}
-          className={`absolute top-3 left-3 w-7 h-7 rounded-md border-2 flex items-center justify-center transition-all backdrop-blur-sm shadow-lg ${
+          className={`absolute top-3 left-3 w-7 h-7 rounded-md border-2 flex items-center justify-center transition-all backdrop-blur-sm shadow-lg z-20 ${
             isSelected
               ? "bg-primary border-primary scale-110"
               : "bg-white/95 border-white/95 hover:bg-white hover:scale-105"
@@ -46,7 +43,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         </button>
 
         {/* Condition Badge */}
-        <div className="absolute top-3 right-3">
+        <div className="absolute top-3 right-3 z-20">
           {game.condition === "Factory Sealed" && (
             <Badge className="bg-sealed text-white shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
               🎁 {t("sealed")}
@@ -61,7 +58,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
 
         {/* Kickstarter Badge */}
         {game.isKickstarter && (
-          <div className="absolute bottom-3 left-3">
+          <div className="absolute bottom-3 left-3 z-20">
             <Badge className="bg-kickstarter text-white shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
               ⚡ {t("kickstarter")}
             </Badge>
