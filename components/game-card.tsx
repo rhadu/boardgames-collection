@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
 import { Card, CardContent } from "@components/ui/card"
@@ -7,6 +10,7 @@ import { type Language, getTranslation } from "@/lib/i18n"
 import { type Game } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
+import { ContactDialog } from "@components/contact-dialog"
 
 type GameCardProps = {
   game: Game
@@ -18,6 +22,7 @@ type GameCardProps = {
 
 export function GameCard({ game, language, isSelected, onToggleSelection, onViewDetails }: GameCardProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
+  const [contactDialogOpen, setContactDialogOpen] = useState(false)
 
   return (
     <Card
@@ -176,12 +181,21 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
           variant="default"
           onClick={(e) => {
             e.stopPropagation()
-            onViewDetails?.()
+            setContactDialogOpen(true)
           }}
         >
           {t("inquireGame")}
         </Button>
       </CardContent>
+
+      {/* Contact Dialog */}
+      <ContactDialog
+        language={language}
+        open={contactDialogOpen}
+        onOpenChange={setContactDialogOpen}
+        context="game"
+        gameTitle={game.title}
+      />
     </Card>
   )
 }

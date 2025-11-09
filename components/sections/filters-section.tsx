@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@components/ui
 import { Badge } from "@components/ui/badge"
 import { Search, X, Filter, SlidersHorizontal } from "lucide-react"
 import { type Language, getTranslation, translations } from "@/lib/i18n"
+import { ContactDialog } from "@components/contact-dialog"
 
 type FiltersSectionProps = {
   language: Language
@@ -52,6 +53,7 @@ export function FiltersSection({
 }: FiltersSectionProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [contactDialogOpen, setContactDialogOpen] = useState(false)
 
   // Calculate active filters count
   const activeFiltersCount =
@@ -148,7 +150,7 @@ export function FiltersSection({
               <X className="w-4 h-4 mr-1" />
               {t("clear")}
             </Button>
-            <Button size="sm" className="flex-1 sm:flex-none shadow-sm">
+            <Button size="sm" className="flex-1 sm:flex-none shadow-sm" onClick={() => setContactDialogOpen(true)}>
               {t("inquireSelection")}
             </Button>
           </div>
@@ -260,7 +262,7 @@ export function FiltersSection({
                 <X className="w-4 h-4" />
               </Button>
             </div>
-            <Button size="sm" className="w-full shadow-sm">
+            <Button size="sm" className="w-full shadow-sm" onClick={() => setContactDialogOpen(true)}>
               {t("inquireSelection")}
             </Button>
           </div>
@@ -348,6 +350,14 @@ export function FiltersSection({
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Contact Dialog */}
+      <ContactDialog
+        language={language}
+        open={contactDialogOpen}
+        onOpenChange={setContactDialogOpen}
+        context="selection"
+      />
     </>
   )
 }

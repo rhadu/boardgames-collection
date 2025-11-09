@@ -86,6 +86,20 @@ export const translations = {
     notes: "Notițe",
     selectGame: "Selectează joc",
     deselectGame: "Deselectează joc",
+
+    // Contact Dialog
+    contactOptions: "Opțiuni de contact",
+    sendEmail: "Trimite email",
+    openWhatsApp: "Deschide WhatsApp",
+    copyPhoneNumber: "Copiază numărul",
+    phoneNumberCopied: "Număr copiat!",
+    callPhone: "Sună",
+    emailSubjectSelection: "Întrebare despre selecție de jocuri",
+    emailSubjectGame: "Întrebare despre joc",
+    emailBodySelection: "Bună ziua,\n\nAș dori să întreb despre selecția de jocuri.\n\nMulțumesc!",
+    emailBodyGame: "Bună ziua,\n\nAș dori să întreb despre jocul",
+    whatsAppMessageSelection: "Bună ziua! Aș dori să întreb despre selecția de jocuri.",
+    whatsAppMessageGame: "Bună ziua! Aș dori să întreb despre jocul",
   },
   en: {
     // Hero Section
@@ -172,6 +186,20 @@ export const translations = {
     notes: "Notes",
     selectGame: "Select game",
     deselectGame: "Deselect game",
+
+    // Contact Dialog
+    contactOptions: "Contact Options",
+    sendEmail: "Send Email",
+    openWhatsApp: "Open WhatsApp",
+    copyPhoneNumber: "Copy Phone Number",
+    phoneNumberCopied: "Phone number copied!",
+    callPhone: "Call",
+    emailSubjectSelection: "Question about game selection",
+    emailSubjectGame: "Question about game",
+    emailBodySelection: "Hello,\n\nI would like to ask about the game selection.\n\nThank you!",
+    emailBodyGame: "Hello,\n\nI would like to ask about the game",
+    whatsAppMessageSelection: "Hello! I would like to ask about the game selection.",
+    whatsAppMessageGame: "Hello! I would like to ask about the game",
   },
 }
 
