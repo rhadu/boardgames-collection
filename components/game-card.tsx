@@ -44,7 +44,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
     >
       <div className="relative overflow-hidden rounded-t-xl">
         <ImageCarousel
-          images={game.images || [game.image]}
+          images={game.images}
           alt={game.title}
           className="rounded-t-xl"
         />

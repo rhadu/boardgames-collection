@@ -12,7 +12,6 @@ export type Game = {
   isKickstarter: boolean
   bggLink?: string
   kickstarterLink?: string
-  image: string // Deprecated: kept for backward compatibility, use images[0] instead
   images: string[] // Array of images: first is official, rest are custom
   highlights: string[]
   notes?: string

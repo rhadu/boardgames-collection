@@ -3,6 +3,48 @@ import { type Game } from "./types"
 // Sample data - replace with your actual collection
 export const GAMES: Game[] = [
   {
+    id: "1121",
+    title: "Aeon Trespass: Odyssey",
+    year: 2019,
+    language: "English",
+    players: "1-4",
+    playtime: "200+ hours (campaign)",
+    condition: "Factory Sealed",
+    price: 0,
+    currency: "N/A",
+    tags: [
+      "Cooperative",
+      "Campaign Game",
+      "Miniatures",
+      "Boss Battler",
+      "Exploration",
+      "Sci-fi",
+      "Ancient Greece",
+      "Mythology",
+      "Heavy Game",
+      "Complex Game",
+    ],
+    isKickstarter: true,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/242705/aeon-trespass-odyssey",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/intotheunknown/aeon-trespass-odyssey-second-printing-plus-all-new-content",
+    images: [
+      "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__itemrep/img/giNUMut4HAl-zWyQkGG0YchmuLI=/fit-in/246x300/filters:strip_icc()/pic3490053.jpg",
+    ],
+    highlights: [
+      "Epic 1-4 player cooperative campaign board game.",
+      "Features adventures, base building, and tactical battles against giant monsters (Primordials).",
+      "Over 200 hours of unique content, including more than 1500 cards and a novel's worth of narrative.",
+      "Merges ideas from video games like XCOM, Dark Souls, Monster Hunter, and JRPGs.",
+      "Highly detailed miniatures, some almost 6 inches tall.",
+      "Multiple successful Kickstarter campaigns, including a 'Second Printing Plus All-New Content' campaign that raised €2,865,907.",
+    ],
+    notes:
+      "Considered a very heavy and complicated game, often compared to Kingdom Death Monster. Designed for multi-session play with extensive campaign progression and story. Features multiple cycles and expansions, with the core game offering three cycles.",
+  },
+
+  {
     id: "1",
     title: "Gloomhaven: Jaws of the Lion",
     year: 2020,
@@ -16,8 +58,6 @@ export const GAMES: Game[] = [
     isKickstarter: false,
     bggLink:
       "https://boardgamegeek.com/boardgame/291457/gloomhaven-jaws-of-the-lion",
-    image:
-      "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__itemrep/img/a4ec0KY1ksmrKP_2lom7qzCQw_U=/fit-in/246x300/filters:strip_icc()/pic5055631.jpg",
     images: [
       "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__itemrep/img/a4ec0KY1ksmrKP_2lom7qzCQw_U=/fit-in/246x300/filters:strip_icc()/pic5055631.jpg", // BGG Official
       "https://cf.geekdo-images.com/p_tFmkN241jAI-gH1dO00A__itemheader/img/6mYUjt8tjxZXdl4WfboB9fuJLDw=/800x450/filters:quality(30):strip_icc()/pic5491564.jpg", // BGG Image 1
@@ -41,7 +81,6 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/253956/wingspan-european-expansion",
     kickstarterLink:
       "https://www.kickstarter.com/projects/stonemaiergames/wingspan",
-    image: "/wingspan-european-expansion-board-game.jpg",
     images: [
       "/wingspan-european-expansion-board-game.jpg", // Official
       "/custom/wingspan-european-expansion-1.jpg", // Custom image 1
@@ -67,8 +106,6 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/162886/spirit-island",
     kickstarterLink:
       "https://www.kickstarter.com/projects/2010555768/spirit-island",
-    image:
-      "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__itemrep/img/giNUMut4HAl-zWyQkGG0YchmuLI=/fit-in/246x300/filters:strip_icc()/pic3490053.jpg",
     images: [
       "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__itemrep/img/giNUMut4HAl-zWyQkGG0YchmuLI=/fit-in/246x300/filters:strip_icc()/pic3490053.jpg", // BGG Official
       "https://cf.geekdo-images.com/e2e0wdO8oVNzD0ZAhzi6MQ__itemheader/img/Zj1GBUN2m-z4zX2-QWn31fiKEE4=/800x450/filters:quality(30):strip_icc()/pic3509697.jpg", // BGG Image 1
@@ -98,8 +135,6 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/224517/brass-birmingham",
     kickstarterLink:
       "https://www.kickstarter.com/projects/roxley/brass-an-industrial-revolution",
-    image:
-      "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__itemrep/img/IwUOQfhP5c0KcRJBY4X_hi3LpsY=/fit-in/246x300/filters:strip_icc()/pic3536616.jpg",
     images: [
       "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__itemrep/img/IwUOQfhP5c0KcRJBY4X_hi3LpsY=/fit-in/246x300/filters:strip_icc()/pic3536616.jpg", // BGG Official
       "https://cf.geekdo-images.com/h4xbkoKIsRL6Mk0K_1g_VQ__itemheader/img/PhWOLZLJHy5FBwdN0gGIDs_NCb0=/800x450/filters:quality(30):strip_icc()/pic3540110.jpg", // BGG Image 1
@@ -134,8 +169,6 @@ export const GAMES: Game[] = [
     tags: ["Science Fiction", "Economic", "Card Game"],
     isKickstarter: false,
     bggLink: "https://boardgamegeek.com/boardgame/167791/terraforming-mars",
-    image:
-      "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__itemrep/img/RVh5N-_HcMziJ3M6Q1eLTlj8XIQ=/fit-in/246x300/filters:strip_icc()/pic3163924.jpg",
     images: [
       "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__itemrep/img/RVh5N-_HcMziJ3M6Q1eLTlj8XIQ=/fit-in/246x300/filters:strip_icc()/pic3163924.jpg", // BGG Official
       "https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__itemheader/img/v7NmHYsHsKLKrqi8ZbVZY5aoJw4=/800x450/filters:quality(30):strip_icc()/pic2977400.jpg", // BGG Image 1
@@ -162,8 +195,6 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/169786/scythe",
     kickstarterLink:
       "https://www.kickstarter.com/projects/jameystegmaier/scythe",
-    image:
-      "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__opengraph/img/10P2KjknnofwYAqlJkBUXpz0I40=/0x0:4259x2236/fit-in/1200x630/filters:strip_icc()/pic3163924.jpg",
     images: [
       "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__opengraph/img/10P2KjknnofwYAqlJkBUXpz0I40=/0x0:4259x2236/fit-in/1200x630/filters:strip_icc()/pic3163924.jpg", // BGG Official
       "https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__itemheader/img/v7NmHYsHsKLKrqi8ZbVZY5aoJw4=/800x450/filters:quality(30):strip_icc()/pic2977400.jpg", // BGG Image 1

@@ -51,7 +51,7 @@ export function GameDetailView({
 
   if (!game) return null
 
-  const images = game.images || [game.image]
+  const images = game.images
 
   const handleImageClick = (index: number) => {
     setLightboxIndex(index)
