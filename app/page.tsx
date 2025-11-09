@@ -106,7 +106,7 @@ export default function BoardGameCollection() {
         onClearAllFilters={clearAllFilters}
       />
 
-      <section className="container mx-auto px-4 py-12 md:py-16 max-w-[1280px]">
+      <section className={`container mx-auto px-4 py-12 md:py-16 max-w-[1280px] ${selectedGames.size > 0 ? "pb-28 md:pb-16" : ""}`}>
         <GamesGrid
           games={filteredGames}
           language={language}

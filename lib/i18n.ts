@@ -28,6 +28,9 @@ export const translations = {
     allConditions: "Toate condițiile",
     allCategories: "Toate categoriile",
     kickstarterOnly: "Doar Kickstarter",
+    filters: "Filtre",
+    applyFilters: "Aplică filtre",
+    activeFilters: "Filtre active",
 
     // Conditions
     factorySealed: "Sigilat din Fabrică",
@@ -101,6 +104,9 @@ export const translations = {
     allConditions: "All conditions",
     allCategories: "All categories",
     kickstarterOnly: "Kickstarter only",
+    filters: "Filters",
+    applyFilters: "Apply filters",
+    activeFilters: "Active filters",
 
     // Conditions
     factorySealed: "Factory Sealed",

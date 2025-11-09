@@ -87,7 +87,7 @@ export const GAMES: Game[] = [
       "https://cf.geekdo-images.com/h4xbkoKIsRL6Mk0K_1g_VQ__itemheader/img/PhWOLZLJHy5FBwdN0gGIDs_NCb0=/800x450/filters:quality(30):strip_icc()/pic3540110.jpg", // BGG Image 1
       "/custom/brass-birmingham-1.jpg", // Custom image 1
     ],
-    highlights: ["Deluxe edition", "Never opened", "Metal coins included"],
+    highlights: ["Deluxe edition", "Never opened", "Metal coins included", "testing long highlight text to see how it looks and how it behaves", "multiple highlights" , "check multiple rows", "check multiple columns"],
   },
   {
     id: "5",
