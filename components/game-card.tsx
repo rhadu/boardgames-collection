@@ -1,52 +1,79 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
 import { Card, CardContent } from "@components/ui/card"
 import { ImageCarousel } from "@components/ui/image-carousel"
+import { ImageLightbox } from "@components/ui/image-lightbox"
 import { CheckCircle2 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
 import { type Game, GameCondition } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import { ContactDialog } from "@components/contact-dialog"
+import { slugify } from "@/lib/utils"
 
 type GameCardProps = {
   game: Game
   language: Language
   isSelected: boolean
   onToggleSelection: () => void
-  onViewDetails?: () => void
 }
 
-export function GameCard({ game, language, isSelected, onToggleSelection, onViewDetails }: GameCardProps) {
+export function GameCard({ game, language, isSelected, onToggleSelection }: GameCardProps) {
+  const router = useRouter()
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
+
+  const gameSlug = slugify(game.title)
+  const gameUrl = `/games/${gameSlug}`
+
+  const handleImageClick = (index: number) => {
+    setLightboxIndex(index)
+    setLightboxOpen(true)
+  }
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't navigate if lightbox is open
+    if (lightboxOpen) {
+      return
+    }
+    
+    // Don't navigate if clicking on buttons, links, or the image area
+    const target = e.target as HTMLElement
+    if (
+      target.closest('button') ||
+      target.closest('a') ||
+      target.closest('[role="button"]') ||
+      target.closest('[data-image-area]') || // Image area
+      target.closest('[role="dialog"]') || // Dialog/lightbox
+      target.closest('[data-radix-portal]') // Radix UI portal (where dialogs are rendered)
+    ) {
+      return
+    }
+    // Save scroll position before navigating
+    sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
+    router.push(gameUrl)
+  }
 
   return (
     <Card
       className={`group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-muted-foreground/20 p-0 cursor-pointer ${
         isSelected ? "ring-2 ring-primary ring-offset-2 shadow-lg" : ""
       }`}
-      onClick={(e) => {
-        // Don't open details if clicking on selection checkbox or action buttons
-        const target = e.target as HTMLElement
-        if (
-          target.closest('button') ||
-          target.closest('a') ||
-          target.closest('[role="button"]')
-        ) {
-          return
-        }
-        onViewDetails?.()
-      }}
+      onClick={handleCardClick}
     >
-      <div className="relative overflow-hidden rounded-t-xl">
+      <div className="relative overflow-hidden rounded-t-xl" data-image-area>
         <ImageCarousel
           images={game.images}
           alt={game.title}
           className="rounded-t-xl"
+          onImageClick={handleImageClick}
         />
 
         {/* Selection Checkbox */}
@@ -90,9 +117,17 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
 
       <CardContent className="p-6">
         <div className="mb-4">
-          <h3 className="font-bold text-xl mb-2 leading-tight text-balance group-hover:text-primary transition-colors">
-            {game.title}
-          </h3>
+          <Link 
+            href={gameUrl}
+            onClick={() => {
+              // Save scroll position before navigating
+              sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
+            }}
+          >
+            <h3 className="font-bold text-xl mb-2 leading-tight text-balance group-hover:text-primary transition-colors cursor-pointer">
+              {game.title}
+            </h3>
+          </Link>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             {game.year && <span>{game.year}</span>}
             <span>•</span>
@@ -187,6 +222,15 @@ export function GameCard({ game, language, isSelected, onToggleSelection, onView
           {t("inquireGame")}
         </Button>
       </CardContent>
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={game.images}
+        alt={game.title}
+        initialIndex={lightboxIndex}
+        open={lightboxOpen}
+        onOpenChange={setLightboxOpen}
+      />
 
       {/* Contact Dialog */}
       <ContactDialog

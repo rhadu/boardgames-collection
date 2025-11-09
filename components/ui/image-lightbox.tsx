@@ -92,11 +92,23 @@ export function ImageLightbox({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none">
+      <DialogContent 
+        className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none"
+        onClick={(e) => {
+          // Prevent clicks inside the lightbox from bubbling to parent elements
+          e.stopPropagation()
+        }}
+      >
         <DialogTitle className="sr-only">
           {alt} - Image {selectedIndex + 1} of {images.length}
         </DialogTitle>
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div 
+          className="relative w-full h-full flex items-center justify-center"
+          onClick={(e) => {
+            // Prevent clicks on the image container from bubbling
+            e.stopPropagation()
+          }}
+        >
           {/* Close Button */}
           <Button
             variant="outline"
@@ -125,9 +137,19 @@ export function ImageLightbox({
                         src={imageSrc}
                         alt={`${alt} - Image ${index + 1}`}
                         className="max-w-full max-h-full w-auto h-auto object-contain"
+                        onClick={(e) => {
+                          // Prevent clicks on the image from closing the lightbox or navigating
+                          e.stopPropagation()
+                        }}
                       />
                     ) : (
-                      <div className="relative w-full h-full max-w-full max-h-full">
+                      <div 
+                        className="relative w-full h-full max-w-full max-h-full"
+                        onClick={(e) => {
+                          // Prevent clicks on the image container from closing the lightbox or navigating
+                          e.stopPropagation()
+                        }}
+                      >
                         <Image
                           src={imageSrc}
                           alt={`${alt} - Image ${index + 1}`}

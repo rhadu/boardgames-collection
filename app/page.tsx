@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
+import { usePathname } from "next/navigation"
 import { type Language } from "@/lib/i18n"
 import { GAMES } from "@/lib/data"
 import { type Game, GameCondition } from "@/lib/types"
@@ -9,17 +10,19 @@ import { FiltersSection } from "@components/sections/filters-section"
 import { GamesGrid } from "@components/games-grid"
 import { ContactSection } from "@components/sections/contact-section"
 import { Footer } from "@components/footer"
-import { GameDetailView } from "@components/game-detail-view"
 import { ContactDialog } from "@components/contact-dialog"
 
+const SCROLL_POSITION_KEY = "mainPageScrollPosition"
+
 export default function BoardGameCollection() {
+  const pathname = usePathname()
+  const hasRestoredScroll = useRef(false)
   const [language, setLanguage] = useState<Language>("ro")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCondition, setSelectedCondition] = useState<string>("all")
   const [showKickstarterOnly, setShowKickstarterOnly] = useState(false)
   const [selectedTag, setSelectedTag] = useState<string>("all")
   const [selectedGames, setSelectedGames] = useState<Set<string>>(new Set())
-  const [selectedGameForDetails, setSelectedGameForDetails] = useState<Game | null>(null)
   const [bulkDealDialogOpen, setBulkDealDialogOpen] = useState(false)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
 
@@ -82,6 +85,77 @@ export default function BoardGameCollection() {
     setSelectedTag("all")
   }
 
+  // Save scroll position before navigating away
+  useEffect(() => {
+    const saveScrollPosition = () => {
+      if (pathname === "/") {
+        sessionStorage.setItem(SCROLL_POSITION_KEY, window.scrollY.toString())
+      }
+    }
+
+    // Save on scroll (throttled)
+    let scrollTimeout: NodeJS.Timeout
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        saveScrollPosition()
+      }, 100)
+    }
+
+    // Save before page unload
+    const handleBeforeUnload = () => {
+      saveScrollPosition()
+    }
+
+    // Save when navigating away (Next.js router events)
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        saveScrollPosition()
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    window.addEventListener("beforeunload", handleBeforeUnload)
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("beforeunload", handleBeforeUnload)
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      clearTimeout(scrollTimeout)
+    }
+  }, [pathname])
+
+  // Restore scroll position when returning to the page
+  useEffect(() => {
+    if (pathname === "/" && !hasRestoredScroll.current) {
+      const savedPosition = sessionStorage.getItem(SCROLL_POSITION_KEY)
+      if (savedPosition) {
+        // Wait for next tick to ensure DOM is ready
+        const restoreScroll = () => {
+          const position = parseInt(savedPosition, 10)
+          // Use scrollTo with just the number for instant scroll
+          window.scrollTo(0, position)
+          hasRestoredScroll.current = true
+        }
+        
+        // Try multiple times to ensure content is loaded
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            restoreScroll()
+            // Fallback: try again after a short delay
+            setTimeout(restoreScroll, 100)
+          })
+        })
+      } else {
+        hasRestoredScroll.current = true
+      }
+    } else if (pathname !== "/") {
+      // Reset flag when navigating away
+      hasRestoredScroll.current = false
+    }
+  }, [pathname])
+
   return (
     <div className="min-h-screen bg-background">
       <HeroSection
@@ -121,31 +195,12 @@ export default function BoardGameCollection() {
           selectedGames={selectedGames}
           onToggleGameSelection={toggleGameSelection}
           onClearAllFilters={clearAllFilters}
-          onViewGameDetails={setSelectedGameForDetails}
         />
       </section>
 
       <ContactSection language={language} onContact={() => setContactDialogOpen(true)} />
 
       <Footer language={language} />
-
-      {/* Game Detail View */}
-      <GameDetailView
-        game={selectedGameForDetails}
-        language={language}
-        open={selectedGameForDetails !== null}
-        onOpenChange={(open) => {
-          if (!open) {
-            setSelectedGameForDetails(null)
-          }
-        }}
-        isSelected={selectedGameForDetails ? selectedGames.has(selectedGameForDetails.id) : false}
-        onToggleSelection={() => {
-          if (selectedGameForDetails) {
-            toggleGameSelection(selectedGameForDetails.id)
-          }
-        }}
-      />
 
       {/* Bulk Deal Contact Dialog */}
       <ContactDialog
