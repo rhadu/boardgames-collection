@@ -11,6 +11,7 @@ type HeroSectionProps = {
   totalGames: number
   bulkDiscountPrice: number
   totalInventoryValue: number
+  onContactBulkDeal: () => void
 }
 
 export function HeroSection({
@@ -19,6 +20,7 @@ export function HeroSection({
   totalGames,
   bulkDiscountPrice,
   totalInventoryValue,
+  onContactBulkDeal,
 }: HeroSectionProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
 
@@ -101,7 +103,11 @@ export function HeroSection({
                     {t("bulkDealDiscount")})
                   </p>
                 </div>
-                <Button size="lg" className="whitespace-nowrap shadow-md hover:shadow-lg transition-shadow">
+                <Button 
+                  size="lg" 
+                  className="whitespace-nowrap shadow-md hover:shadow-lg transition-shadow"
+                  onClick={onContactBulkDeal}
+                >
                   {t("contactBulkDeal")}
                 </Button>
               </div>

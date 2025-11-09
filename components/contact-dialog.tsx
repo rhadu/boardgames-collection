@@ -19,6 +19,7 @@ type ContactDialogProps = {
   onOpenChange: (open: boolean) => void
   game?: Game
   selectedGames?: Game[]
+  isBulkDeal?: boolean
 }
 
 export function ContactDialog({
@@ -27,6 +28,7 @@ export function ContactDialog({
   onOpenChange,
   game,
   selectedGames,
+  isBulkDeal = false,
 }: ContactDialogProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) =>
     getTranslation(language, key)
@@ -67,17 +69,23 @@ export function ContactDialog({
   const isSelection = selectedGames && selectedGames.length > 0
   const games = isSelection ? selectedGames : game ? [game] : []
 
-  const emailSubject = isSelection
-    ? t("emailSubjectSelection")
-    : `${t("emailSubjectGame")}: ${game?.title || ""}`
+  const emailSubject = isBulkDeal
+    ? t("emailSubjectBulkDeal")
+    : isSelection
+      ? t("emailSubjectSelection")
+      : `${t("emailSubjectGame")}: ${game?.title || ""}`
 
-  const emailBody = isSelection
-    ? `${t("emailBodySelection")}\n\n${t("gamesSelected")}:\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
-    : `${t("emailBodyGame")} "${game?.title || ""}".\n\n${game ? `${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+  const emailBody = isBulkDeal
+    ? t("emailBodyBulkDeal")
+    : isSelection
+      ? `${t("emailBodySelection")}\n\n${t("gamesSelected")}:\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
+      : `${t("emailBodyGame")} "${game?.title || ""}".\n\n${game ? `${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}\n\n${language === "ro" ? "Mulțumesc!" : "Thank you!"}`
 
-  const whatsAppMessage = isSelection
-    ? `${t("whatsAppMessageSelection")}\n\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}`
-    : `${t("whatsAppMessageGame")} "${game?.title || ""}".${game ? ` ${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}`
+  const whatsAppMessage = isBulkDeal
+    ? t("whatsAppMessageBulkDeal")
+    : isSelection
+      ? `${t("whatsAppMessageSelection")}\n\n${formatGameDetails(selectedGames!)}\n\n${t("total")}: ${calculateTotal(selectedGames!)}`
+      : `${t("whatsAppMessageGame")} "${game?.title || ""}".${game ? ` ${t("priceLabel")}: ${game.price.toLocaleString()} ${game.currency}` : ""}`
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

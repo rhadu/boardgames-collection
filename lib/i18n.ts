@@ -100,6 +100,9 @@ export const translations = {
     emailBodyGame: "Bună ziua,\n\nAș dori să întreb despre jocul",
     whatsAppMessageSelection: "Bună ziua! Aș dori să întreb despre selecția de jocuri.",
     whatsAppMessageGame: "Bună ziua! Aș dori să întreb despre jocul",
+    emailSubjectBulkDeal: "Întrebare despre oferta colecției complete",
+    emailBodyBulkDeal: "Bună ziua,\n\nSunt interesat de oferta pentru colecția completă.\n\nMulțumesc!",
+    whatsAppMessageBulkDeal: "Bună ziua! Sunt interesat de oferta pentru colecția completă.",
     priceLabel: "Preț",
   },
   en: {
@@ -201,6 +204,9 @@ export const translations = {
     emailBodyGame: "Hello,\n\nI would like to ask about the game",
     whatsAppMessageSelection: "Hello! I would like to ask about the game selection.",
     whatsAppMessageGame: "Hello! I would like to ask about the game",
+    emailSubjectBulkDeal: "Question about complete collection offer",
+    emailBodyBulkDeal: "Hello,\n\nI am interested in the bulk deal offer for the complete collection.\n\nThank you!",
+    whatsAppMessageBulkDeal: "Hello! I am interested in the bulk deal offer for the complete collection.",
     priceLabel: "Price",
   },
 }

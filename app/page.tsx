@@ -10,6 +10,7 @@ import { GamesGrid } from "@components/games-grid"
 import { ContactSection } from "@components/sections/contact-section"
 import { Footer } from "@components/footer"
 import { GameDetailView } from "@components/game-detail-view"
+import { ContactDialog } from "@components/contact-dialog"
 
 export default function BoardGameCollection() {
   const [language, setLanguage] = useState<Language>("ro")
@@ -19,6 +20,7 @@ export default function BoardGameCollection() {
   const [selectedTag, setSelectedTag] = useState<string>("all")
   const [selectedGames, setSelectedGames] = useState<Set<string>>(new Set())
   const [selectedGameForDetails, setSelectedGameForDetails] = useState<Game | null>(null)
+  const [bulkDealDialogOpen, setBulkDealDialogOpen] = useState(false)
 
   // Calculate totals
   const totalInventoryValue = useMemo(() => GAMES.reduce((sum, game) => sum + game.price, 0), [])
@@ -87,6 +89,7 @@ export default function BoardGameCollection() {
         totalGames={GAMES.length}
         bulkDiscountPrice={bulkDiscountPrice}
         totalInventoryValue={totalInventoryValue}
+        onContactBulkDeal={() => setBulkDealDialogOpen(true)}
       />
 
       <FiltersSection
@@ -141,6 +144,14 @@ export default function BoardGameCollection() {
             toggleGameSelection(selectedGameForDetails.id)
           }
         }}
+      />
+
+      {/* Bulk Deal Contact Dialog */}
+      <ContactDialog
+        language={language}
+        open={bulkDealDialogOpen}
+        onOpenChange={setBulkDealDialogOpen}
+        isBulkDeal={true}
       />
     </div>
   )
