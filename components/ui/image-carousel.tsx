@@ -1,12 +1,21 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "./button"
 import { ImageLightbox } from "./image-lightbox"
 import { cn } from "@/lib/utils"
+
+export type ImageCarouselHandle = {
+  scrollTo: (index: number) => void
+}
 
 type ImageCarouselProps = {
   images: string[]
@@ -14,6 +23,7 @@ type ImageCarouselProps = {
   className?: string
   onImageClick?: (index: number) => void
   objectFit?: "cover" | "contain"
+  onIndexChange?: (index: number) => void
 }
 
 // Check if image is an external URL
@@ -21,13 +31,28 @@ const isExternalUrl = (src: string): boolean => {
   return src.startsWith("http://") || src.startsWith("https://")
 }
 
-export function ImageCarousel({ images, alt, className, onImageClick, objectFit = "cover" }: ImageCarouselProps) {
+export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>(
+  function ImageCarousel(
+    { images, alt, className, onImageClick, objectFit = "cover", onIndexChange }: ImageCarouselProps,
+    ref,
+  ) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" })
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      scrollTo: (index: number) => {
+        if (!emblaApi) return
+        emblaApi.scrollTo(index)
+      },
+    }),
+    [emblaApi],
+  )
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -39,10 +64,12 @@ export function ImageCarousel({ images, alt, className, onImageClick, objectFit 
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+    const index = emblaApi.selectedScrollSnap()
+    setSelectedIndex(index)
     setCanScrollPrev(emblaApi.canScrollPrev())
     setCanScrollNext(emblaApi.canScrollNext())
-  }, [emblaApi])
+    onIndexChange?.(index)
+  }, [emblaApi, onIndexChange])
 
   const openLightbox = useCallback((index: number) => {
     setLightboxIndex(index)
@@ -61,6 +88,16 @@ export function ImageCarousel({ images, alt, className, onImageClick, objectFit 
       emblaApi.off("reInit", onSelect)
     }
   }, [emblaApi, onSelect])
+
+  useEffect(() => {
+    if (images.length <= 1) {
+      onIndexChange?.(0)
+    }
+  }, [images.length, onIndexChange])
+
+  useEffect(() => {
+    setLightboxIndex(selectedIndex)
+  }, [selectedIndex])
 
   // Don't render carousel if only one image
   if (images.length <= 1) {
@@ -245,5 +282,5 @@ export function ImageCarousel({ images, alt, className, onImageClick, objectFit 
       )}
     </>
   )
-}
+})
 

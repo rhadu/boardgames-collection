@@ -1,11 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { startViewTransition } from "@components/view-transition"
 import { Badge } from "@components/ui/badge"
 import { Button } from "@components/ui/button"
-import { ImageCarousel } from "@components/ui/image-carousel"
+import {
+  ImageCarousel,
+  type ImageCarouselHandle,
+} from "@components/ui/image-carousel"
 import { ImageLightbox } from "@components/ui/image-lightbox"
 import {
   ArrowLeft,
@@ -32,15 +35,38 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const carouselRef = useRef<ImageCarouselHandle | null>(null)
+  const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([])
   const t = (key: Parameters<typeof getTranslation>[1]) =>
     getTranslation(language, key)
 
   const images = game.images
 
+  const handleCarouselIndexChange = useCallback((index: number) => {
+    setActiveImageIndex(index)
+    setLightboxIndex(index)
+  }, [])
+
   const handleImageClick = (index: number) => {
     setLightboxIndex(index)
     setLightboxOpen(true)
   }
+
+  const handleThumbnailClick = (index: number) => {
+    carouselRef.current?.scrollTo(index)
+  }
+
+  useEffect(() => {
+    const activeThumbnail = thumbnailRefs.current[activeImageIndex]
+    if (activeThumbnail) {
+      activeThumbnail.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      })
+    }
+  }, [activeImageIndex])
 
   const getConditionBadge = () => {
     if (game.condition === GameCondition.FACTORY_SEALED) {
@@ -91,38 +117,42 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
             <div className="lg:w-1/2 w-full bg-muted/30 p-3 sm:p-4 lg:p-6 rounded-lg flex flex-col shrink-0 lg:sticky lg:top-28 lg:self-start">
               <div className="relative w-full max-w-full h-[280px] sm:h-[350px] lg:h-[500px] rounded-lg overflow-hidden bg-background shadow-lg">
                 <ImageCarousel
+                  ref={carouselRef}
                   images={images}
                   alt={game.title}
                   className="rounded-lg cursor-pointer h-full"
                   onImageClick={handleImageClick}
                   objectFit="contain"
+                  onIndexChange={handleCarouselIndexChange}
                 />
               </div>
 
               {/* Thumbnail Gallery - Hidden on mobile, visible on lg+ */}
               {images.length > 1 && (
-                <div className="hidden lg:grid grid-cols-4 gap-2 mt-4">
-                  {images.slice(0, 4).map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleImageClick(index)}
-                      className="relative aspect-square rounded-md overflow-hidden border-2 border-transparent hover:border-primary transition-colors bg-muted"
-                    >
-                      <img
-                        src={image}
-                        alt={`${game.title} - ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
-                  {images.length > 4 && (
-                    <button
-                      onClick={() => handleImageClick(4)}
-                      className="relative aspect-square rounded-md overflow-hidden border-2 border-transparent hover:border-primary transition-colors bg-muted flex items-center justify-center text-sm font-medium text-muted-foreground"
-                    >
-                      +{images.length - 4}
-                    </button>
-                  )}
+                <div className="mt-4">
+                  <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1">
+                    {images.map((image, index) => (
+                      <button
+                        key={index}
+                        ref={(el) => {
+                          thumbnailRefs.current[index] = el
+                        }}
+                        onClick={() => handleThumbnailClick(index)}
+                        className={`relative h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors duration-200 bg-muted ${
+                          activeImageIndex === index
+                            ? "border-primary shadow-md"
+                            : "border-transparent hover:border-primary/60"
+                        }`}
+                        aria-label={`View image ${index + 1}`}
+                      >
+                        <img
+                          src={image}
+                          alt={`${game.title} - ${index + 1}`}
+                          className="h-full w-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
