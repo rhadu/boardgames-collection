@@ -32,7 +32,8 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
   const gameSlug = slugify(game.title)
-  const gameUrl = `/games/${gameSlug}`
+  const baseGamePath = `/games/${gameSlug}`
+  const gameUrl = language === "en" ? `${baseGamePath}?lang=en` : baseGamePath
 
   const handleImageClick = (index: number) => {
     setLightboxIndex(index)
@@ -120,7 +121,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
 
       <CardContent className="p-6">
         <div className="mb-4">
-          <Link 
+          <Link
             href={gameUrl}
             onClick={(e) => {
               e.preventDefault()

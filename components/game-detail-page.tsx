@@ -40,6 +40,7 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
   const thumbnailRefs = useRef<(HTMLButtonElement | null)[]>([])
   const t = (key: Parameters<typeof getTranslation>[1]) =>
     getTranslation(language, key)
+  const collectionPath = language === "en" ? "/?lang=en" : "/"
 
   const images = game.images
 
@@ -100,7 +101,7 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
             size="sm"
             onClick={() => {
               startViewTransition(() => {
-                router.push("/")
+                router.push(collectionPath)
               })
             }}
             className="text-sm sm:text-base"
