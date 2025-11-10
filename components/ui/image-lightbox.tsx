@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useRef } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
@@ -15,6 +15,8 @@ type ImageLightboxProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
+
+const LIGHTBOX_HISTORY_STATE_KEY = "__imageLightbox"
 
 // Check if image is an external URL
 const isExternalUrl = (src: string): boolean => {
@@ -36,6 +38,8 @@ export function ImageLightbox({
   const [selectedIndex, setSelectedIndex] = useState(initialIndex)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
+  const closeFromHistoryRef = useRef(false)
+  const hasPushedHistoryRef = useRef(false)
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -71,6 +75,52 @@ export function ImageLightbox({
       emblaApi.scrollTo(initialIndex)
     }
   }, [open, initialIndex, emblaApi])
+
+  useEffect(() => {
+    if (!open || typeof window === "undefined") return
+
+    const handlePopState = () => {
+      closeFromHistoryRef.current = true
+      onOpenChange(false)
+    }
+
+    const currentState = (window.history.state ?? {}) as Record<string, unknown>
+    const lightboxState = {
+      ...currentState,
+      [LIGHTBOX_HISTORY_STATE_KEY]: true,
+    }
+
+    try {
+      window.history.pushState(lightboxState, "", window.location.href)
+      hasPushedHistoryRef.current = true
+    } catch (error) {
+      hasPushedHistoryRef.current = false
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+
+      if (closeFromHistoryRef.current) {
+        closeFromHistoryRef.current = false
+        hasPushedHistoryRef.current = false
+        return
+      }
+
+      if (
+        hasPushedHistoryRef.current &&
+        window.history.state &&
+        (window.history.state as Record<string, unknown>)[LIGHTBOX_HISTORY_STATE_KEY]
+      ) {
+        if (window.history.length > 1) {
+          window.history.back()
+        }
+      }
+
+      hasPushedHistoryRef.current = false
+    }
+  }, [open, onOpenChange])
 
   // Handle keyboard navigation
   useEffect(() => {
