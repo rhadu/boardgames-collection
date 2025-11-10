@@ -185,7 +185,7 @@ export function ImageCarousel({ images, alt, className, onImageClick, objectFit 
       {/* Navigation Buttons */}
       {canScrollPrev && (
         <button
-          className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-20 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollPrev()
@@ -198,7 +198,7 @@ export function ImageCarousel({ images, alt, className, onImageClick, objectFit 
 
       {canScrollNext && (
         <button
-          className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-30 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 hover:bg-primary shadow-lg border-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all z-20 flex items-center justify-center outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 group/btn cursor-pointer"
           onClick={(e) => {
             e.stopPropagation()
             scrollNext()

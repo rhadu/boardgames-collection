@@ -68,14 +68,16 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
     <>
       <div className="min-h-screen bg-background">
         {/* Back Button */}
-        <div className="sticky top-0 z-10 bg-background container mx-auto px-4 py-6 max-w-[1280px]">
+        <div className="sticky top-0 z-30 bg-background container mx-auto px-4 py-4 sm:py-6 max-w-[1280px]">
           <Button
             variant="ghost"
+            size="sm"
             onClick={() => {
               startViewTransition(() => {
                 router.push("/")
               })
             }}
+            className="text-sm sm:text-base"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {language === "ro" ? "Înapoi la colecție" : "Back to collection"}
