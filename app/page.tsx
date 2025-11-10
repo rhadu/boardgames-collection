@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo, useEffect, useRef } from "react"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import { type Language } from "@/lib/i18n"
 import { GAMES } from "@/lib/data"
 import { type Game, GameCondition } from "@/lib/types"
@@ -15,9 +15,14 @@ import { ContactDialog } from "@components/contact-dialog"
 const SCROLL_POSITION_KEY = "mainPageScrollPosition"
 
 export default function BoardGameCollection() {
+  const router = useRouter()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const hasRestoredScroll = useRef(false)
-  const [language, setLanguage] = useState<Language>("ro")
+  const [language, setLanguage] = useState<Language>(() => {
+    const langParam = searchParams.get("lang")
+    return langParam === "en" ? "en" : "ro"
+  })
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCondition, setSelectedCondition] = useState<string>("all")
   const [showKickstarterOnly, setShowKickstarterOnly] = useState(false)
@@ -83,6 +88,27 @@ export default function BoardGameCollection() {
     setSelectedCondition("all")
     setShowKickstarterOnly(false)
     setSelectedTag("all")
+  }
+
+  useEffect(() => {
+    const langParam = searchParams.get("lang")
+    const normalizedLang: Language = langParam === "en" ? "en" : "ro"
+    setLanguage((prev) => (prev === normalizedLang ? prev : normalizedLang))
+  }, [searchParams])
+
+  const handleLanguageChange = (lang: Language) => {
+    setLanguage(lang)
+
+    const params = new URLSearchParams(Array.from(searchParams.entries()))
+
+    if (lang === "ro") {
+      params.delete("lang")
+    } else {
+      params.set("lang", lang)
+    }
+
+    const queryString = params.toString()
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false })
   }
 
   // Save scroll position before navigating away
@@ -160,7 +186,7 @@ export default function BoardGameCollection() {
     <div className="min-h-screen bg-background">
       <HeroSection
         language={language}
-        onLanguageChange={setLanguage}
+        onLanguageChange={handleLanguageChange}
         totalGames={GAMES.length}
         bulkDiscountPrice={bulkDiscountPrice}
         totalInventoryValue={totalInventoryValue}
