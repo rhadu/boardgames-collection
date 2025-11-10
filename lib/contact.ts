@@ -23,14 +23,15 @@ export function getWhatsAppLink(phone: string, message?: string): string {
 
 // Generate mailto link
 export function getEmailLink(email: string, subject?: string, body?: string): string {
-  const params = new URLSearchParams()
-  if (subject) params.append("subject", subject)
-  if (body) {
-    // URLSearchParams will properly encode the body, converting spaces to + and newlines to %0A
-    // This is correct for mailto links - email clients will decode it properly
-    params.append("body", body)
+  const params: string[] = []
+  if (subject) {
+    params.push(`subject=${encodeURIComponent(subject)}`)
   }
-  const queryString = params.toString()
+  if (body) {
+    // encodeURIComponent keeps spaces as %20 which avoids + characters showing in some email clients
+    params.push(`body=${encodeURIComponent(body)}`)
+  }
+  const queryString = params.join("&")
   return `mailto:${email}${queryString ? `?${queryString}` : ""}`
 }
 
