@@ -119,7 +119,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         )}
       </div>
 
-      <CardContent className="p-6">
+      <CardContent className="p-6 flex flex-col grow">
         <div className="mb-4">
           <Link
             href={gameUrl}
@@ -169,7 +169,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         </div>
 
         {/* Highlights */}
-        <ul className="text-sm space-y-1.5 mb-5">
+        <ul className="text-sm space-y-1.5 mb-5 grow">
           {game.highlights.slice(0, 2).map((highlight, i) => (
             <li key={i} className="flex items-start gap-2 text-muted-foreground">
               <span className="text-primary mt-0.5 font-bold">•</span>
