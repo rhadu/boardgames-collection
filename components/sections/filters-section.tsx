@@ -34,8 +34,28 @@ type FiltersSectionProps = {
   allGames: Game[]
 }
 
-export function FiltersSection({
-  language,
+type FilterContentProps = {
+  t: (key: Parameters<typeof getTranslation>[1]) => string
+  searchQuery: string
+  onSearchChange: (query: string) => void
+  selectedCondition: string
+  onConditionChange: (condition: string) => void
+  selectedTag: string
+  onTagChange: (tag: string) => void
+  allTags: string[]
+  showKickstarterOnly: boolean
+  onKickstarterOnlyChange: (show: boolean) => void
+  selectedGames: Set<string>
+  selectedGamesPrice: number
+  onClearSelection: () => void
+  onOpenContactDialog: () => void
+  onSelectAllFiltered: () => void
+  filteredGamesCount: number
+  totalGamesCount: number
+}
+
+function FilterContent({
+  t,
   searchQuery,
   onSearchChange,
   selectedCondition,
@@ -47,41 +67,13 @@ export function FiltersSection({
   onKickstarterOnlyChange,
   selectedGames,
   selectedGamesPrice,
+  onClearSelection,
+  onOpenContactDialog,
+  onSelectAllFiltered,
   filteredGamesCount,
   totalGamesCount,
-  onClearSelection,
-  onSelectAllFiltered,
-  onClearAllFilters,
-  allGames,
-}: FiltersSectionProps) {
-  const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-  const [contactDialogOpen, setContactDialogOpen] = useState(false)
-
-  // Get selected game objects
-  const selectedGamesList = Array.from(selectedGames)
-    .map((id) => allGames.find((g) => g.id === id))
-    .filter((g): g is Game => g !== undefined)
-
-  // Calculate active filters count
-  const activeFiltersCount =
-    (searchQuery ? 1 : 0) +
-    (selectedCondition !== "all" ? 1 : 0) +
-    (selectedTag !== "all" ? 1 : 0) +
-    (showKickstarterOnly ? 1 : 0)
-
-  // Helper to get condition translation
-  const getConditionLabel = (condition: string) => {
-    if (condition === "all") return t("allConditions")
-    try {
-      const conditionEnum = condition as GameCondition
-      return t(getConditionTranslationKey(conditionEnum) as keyof (typeof translations)["en"])
-    } catch {
-      return condition
-    }
-  }
-
-  const FilterContent = () => (
+}: FilterContentProps) {
+  return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
         <div className="md:col-span-4">
@@ -156,7 +148,7 @@ export function FiltersSection({
               <X className="w-4 h-4 mr-1" />
               {t("clear")}
             </Button>
-            <Button size="sm" className="flex-1 sm:flex-none shadow-sm" onClick={() => setContactDialogOpen(true)}>
+            <Button size="sm" className="flex-1 sm:flex-none shadow-sm" onClick={onOpenContactDialog}>
               {t("inquireSelection")}
             </Button>
           </div>
@@ -174,6 +166,54 @@ export function FiltersSection({
       </div>
     </>
   )
+}
+
+export function FiltersSection({
+  language,
+  searchQuery,
+  onSearchChange,
+  selectedCondition,
+  onConditionChange,
+  selectedTag,
+  onTagChange,
+  allTags,
+  showKickstarterOnly,
+  onKickstarterOnlyChange,
+  selectedGames,
+  selectedGamesPrice,
+  filteredGamesCount,
+  totalGamesCount,
+  onClearSelection,
+  onSelectAllFiltered,
+  onClearAllFilters,
+  allGames,
+}: FiltersSectionProps) {
+  const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [contactDialogOpen, setContactDialogOpen] = useState(false)
+
+  // Get selected game objects
+  const selectedGamesList = Array.from(selectedGames)
+    .map((id) => allGames.find((g) => g.id === id))
+    .filter((g): g is Game => g !== undefined)
+
+  // Calculate active filters count
+  const activeFiltersCount =
+    (searchQuery ? 1 : 0) +
+    (selectedCondition !== "all" ? 1 : 0) +
+    (selectedTag !== "all" ? 1 : 0) +
+    (showKickstarterOnly ? 1 : 0)
+
+  // Helper to get condition translation
+  const getConditionLabel = (condition: string) => {
+    if (condition === "all") return t("allConditions")
+    try {
+      const conditionEnum = condition as GameCondition
+      return t(getConditionTranslationKey(conditionEnum) as keyof (typeof translations)["en"])
+    } catch {
+      return condition
+    }
+  }
 
   return (
     <>
@@ -246,7 +286,25 @@ export function FiltersSection({
 
           {/* Desktop Full View */}
           <div className="hidden md:block">
-            <FilterContent />
+            <FilterContent
+              t={t}
+              searchQuery={searchQuery}
+              onSearchChange={onSearchChange}
+              selectedCondition={selectedCondition}
+              onConditionChange={onConditionChange}
+              selectedTag={selectedTag}
+              onTagChange={onTagChange}
+              allTags={allTags}
+              showKickstarterOnly={showKickstarterOnly}
+              onKickstarterOnlyChange={onKickstarterOnlyChange}
+              selectedGames={selectedGames}
+              selectedGamesPrice={selectedGamesPrice}
+              onClearSelection={onClearSelection}
+              onOpenContactDialog={() => setContactDialogOpen(true)}
+              onSelectAllFiltered={onSelectAllFiltered}
+              filteredGamesCount={filteredGamesCount}
+              totalGamesCount={totalGamesCount}
+            />
           </div>
         </div>
       </section>
