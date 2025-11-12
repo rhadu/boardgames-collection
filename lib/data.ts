@@ -1083,4 +1083,272 @@ export const GAMES: Game[] = [
     ],
     notes: "",
   },
+  // Tiny Epic Galaxies
+  {
+    id: "163967",
+    title: "Tiny Epic Galaxies",
+    year: 2015,
+    language: "English",
+    players: "1–5",
+    playtime: "30–60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["dice", "engine building", "space", "resource management", "solo"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink: "https://boardgamegeek.com/boardgame/163967/tiny-epic-galaxies",
+    kickstarterLink: undefined,
+    images: [],
+    highlights: [
+      "Compact dice-based strategy game of galactic conquest",
+      "Simultaneous turns keep downtime low",
+      "Excellent solo mode and deep replayability",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Dinosaurs
+  {
+    id: "315953",
+    title: "Tiny Epic Dinosaurs",
+    year: 2020,
+    language: "English",
+    players: "1–4",
+    playtime: "45–60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: [
+      "worker placement",
+      "resource management",
+      "dinosaurs",
+      "contract fulfillment",
+    ],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/315953/tiny-epic-dinosaurs-deluxe-edition",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-dinosaurs",
+    images: [],
+    highlights: [
+      "Manage your ranch of dinosaurs in a compact worker-placement game",
+      "Combines efficiency puzzles with adorable dino meeples",
+      "Solo and multiplayer modes with strong replay value",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Zombies
+  {
+    id: "266219",
+    title: "Tiny Epic Zombies",
+    year: 2018,
+    language: "English",
+    players: "1–5",
+    playtime: "30–45",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["cooperative", "zombies", "variable player powers", "dice", "solo"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/266219/tiny-epic-zombies-deluxe-edition",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-zombies-a-game-of-brutal-survival",
+    images: [],
+    highlights: [
+      "Fast-paced zombie survival in the Mall of Everything",
+      "Play cooperatively, competitively, or one-vs-many",
+      "Includes ITEMeeples with swappable weapons",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Mechs
+  {
+    id: "313163",
+    title: "Tiny Epic Mechs",
+    year: 2019,
+    language: "English",
+    players: "1–4",
+    playtime: "30–45",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["programming", "battle", "area control", "mechs", "solo"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/313163/tiny-epic-mechs-deluxe-edition",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-mechs-mechanized-entertainment-combat-he",
+    images: [],
+    highlights: [
+      "Program actions and battle opponents in arena combat",
+      "ITEMeeples can equip weapons and climb into giant mechs",
+      "Compact, tactical fun with solo and versus play",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Tactics
+  {
+    id: "268875",
+    title: "Tiny Epic Tactics",
+    year: 2019,
+    language: "English",
+    players: "1–4",
+    playtime: "30–60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["tactical combat", "modular map", "fantasy", "competitive", "solo"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/285998/tiny-epic-tactics-deluxe-edition",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-tactics-featuring-a-3d-environment",
+    images: [],
+    highlights: [
+      "3D terrain boxes create a tactical battlefield",
+      "Multiple play modes: competitive, cooperative, or solo",
+      "Portable, clever design with deep strategy",
+    ],
+    notes: "",
+  },
+  // Tiny Epic Defenders
+  {
+    id: "155708",
+    title: "Tiny Epic Defenders",
+    year: 2015,
+    language: "English",
+    players: "1–4",
+    playtime: "30–60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["tower defense", "cooperative", "ITEMeeples", "fantasy"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink: "https://boardgamegeek.com/boardgame/155708/tiny-epic-defenders",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/coe/tiny-epic-defenders",
+    images: [],
+    highlights: [
+      "Small-box cooperative defending against bosses",
+      "Uses ITEMeeples® for heroes & upgrades",
+      "Solo mode supported",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Defenders: The Dark War
+  {
+    id: "228935",
+    title: "Tiny Epic Defenders: The Dark War",
+    year: 2018,
+    language: "English",
+    players: "1–4",
+    playtime: "45-60 minutes",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["cooperative", "campaign", "expansion", "ITEMeeples"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/228935/tiny-epic-defenders-the-dark-war",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/coe/tiny-epic-defenders-the-dark-war-and-ted-2nd-editi",
+    images: [],
+    highlights: [
+      "Expansion to Tiny Epic Defenders adding campaign mode",
+      "New heroic characters and dire enemies",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Pirates
+  {
+    id: "309430",
+    title: "Tiny Epic Pirates",
+    year: 2021,
+    language: "English",
+    players: "1–4",
+    playtime: "45",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["adventure", "pirates", "action combo", "variable rondel"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink: "https://boardgamegeek.com/boardgame/309430/tiny-epic-pirates",
+    kickstarterLink: "https://www.kickstarter.com/projects/tinyepic/tiny-epic-pirates",
+    images: [],
+    highlights: [
+      "Pirate-themed compact strategy game with rondel and combos",
+      "High seas, treasure hunting and ship battles",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Game of Thrones
+  {
+    id: "409978",
+    title: "Tiny Epic Game of Thrones™",
+    year: 2025,
+    language: "English",
+    players: "1–5",
+    playtime: "60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: [
+      "fantasy",
+      "battle",
+      "strategy",
+      "licence",
+      "cooperative/competitive",
+    ],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/409978/tiny-epic-game-of-thrones",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-game-of-thrones",
+    images: [],
+    highlights: [
+      "Tiny Epic version of the Game of Thrones universe",
+      "Mix of cooperation and competition in Westeros",
+    ],
+    notes: "",
+  },
+
+  // Tiny Epic Dungeons
+  {
+    id: "331787",
+    title: "Tiny Epic Dungeons",
+    year: 2020,
+    language: "English",
+    players: "1–5",
+    playtime: "30-60",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["dungeon crawl", "modular map", "miniatures", "adventure"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink: "https://boardgamegeek.com/boardgame/331787/tiny-epic-dungeons",
+    kickstarterLink: "https://www.kickstarter.com/projects/tinyepic/tiny-epic-dungeons",
+    images: [],
+    highlights: [
+      "Compact dungeon-crawl design in tiny box format",
+      "Modular board and variable heroes",
+    ],
+    notes: "",
+  },
 ]
