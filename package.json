@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "scrape-cover-images": "tsx scripts/scrape-bgg-cover-images.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -62,11 +63,15 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.9",
-    "@types/node": "^22",
+    "@types/node": "^22.19.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }

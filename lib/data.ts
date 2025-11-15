@@ -2,6 +2,33 @@ import { type Game, GameCondition } from "./types"
 
 // Sample data - replace with your actual collection
 export const GAMES: Game[] = [
+  // Oathsworn - Base Game + Secret Box
+  {
+    id: "251661",
+    title: "Oathsworn: Into the Deepwood – Base Game + Secret Box",
+    year: 2020,
+    language: "English",
+    players: "1–4",
+    playtime: "30-90",
+    condition: GameCondition.OPENED_UNPLAYED,
+    price: 0,
+    currency: "RON",
+    tags: ["Cooperative", "Campaign", "Miniatures", "Dark fantasy"],
+    isKickstarter: true,
+    retailPrice: undefined,
+    bggLink:
+      "https://boardgamegeek.com/boardgame/251661/oathsworn-into-the-deepwood",
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/shadowborne-games/oathsworn-into-the-deepwood",
+    images: [
+      "https://cf.geekdo-images.com/dezQ4YjF03lZVxTdI-UJYw__imagepage/img/k9KlpcnG4DPLQy8BrrrfHvBOiG4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6863204.jpg",
+    ],
+    highlights: [
+      "High-budget campaign game with rich components and story",
+      "Secret Box version adds collector extras",
+    ],
+    notes: "",
+  },
   // This War of Mine: The Board Game
   {
     id: "188920", // BGG ID
@@ -13,20 +40,16 @@ export const GAMES: Game[] = [
     condition: GameCondition.OPENED_UNPLAYED,
     price: 0, // your selling price (fill in)
     currency: "EUR", // set your currency
-    tags: [
-      "Cooperative",
-      "Survival",
-      "Story-driven",
-      "Modern war",
-      "Campaign",
-    ], // based on theme & mechanics
+    tags: ["Cooperative", "Survival", "Story-driven", "Modern war", "Campaign"], // based on theme & mechanics
     isKickstarter: true, // this game had a Kickstarter launch. :contentReference[oaicite:4]{index=4}
     retailPrice: 69.99, // MSRP $69.99 USD. :contentReference[oaicite:5]{index=5}
     bggLink:
       "https://boardgamegeek.com/boardgame/188920/this-war-of-mine-the-board-game",
     kickstarterLink:
       "https://www.kickstarter.com/projects/awakenrealms/this-war-of-mine-the-board-game", // from KS campaign
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/gQOQW7p1RWHzY54Lrs-_pA__imagepage/img/oqafX3UqrqNZz5215t4FEuIQm0E=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3315915.jpg",
+    ],
     highlights: [
       "Co-op survival of civilians in a war-torn city",
       "Strong narrative / scenario book with ~2000 events", // from description. :contentReference[oaicite:6]{index=6}
@@ -57,7 +80,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/167355/nemesis",
     kickstarterLink:
       "https://www.kickstarter.com/projects/awakenrealms/nemesis-board-game",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__imagepage/img/Zb31zpGVlnDGPeHj75Xkye1KDNE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic8211747.png",
+    ],
     highlights: [
       "Crew wakes on alien-infested spaceship; hidden objectives create tension",
       "Great component quality, heavy theme and miniatures",
@@ -82,7 +107,9 @@ export const GAMES: Game[] = [
     bggLink:
       "https://boardgamegeek.com/boardgame/269385/the-lord-of-the-rings-journeys-in-middle-earth",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/1XA2-niwTBa0HEB7hOz3Dw__imagepage/img/dniEqT1lS-wh6hmCijPi3PQCwWs=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4530974.jpg",
+    ],
     highlights: [
       "App-driven narrative campaign in Tolkien’s Middle-earth",
       "Supports solo up to 5 players in cooperative mode",
@@ -115,7 +142,7 @@ export const GAMES: Game[] = [
     kickstarterLink:
       "https://www.kickstarter.com/projects/intotheunknown/aeon-trespass-odyssey-second-printing-plus-all-new-content",
     images: [
-      "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__itemrep/img/giNUMut4HAl-zWyQkGG0YchmuLI=/fit-in/246x300/filters:strip_icc()/pic3490053.jpg",
+      "https://cf.geekdo-images.com/l5vgu2EcX8qm7_p9zhROuQ__imagepage/img/J2UX3OwZDoYo8uNrIdRKWQPvZFc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4874391.jpg",
     ],
     highlights: [
       "Epic 1-4 player cooperative campaign board game.",
@@ -127,37 +154,6 @@ export const GAMES: Game[] = [
     ],
     notes:
       "Considered a very heavy and complicated game, often compared to Kingdom Death Monster. Designed for multi-session play with extensive campaign progression and story. Features multiple cycles and expansions, with the core game offering three cycles.",
-  },
-
-  // Spirit Island
-  {
-    id: "3",
-    title: "Spirit Island",
-    year: 2017,
-    language: "EN",
-    players: "1-4",
-    playtime: "90-120 min",
-    condition: GameCondition.LIKE_NEW,
-    price: 420,
-    currency: "RON",
-    tags: ["Cooperative", "Strategy", "Fantasy"],
-    isKickstarter: true,
-    bggLink: "https://boardgamegeek.com/boardgame/162886/spirit-island",
-    kickstarterLink:
-      "https://www.kickstarter.com/projects/2010555768/spirit-island",
-    images: [
-      "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__itemrep/img/giNUMut4HAl-zWyQkGG0YchmuLI=/fit-in/246x300/filters:strip_icc()/pic3490053.jpg", // BGG Official
-      "https://cf.geekdo-images.com/e2e0wdO8oVNzD0ZAhzi6MQ__itemheader/img/Zj1GBUN2m-z4zX2-QWn31fiKEE4=/800x450/filters:quality(30):strip_icc()/pic3509697.jpg", // BGG Image 1
-      "/custom/spirit-island-1.jpg", // Custom image 1
-      "/custom/spirit-island-2.jpg", // Custom image 2
-      "https://cf.geekdo-images.com/e2e0wdO8oVNzD0ZAhzi6MQ__itemheader/img/Zj1GBUN2m-z4zX2-QWn31fiKEE4=/800x450/filters:quality(30):strip_icc()/pic3509697.jpg", // BGG Image 1
-      "https://cf.geekdo-images.com/e2e0wdO8oVNzD0ZAhzi6MQ__itemheader/img/Zj1GBUN2m-z4zX2-QWn31fiKEE4=/800x450/filters:quality(30):strip_icc()/pic3509697.jpg", // BGG Image 1
-    ],
-    highlights: [
-      "Played twice",
-      "All components present",
-      "Includes promo spirits",
-    ],
   },
 
   // Catan (aka Settlers of Catan)
@@ -182,7 +178,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/13/catan",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__imagepage/img/enC7UTvCAnb6j1Uazvh0OBQjvxw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic9156909.png",
+    ],
     highlights: [
       "Classic gateway euro about trading and building",
       "Interactive table talk and blocking",
@@ -213,7 +211,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/167791/terraforming-mars",
     kickstarterLink:
       "https://www.kickstarter.com/projects/strongholdgames/terraforming-mars-turmoil",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__imagepage/img/FS1RE8Ue6nk1pNbPI3l-OSapQGc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3536616.jpg",
+    ],
     highlights: [
       "Build engines with synergistic project cards",
       "Solo or up to 5 players; huge replayability",
@@ -239,7 +239,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/275564/maximum-apocalypse-legendary-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/mikegnade/maximum-apocalypse-legendary-edition-with-miniatur",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/VbKia1bW_oUcSfrX4HeGKA__imagepage/img/to9beka9cPwga2gBrBFufVrvDPE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5152233.png",
+    ],
     highlights: [
       "Co-op roguelike missions in multiple apocalypses",
       "Legendary box bundles tons of content",
@@ -264,7 +266,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/285192/destinies",
     kickstarterLink:
       "https://www.kickstarter.com/projects/lucky-duck-games/time-of-legends-destinies",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__imagepage/img/fk6BConHqwDOSHeKbOavfrFs7Fo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5558118.png",
+    ],
     highlights: [
       "App-assisted narrative quests in a dark medieval world",
       "No GM needed; competitive race to fulfill destinies",
@@ -295,7 +299,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/255984/sleeping-gods",
     kickstarterLink:
       "https://www.kickstarter.com/projects/953146955/sleeping-gods",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__imagepage/img/ToI3nXdkLu4Dy3J8o-yAWrdN4i8=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5975244.png",
+    ],
     highlights: [
       "Massive open-world campaign with branching stories",
       "Seamless save system for multi-session play",
@@ -320,7 +326,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/273703/altar-quest",
     kickstarterLink:
       "https://www.kickstarter.com/projects/blacklistgames/altar-quest",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/lFwe59N5i-m2lhGA48vizw__imagepage/img/6gVyN2cktEJoT0CfTVtRYwp4Xu0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5871397.png",
+    ],
     highlights: [
       "Modern card-driven dungeon crawl",
       "Modular scenarios, high replayability",
@@ -353,7 +361,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/264220/tainted-grail-the-fall-of-avalon",
     kickstarterLink:
       "https://www.kickstarter.com/projects/awakenrealms/tainted-grail-the-fall-of-avalon",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/aAwBzPzta4joKfFZt05hCw__imagepage/img/VTB2LcmXNC4XPpCOVfkfa4qO0cY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4385726.jpg",
+    ],
     highlights: [
       "Epic cooperative campaign in a dark fantasy Arthurian world",
       "Multiple story campaigns included",
@@ -378,7 +388,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/280794/etherfields",
     kickstarterLink:
       "https://www.kickstarter.com/projects/awakenrealms/etherfields-board-game",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/K1yVmbbWCsQuiWk-7x-V-Q__imagepage/img/m1-zglSNfjIgV6pqXAhb9ThePEI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7455627.png",
+    ],
     highlights: [
       "Narrative-heavy “dream crawler” cooperative adventure",
       "Sandbox exploration in a surreal world",
@@ -402,7 +414,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/191077/gierki-malzenskie",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/7pDLiSwMtClYGY7zPTYuxg__imagepage/img/cLyEEC8bkwIniDYQ-9G5nHNdAJ0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2825868.png",
+    ],
     highlights: [
       "Fun board game for couples testing how well they know each other",
       "Two game modes: just couple vs couple or group of couples",
@@ -426,7 +440,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/239942/black-rose-wars",
     kickstarterLink:
       "https://www.kickstarter.com/projects/lmstudio/black-rose-wars",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/Nam2TVpVSvHIuAsbocL9cw__imagepage/img/4hjyTRE6DUV2v4bAsB8H1jK48B4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6892325.jpg",
+    ],
     highlights: [
       "Competitive fantasy deck-building game of mages battling for supremacy in the Lodge",
       "Tactical miniatures + spells + sabotage mechanics",
@@ -456,7 +472,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/180263/the-7th-continent",
     kickstarterLink:
       "https://www.kickstarter.com/projects/seriouspoulp/the-7th-continent-what-goes-up-must-come-down",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/OYne8uBCHv5oEgRfpOrV0A__imagepage/img/v6rKjbb4X_1AKBRehocJ3_v-9kQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2648303.jpg",
+    ],
     highlights: [
       "Massive solo/co-op exploration game where you lift curses in a mysterious land",
       "Save system and huge replay campaign",
@@ -485,7 +503,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/96848/mage-knight-board-game",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__imagepage/img/ROAuGFhL9abZxxzvXUCJJuvtkOk=/fit-in/900x600/filters:no_upscale():strip_icc()/pic1083380.jpg",
+    ],
     highlights: [
       "Epic solo/coop strategy game praised for depth and replayability",
       "Combines deck-building, map exploration and role-playing elements",
@@ -510,7 +530,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/169427/middara-unintentional-malum-act-1",
     kickstarterLink:
       "https://www.kickstarter.com/projects/succubuspublishing/middara-unintentional-malum-the-complete-trilogy",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/hRuD1y5BxdNpssgBqamS0A__imagepage/img/3YIXet5DK8WN9Wur_YwMY0jqsCQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4595897.jpg",
+    ],
     highlights: [
       "Massive cooperative campaign with anime-inspired art",
       "Hundreds of hours of branching story content",
@@ -534,7 +556,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/156858/black-orchestra",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/mvE22ut60-N5qzhE9guINw__imagepage/img/LoV1rtyGXoje25DlEb8QNAMfmTc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6973676.png",
+    ],
     highlights: [
       "Play as conspirators plotting to assassinate Hitler",
       "Tense cooperative decision-making and risk management",
@@ -565,7 +589,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/162886/spirit-island",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__imagepage/img/py7KzNjXVOuVesFZB7LwqCbvALY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7013651.jpg",
+    ],
     highlights: [
       "Play elemental spirits defending their island from colonizers",
       "Deep cooperative engine-building and synergy",
@@ -591,7 +617,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/226445/the-big-score",
     kickstarterLink:
       "https://www.kickstarter.com/projects/vanrydergames/the-big-score",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/CrEG1gRqArALQXxUgt91lg__imagepage/img/N2Lh5hBzhMQZLORWPXFX8eXomUo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3929782.jpg",
+    ],
     highlights: [
       "Clever mix of drafting, cooperation, and betrayal",
       "Heist-themed party strategy game",
@@ -626,6 +654,7 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/mindclash/anachrony-fractures-of-time-expansion-and-infinity",
     images: [
       "https://cf.geekdo-images.com/Tuy9MAvPx4TRGV1vvT6wxQ__imagepagezoom/img/LSablpr36KWc0VDWxSBgYqUPtcg=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic5960363.png",
+      "https://cf.geekdo-images.com/Tuy9MAvPx4TRGV1vvT6wxQ__imagepage/img/_wL2RSJvMPIerOryz9ph68zTuyw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5960363.png",
     ],
     highlights: [
       "Time-travel-themed worker placement with deep strategy",
@@ -657,7 +686,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/286751/zombicide-2nd-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/cmon/zombicide-2nd-edition",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/81AiTz4hp4TlnzeCMqQMAw__imagepage/img/RuczD90TmVP6o38-MhJPr45vHGU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6091316.jpg",
+    ],
     highlights: [
       "Revamped version of the classic co-op zombie survival game",
       "Streamlined rules and new missions",
@@ -683,7 +714,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/281526/the-isofarian-guard",
     kickstarterLink:
       "https://www.kickstarter.com/projects/skykingdomgames/the-isofarian-guard",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/nrUQztbbeNWfMIrf9ZQ8bQ__imagepage/img/q_p0SFXP0PDCFVgvbvu1SDmtBLw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6428537.jpg",
+    ],
     highlights: [
       "Story-driven adventure with bag-building combat",
       "Deep narrative campaign for 1–2 players",
@@ -710,7 +743,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/198832/legends-untold-weeping-caves-novice-set",
     kickstarterLink:
       "https://www.kickstarter.com/projects/legendsuntold/legends-untold-as-deep-as-an-rpg-as-fast-as-a-card",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/U8xMKqgssP2TRB4Hoxo5Kg__imagepage/img/Lk72KY68pBANEEIjIzHrPmECOxs=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4175300.jpg",
+    ],
     highlights: [
       "Compact, modular dungeon crawl with deep mechanics",
       "Quick setup, high replayability",
@@ -737,7 +772,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/216179/legends-untold-the-great-sewers-novice-set",
     kickstarterLink:
       "https://www.kickstarter.com/projects/legendsuntold/legends-untold-as-deep-as-an-rpg-as-fast-as-a-card",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/7YzQXGT7fwe1y6C_yxnkyw__imagepage/img/TKmcrKmsEZbQP35dVuP5TbpqEpA=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4178316.jpg",
+    ],
     highlights: [
       "Second standalone set in the Legends Untold series",
       "Features new heroes, monsters, and locations",
@@ -762,7 +799,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/148729/maquis",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/wgHvFfiPzMJUFrP4OLKtwQ__imagepage/img/_hUqxMm_x66gY5ZniEG6p_Qd1QM=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5009864.jpg",
+    ],
     highlights: [
       "Solo worker placement set in Nazi-occupied France",
       "Quick setup, tense missions",
@@ -788,7 +827,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/240744/fire-in-the-library",
     kickstarterLink:
       "https://www.kickstarter.com/projects/weirdgiraffegames/fire-in-the-library-board-game",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/SdhKN7EefPC86-qHsIX7Mw__imagepage/img/RSlZBKTeeBV2-FBZ9YkHKdFv4ck=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3995178.jpg",
+    ],
     highlights: [
       "Push-your-luck game about saving books from a burning library",
       "Fast turns and simultaneous play",
@@ -814,7 +855,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/245197/deadwood-1876",
     kickstarterLink:
       "https://www.kickstarter.com/projects/travishancock/deadwood-1876-a-safe-robbing-game-of-teamwork-and",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/dClkAV6XTDv9Guu7J0ObXA__imagepage/img/kNLvipAey03P95-VP5v07lff5VY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4252510.jpg",
+    ],
     highlights: [
       "Hidden-team bluffing and dice duels in the Wild West",
       "Gorgeous book-box design from Facade Games",
@@ -840,7 +883,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/218530/tortuga-1667",
     kickstarterLink:
       "https://www.kickstarter.com/projects/travis/tortuga-1667-a-pirate-game-of-mutiny-plunder-and-d",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/rT6zVN1zRbEMHok5V_zoGQ__imagepage/img/8EemiWUV9cS7CXBMWAPBtNneugo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3747083.png",
+    ],
     highlights: [
       "Pirate-themed social deduction with secret alliances",
       "Compact cloth map and beautiful components",
@@ -866,7 +911,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/175549/salem-1692",
     kickstarterLink:
       "https://www.kickstarter.com/projects/travishancock/salem-a-strategic-card-game-of-deception-for-4-12",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/xUurReSy2Amlx4hGj1fPvQ__imagepage/img/JeVnUUuC07NrrLtz-XG8tW2VxKU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4204062.jpg",
+    ],
     highlights: [
       "Hidden-role witch-hunt game for large groups",
       "Beautiful period-style cards in a book-box case",
@@ -892,7 +939,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/231218/black-sonata",
     kickstarterLink:
       "https://www.kickstarter.com/projects/sideroomgames/black-sonata-the-fair-youth-expansion",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/UgE_mVxqPMMNKOvXWqC71g__imagepage/img/ZQTmGgOtHd0wkdLcUqIaoFumf_4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3657983.jpg",
+    ],
     highlights: [
       "Unique solo hidden-movement and deduction hybrid",
       "Ingenious card system—no app needed",
@@ -918,7 +967,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/172225/exploding-kittens",
     kickstarterLink:
       "https://www.kickstarter.com/projects/elanlee/exploding-kittens",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/N8bL53-pRU7zaXDTrEaYrw__imagepage/img/qdivOjtkEd8Jma35bdI3mOwaoZg=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2691976.png",
+    ],
     highlights: [
       "Massively popular quick card game of exploding cats",
       "Hidden Compartment box edition adds secret storage",
@@ -944,7 +995,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/256676/set-a-watch",
     kickstarterLink:
       "https://www.kickstarter.com/projects/rockmanorgames/set-a-watch",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/_tvx1FGPwLhmbazR7d7Mcw__imagepage/img/lnqOSl36oPb1upcxH9yYMem7TtI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4224442.png",
+    ],
     highlights: [
       "Cooperative puzzle and dice management adventure",
       "Players guard a camp against waves of monsters",
@@ -969,7 +1022,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/241724/villagers",
     kickstarterLink:
       "https://www.kickstarter.com/projects/sinisterfish/villagers-card-drafting-and-village-building-for-1",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/rMMSvnXuBPZSihIaVtVT-A__imagepage/img/LgLkMAZ8deMPvBhphEVrhj0xkW4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4996383.png",
+    ],
     highlights: [
       "Rebuild a village after a plague through engine-building and drafting",
       "Solo mode and 1-5 players support",
@@ -996,36 +1051,12 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/277025/vampire-the-masquerade-chapters",
     kickstarterLink:
       "https://www.kickstarter.com/projects/flyosgames/vampire-the-masquerade-chapters",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/heM6HlMcOUSvUENmEjKEug__imagepage/img/Mgzpi2-5BG_QOm2wxU05DGj2Lxw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7656159.jpg",
+    ],
     highlights: [
       "Story-driven board game in the Vampire: The Masquerade universe",
       "Expansion Banu Hakim adds playable clan and new campaign elements",
-    ],
-    notes: "",
-  },
-
-  // Oathsworn - Base Game + Secret Box
-  {
-    id: "251661",
-    title: "Oathsworn: Into the Deepwood – Base Game + Secret Box",
-    year: 2020,
-    language: "English",
-    players: "1–4",
-    playtime: "30-90",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
-    currency: "RON",
-    tags: ["Cooperative", "Campaign", "Miniatures", "Dark fantasy"],
-    isKickstarter: true,
-    retailPrice: undefined,
-    bggLink:
-      "hhttps://boardgamegeek.com/boardgame/251661/oathsworn-into-the-deepwood",
-    kickstarterLink:
-      "https://www.kickstarter.com/projects/shadowborne-games/oathsworn-into-the-deepwood",
-    images: [],
-    highlights: [
-      "High-budget campaign game with rich components and story",
-      "Secret Box version adds collector extras",
     ],
     notes: "",
   },
@@ -1046,7 +1077,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/193621/joking-hazard",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/ohrUtQ0FGHPSFxfSX2Ltmg__imagepage/img/TgNFfWis7aS_Es1d4zaV2x8v33g=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6411897.png",
+    ],
     highlights: [
       "Create hilarious 3-panel comics with cards themed around Cyanide & Happiness",
       "Fast party game with lots of laughs and replayability",
@@ -1071,7 +1104,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/264647/age-of-civilization",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/YgJq8cRIW8RbjW_lHVnZAg__imagepage/img/NuT97ZV-TZb7fTJHuNiUwWLmTyo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4403459.jpg",
+    ],
     highlights: [
       "Compact civilization game where you lead up to three civilizations",
       "Quick play time around 20-30 minutes",
@@ -1095,7 +1130,9 @@ export const GAMES: Game[] = [
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/163967/tiny-epic-galaxies",
     kickstarterLink: undefined,
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/c_87h8o0AOrfCO3hxMjjrA__imagepage/img/Cm_v3dxblZyurF0b9cGQF3dZFHA=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2349732.jpg",
+    ],
     highlights: [
       "Compact dice-based strategy game of galactic conquest",
       "Simultaneous turns keep downtime low",
@@ -1127,7 +1164,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/315953/tiny-epic-dinosaurs-deluxe-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/tinyepic/tiny-epic-dinosaurs",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/Iowxfr--os4h-IDWFSR4Dg__imagepage/img/qF-OgC_JCfojOrPht14RokabDGU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7085817.png",
+    ],
     highlights: [
       "Manage your ranch of dinosaurs in a compact worker-placement game",
       "Combines efficiency puzzles with adorable dino meeples",
@@ -1154,7 +1193,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/266219/tiny-epic-zombies-deluxe-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/tinyepic/tiny-epic-zombies-a-game-of-brutal-survival",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/M1TZo8Z-ia_jT5BVA9dPgw__imagepage/img/eqGJ_l0UityeWYDmUlskdKw6f8Q=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4448589.jpg",
+    ],
     highlights: [
       "Fast-paced zombie survival in the Mall of Everything",
       "Play cooperatively, competitively, or one-vs-many",
@@ -1181,7 +1222,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/313163/tiny-epic-mechs-deluxe-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/tinyepic/tiny-epic-mechs-mechanized-entertainment-combat-he",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/S3rl2wo45h5LbgKKFe5o0A__imagepage/img/boPSDnugK8NqJxExeVgjOiUigTc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5128019.png",
+    ],
     highlights: [
       "Program actions and battle opponents in arena combat",
       "ITEMeeples can equip weapons and climb into giant mechs",
@@ -1208,7 +1251,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/285998/tiny-epic-tactics-deluxe-edition",
     kickstarterLink:
       "https://www.kickstarter.com/projects/tinyepic/tiny-epic-tactics-featuring-a-3d-environment",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/0MmfDcnr2ZzmZlXWzaIk_g__imagepage/img/0J3viKg4WM1nV1kb_KS6mtYuMBI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6259971.jpg",
+    ],
     highlights: [
       "3D terrain boxes create a tactical battlefield",
       "Multiple play modes: competitive, cooperative, or solo",
@@ -1233,7 +1278,9 @@ export const GAMES: Game[] = [
     bggLink: "https://boardgamegeek.com/boardgame/155708/tiny-epic-defenders",
     kickstarterLink:
       "https://www.kickstarter.com/projects/coe/tiny-epic-defenders",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/nYkO7uYLlmA_5VzskORp1A__imagepage/img/w3gXTZy1p-c5asTdTduGhOrF_js=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2044766.jpg",
+    ],
     highlights: [
       "Small-box cooperative defending against bosses",
       "Uses ITEMeeples® for heroes & upgrades",
@@ -1260,7 +1307,9 @@ export const GAMES: Game[] = [
       "https://boardgamegeek.com/boardgame/228935/tiny-epic-defenders-the-dark-war",
     kickstarterLink:
       "https://www.kickstarter.com/projects/coe/tiny-epic-defenders-the-dark-war-and-ted-2nd-editi",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/kxMU2ZYz-AZBaBeSDWfcLg__imagepage/img/UmJnwvUl2WhYDOY7Tnye2KUqjkQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3594414.jpg",
+    ],
     highlights: [
       "Expansion to Tiny Epic Defenders adding campaign mode",
       "New heroic characters and dire enemies",
@@ -1283,8 +1332,11 @@ export const GAMES: Game[] = [
     isKickstarter: true,
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/309430/tiny-epic-pirates",
-    kickstarterLink: "https://www.kickstarter.com/projects/tinyepic/tiny-epic-pirates",
-    images: [],
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-pirates",
+    images: [
+      "https://cf.geekdo-images.com/OACc4dCZKetKnT2hzAO1Mg__imagepage/img/Od4CPozcAgYaaaGJhYAt0KWdX9w=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5410377.jpg",
+    ],
     highlights: [
       "Pirate-themed compact strategy game with rondel and combos",
       "High seas, treasure hunting and ship battles",
@@ -1303,19 +1355,16 @@ export const GAMES: Game[] = [
     condition: GameCondition.OPENED_UNPLAYED,
     price: 0,
     currency: "RON",
-    tags: [
-      "Fantasy",
-      "Battle",
-      "Strategy",
-      "Licence",
-    ],
+    tags: ["Fantasy", "Battle", "Strategy", "Licence"],
     isKickstarter: true,
     retailPrice: undefined,
     bggLink:
       "https://boardgamegeek.com/boardgame/409978/tiny-epic-game-of-thrones",
     kickstarterLink:
       "https://www.kickstarter.com/projects/tinyepic/tiny-epic-game-of-thrones",
-    images: [],
+    images: [
+      "https://cf.geekdo-images.com/vl_bFvP8d8yHuJkT6X90ZA__imagepage/img/Wn4_Uz-cNHuD2DS-OWbOga9E1ew=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7929314.jpg",
+    ],
     highlights: [
       "Tiny Epic version of the Game of Thrones universe",
       "Mix of cooperation and competition in Westeros",
@@ -1338,8 +1387,11 @@ export const GAMES: Game[] = [
     isKickstarter: true,
     retailPrice: undefined,
     bggLink: "https://boardgamegeek.com/boardgame/331787/tiny-epic-dungeons",
-    kickstarterLink: "https://www.kickstarter.com/projects/tinyepic/tiny-epic-dungeons",
-    images: [],
+    kickstarterLink:
+      "https://www.kickstarter.com/projects/tinyepic/tiny-epic-dungeons",
+    images: [
+      "https://cf.geekdo-images.com/rDOnDFAwGXi_fVsfp-ZCqw__imagepage/img/AI2muWbKW16rLM_kJmXEz0gfhVc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6029065.jpg",
+    ],
     highlights: [
       "Compact dungeon-crawl design in tiny box format",
       "Modular board and variable heroes",
