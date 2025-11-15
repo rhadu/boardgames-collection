@@ -108,6 +108,8 @@ export const translations = {
     emailBodyGeneral: "Bună ziua,\n\nAș dori să întreb despre colecția de jocuri.\n\nMulțumesc!",
     whatsAppMessageGeneral: "Bună ziua! Aș dori să întreb despre colecția de jocuri.",
     priceLabel: "Preț",
+    viewGrid: "Vizualizare grilă",
+    viewList: "Vizualizare listă",
   },
   en: {
     // Hero Section
@@ -216,6 +218,8 @@ export const translations = {
     emailBodyGeneral: "Hello,\n\nI would like to ask about the board game collection.\n\nThank you!",
     whatsAppMessageGeneral: "Hello! I would like to ask about the board game collection.",
     priceLabel: "Price",
+    viewGrid: "Grid view",
+    viewList: "List view",
   },
 }
 

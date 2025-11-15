@@ -12,6 +12,7 @@ import { Search, X, Filter, SlidersHorizontal } from "lucide-react"
 import { type Language, getTranslation, translations } from "@/lib/i18n"
 import { ContactDialog } from "@components/contact-dialog"
 import { type Game, GameCondition, getConditionTranslationKey } from "@/lib/types"
+import { ViewToggle } from "@components/view-toggle"
 
 type FiltersSectionProps = {
   language: Language
@@ -32,6 +33,8 @@ type FiltersSectionProps = {
   onSelectAllFiltered: () => void
   onClearAllFilters: () => void
   allGames: Game[]
+  view: "grid" | "list"
+  onViewChange: (view: "grid" | "list") => void
 }
 
 type FilterContentProps = {
@@ -52,6 +55,9 @@ type FilterContentProps = {
   onSelectAllFiltered: () => void
   filteredGamesCount: number
   totalGamesCount: number
+  view: "grid" | "list"
+  onViewChange: (view: "grid" | "list") => void
+  language: Language
 }
 
 function FilterContent({
@@ -72,6 +78,9 @@ function FilterContent({
   onSelectAllFiltered,
   filteredGamesCount,
   totalGamesCount,
+  view,
+  onViewChange,
+  language,
 }: FilterContentProps) {
   return (
     <>
@@ -155,14 +164,17 @@ function FilterContent({
         </div>
       )}
 
-      <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-        <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="shadow-sm hover:shadow transition-shadow border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
-          {t("selectAllVisible")}
-        </Button>
-        <span className="text-sm text-muted-foreground font-medium">
-          {t("showing")} <span className="text-foreground font-semibold">{filteredGamesCount}</span> {t("of")}{" "}
-          <span className="text-foreground font-semibold">{totalGamesCount}</span> {t("games")}
-        </span>
+      <div className="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="shadow-sm hover:shadow transition-shadow border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
+            {t("selectAllVisible")}
+          </Button>
+          <span className="text-sm text-muted-foreground font-medium">
+            {t("showing")} <span className="text-foreground font-semibold">{filteredGamesCount}</span> {t("of")}{" "}
+            <span className="text-foreground font-semibold">{totalGamesCount}</span> {t("games")}
+          </span>
+        </div>
+        <ViewToggle view={view} onViewChange={onViewChange} language={language} />
       </div>
     </>
   )
@@ -187,6 +199,8 @@ export function FiltersSection({
   onSelectAllFiltered,
   onClearAllFilters,
   allGames,
+  view,
+  onViewChange,
 }: FiltersSectionProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
@@ -273,14 +287,17 @@ export function FiltersSection({
                 )}
               </div>
             )}
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs text-muted-foreground">
                 {t("showing")} <span className="text-foreground font-semibold">{filteredGamesCount}</span> {t("of")}{" "}
                 <span className="text-foreground font-semibold">{totalGamesCount}</span> {t("games")}
               </span>
-              <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="h-7 text-xs border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
-                {t("selectAllVisible")}
-              </Button>
+              <div className="flex items-center gap-2">
+                <ViewToggle view={view} onViewChange={onViewChange} language={language} />
+                <Button variant="outline" size="sm" onClick={onSelectAllFiltered} className="h-7 text-xs border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 hover:text-foreground">
+                  {t("selectAllVisible")}
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -304,6 +321,9 @@ export function FiltersSection({
               onSelectAllFiltered={onSelectAllFiltered}
               filteredGamesCount={filteredGamesCount}
               totalGamesCount={totalGamesCount}
+              view={view}
+              onViewChange={onViewChange}
+              language={language}
             />
           </div>
         </div>

@@ -2,6 +2,9 @@ import { Button } from "@components/ui/button"
 import { type Language, getTranslation } from "@/lib/i18n"
 import { type Game } from "@/lib/types"
 import { GameCard } from "@components/game-card"
+import { GameRow } from "@components/game-row"
+
+type ViewType = "grid" | "list"
 
 type GamesGridProps = {
   games: Game[]
@@ -9,6 +12,7 @@ type GamesGridProps = {
   selectedGames: Set<string>
   onToggleGameSelection: (id: string) => void
   onClearAllFilters: () => void
+  view?: ViewType
 }
 
 export function GamesGrid({
@@ -17,6 +21,7 @@ export function GamesGrid({
   selectedGames,
   onToggleGameSelection,
   onClearAllFilters,
+  view = "grid",
 }: GamesGridProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
 
@@ -27,6 +32,22 @@ export function GamesGrid({
         <Button variant="outline" className="mt-4 bg-transparent" onClick={onClearAllFilters}>
           {t("clearAllFilters")}
         </Button>
+      </div>
+    )
+  }
+
+  if (view === "list") {
+    return (
+      <div className="space-y-3 sm:space-y-4">
+        {games.map((game) => (
+          <GameRow
+            key={game.id}
+            game={game}
+            language={language}
+            isSelected={selectedGames.has(game.id)}
+            onToggleSelection={() => onToggleGameSelection(game.id)}
+          />
+        ))}
       </div>
     )
   }
