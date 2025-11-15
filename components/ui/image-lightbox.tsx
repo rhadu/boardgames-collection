@@ -40,6 +40,7 @@ export function ImageLightbox({
   const [canScrollNext, setCanScrollNext] = useState(false)
   const closeFromHistoryRef = useRef(false)
   const hasPushedHistoryRef = useRef(false)
+  const pathnameWhenOpenedRef = useRef<string | null>(null)
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
@@ -79,6 +80,9 @@ export function ImageLightbox({
   useEffect(() => {
     if (!open || typeof window === "undefined") return
 
+    // Store the current pathname when opening
+    pathnameWhenOpenedRef.current = window.location.pathname
+
     const handlePopState = () => {
       closeFromHistoryRef.current = true
       onOpenChange(false)
@@ -105,6 +109,7 @@ export function ImageLightbox({
       if (closeFromHistoryRef.current) {
         closeFromHistoryRef.current = false
         hasPushedHistoryRef.current = false
+        pathnameWhenOpenedRef.current = null
         return
       }
 
@@ -113,12 +118,21 @@ export function ImageLightbox({
         window.history.state &&
         (window.history.state as Record<string, unknown>)[LIGHTBOX_HISTORY_STATE_KEY]
       ) {
-        if (window.history.length > 1) {
+        // Only go back if we're still on the same pathname where the lightbox was opened
+        // This prevents navigating to a different page (e.g., game detail page)
+        const currentPathname = window.location.pathname
+        if (currentPathname === pathnameWhenOpenedRef.current && window.history.length > 1) {
           window.history.back()
+        } else {
+          // If pathname changed, just replace the state to remove the lightbox state
+          const stateWithoutLightbox = { ...window.history.state } as Record<string, unknown>
+          delete stateWithoutLightbox[LIGHTBOX_HISTORY_STATE_KEY]
+          window.history.replaceState(stateWithoutLightbox, "", window.location.href)
         }
       }
 
       hasPushedHistoryRef.current = false
+      pathnameWhenOpenedRef.current = null
     }
   }, [open, onOpenChange])
 
