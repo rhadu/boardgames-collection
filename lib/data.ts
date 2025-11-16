@@ -23,6 +23,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/shadowborne-games/oathsworn-into-the-deepwood",
     images: [
       "https://cf.geekdo-images.com/dezQ4YjF03lZVxTdI-UJYw__imagepage/img/k9KlpcnG4DPLQy8BrrrfHvBOiG4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6863204.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299681/boardgames/oathsworn-into-the-deepwood-base-game-secret-box/20251109_132829_cslc7o.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299684/boardgames/oathsworn-into-the-deepwood-base-game-secret-box/20251109_132833_lmo2jl.jpg",
     ],
     highlights: [
       "High-budget campaign game with rich components and story",
@@ -51,6 +53,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/awakenrealms/this-war-of-mine-the-board-game", // from KS campaign
     images: [
       "https://cf.geekdo-images.com/gQOQW7p1RWHzY54Lrs-_pA__imagepage/img/oqafX3UqrqNZz5215t4FEuIQm0E=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3315915.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299676/boardgames/this-war-of-mine-the-board-game/20251101_165138_pktgrm.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299697/boardgames/this-war-of-mine-the-board-game/20251101_165227_fmkey0.jpg",
     ],
     highlights: [
       "Co-op survival of civilians in a war-torn city",
@@ -85,6 +89,10 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/awakenrealms/nemesis-board-game",
     images: [
       "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__imagepage/img/Zb31zpGVlnDGPeHj75Xkye1KDNE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic8211747.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/nemesis/20251101_165634_mv4fxu.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299630/boardgames/nemesis/20251101_165630_gb2uit.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299680/boardgames/nemesis/20251101_165743_mecvtn.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299680/boardgames/nemesis/20251101_165745_tcwirv.jpg",
     ],
     highlights: [
       "Crew wakes on alien-infested spaceship; hidden objectives create tension",
@@ -113,6 +121,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/1XA2-niwTBa0HEB7hOz3Dw__imagepage/img/dniEqT1lS-wh6hmCijPi3PQCwWs=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4530974.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299669/boardgames/the-lord-of-the-rings-journeys-in-middle-earth/20251101_165530_tflxkv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299676/boardgames/the-lord-of-the-rings-journeys-in-middle-earth/20251101_165533_sieu4i.jpg",
     ],
     highlights: [
       "App-driven narrative campaign in Tolkien’s Middle-earth",
@@ -148,6 +158,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/intotheunknown/aeon-trespass-odyssey-second-printing-plus-all-new-content",
     images: [
       "https://cf.geekdo-images.com/l5vgu2EcX8qm7_p9zhROuQ__imagepage/img/J2UX3OwZDoYo8uNrIdRKWQPvZFc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4874391.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299654/boardgames/aeon-trespass-odyssey/20251109_132747_qkqezb.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299656/boardgames/aeon-trespass-odyssey/20251109_132756_tekual.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299660/boardgames/aeon-trespass-odyssey/20251109_132713_zizeoc.jpg",
     ],
     highlights: [
       "Epic 1-4 player cooperative campaign board game.",
@@ -186,6 +199,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__imagepage/img/enC7UTvCAnb6j1Uazvh0OBQjvxw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic9156909.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299624/boardgames/catan/20251101_165020_wtwks9.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/catan/20251101_165004_pdz1yy.jpg",
     ],
     highlights: [
       "Classic gateway euro about trading and building",
@@ -220,6 +235,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/strongholdgames/terraforming-mars-turmoil",
     images: [
       "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__imagepage/img/FS1RE8Ue6nk1pNbPI3l-OSapQGc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3536616.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299687/boardgames/terraforming-mars-turmoil-expansion/20251102_195742_l6bt4k.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299692/boardgames/terraforming-mars-turmoil-expansion/20251101_165857_zxxasv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299695/boardgames/terraforming-mars-turmoil-expansion/20251101_165903_krstbt.jpg",
     ],
     highlights: [
       "Build engines with synergistic project cards",
@@ -249,6 +267,11 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/mikegnade/maximum-apocalypse-legendary-edition-with-miniatur",
     images: [
       "https://cf.geekdo-images.com/VbKia1bW_oUcSfrX4HeGKA__imagepage/img/to9beka9cPwga2gBrBFufVrvDPE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5152233.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299638/boardgames/maximum-apocalypse-legendary-edition/20251101_170050_yghqfo.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299669/boardgames/maximum-apocalypse-legendary-edition/20251101_170842_akvfnq.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299675/boardgames/maximum-apocalypse-legendary-edition/20251101_170824_apsfab.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299683/boardgames/maximum-apocalypse-legendary-edition/20251101_170820_xaj34h.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299692/boardgames/maximum-apocalypse-legendary-edition/20251101_165929_qeickr.jpg",
     ],
     highlights: [
       "Co-op roguelike missions in multiple apocalypses",
@@ -277,6 +300,7 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/lucky-duck-games/time-of-legends-destinies",
     images: [
       "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__imagepage/img/fk6BConHqwDOSHeKbOavfrFs7Fo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5558118.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299655/boardgames/destinies/20251101_170248_jyj22b.jpg",
     ],
     highlights: [
       "App-assisted narrative quests in a dark medieval world",
@@ -311,6 +335,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/953146955/sleeping-gods",
     images: [
       "https://cf.geekdo-images.com/Zdt8l4oTBpFICsMyNof7Jg__imagepage/img/ToI3nXdkLu4Dy3J8o-yAWrdN4i8=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5975244.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299685/boardgames/sleeping-gods-tides-of-ruin/20251101_170445_by0uid.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299694/boardgames/sleeping-gods-tides-of-ruin/20251101_170533_sir93x.jpg",
     ],
     highlights: [
       "Massive open-world campaign with branching stories",
@@ -339,6 +365,14 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/blacklistgames/altar-quest",
     images: [
       "https://cf.geekdo-images.com/lFwe59N5i-m2lhGA48vizw__imagepage/img/6gVyN2cktEJoT0CfTVtRYwp4Xu0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5871397.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299625/boardgames/altar-quest-and-expansions/20251101_171246_v2gpiu.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/altar-quest-and-expansions/20251109_131746_ftl0m6.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299628/boardgames/altar-quest-and-expansions/20251101_171354_sm9baf.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299628/boardgames/altar-quest-and-expansions/20251101_171352_gyjc9a.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299632/boardgames/altar-quest-and-expansions/20251101_171256_torbu7.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299663/boardgames/altar-quest-and-expansions/20251101_171236_apbhmo.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299665/boardgames/altar-quest-and-expansions/20251101_171329_r1htd6.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299687/boardgames/altar-quest-and-expansions/20251101_171442_v5ohye.jpg",
     ],
     highlights: [
       "Modern card-driven dungeon crawl",
@@ -375,6 +409,11 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/awakenrealms/tainted-grail-the-fall-of-avalon",
     images: [
       "https://cf.geekdo-images.com/aAwBzPzta4joKfFZt05hCw__imagepage/img/VTB2LcmXNC4XPpCOVfkfa4qO0cY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4385726.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299635/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_171848_dffkva.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299659/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_171841_shplwg.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299686/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_171551_qojsbi.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299688/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_171558_e1iugw.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299690/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_172330_yknz0v.jpg",
     ],
     highlights: [
       "Epic cooperative campaign in a dark fantasy Arthurian world",
@@ -403,6 +442,10 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/awakenrealms/etherfields-board-game",
     images: [
       "https://cf.geekdo-images.com/K1yVmbbWCsQuiWk-7x-V-Q__imagepage/img/m1-zglSNfjIgV6pqXAhb9ThePEI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7455627.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/etherfields-extensie-sigilat/20251101_172255_y1lfdt.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299670/boardgames/etherfields-extensie-sigilat/20251101_172243_imeamv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299671/boardgames/etherfields-extensie-sigilat/20251101_172240_anv86l.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299679/boardgames/etherfields-extensie-sigilat/20251101_172112_r3qnqb.jpg",
     ],
     highlights: [
       "Narrative-heavy “dream crawler” cooperative adventure",
@@ -430,6 +473,7 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/7pDLiSwMtClYGY7zPTYuxg__imagepage/img/cLyEEC8bkwIniDYQ-9G5nHNdAJ0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2825868.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299625/boardgames/btlia-cuplurilor/20251101_172311_bumi7s.jpg",
     ],
     highlights: [
       "Fun board game for couples testing how well they know each other",
@@ -457,6 +501,19 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/lmstudio/black-rose-wars",
     images: [
       "https://cf.geekdo-images.com/Nam2TVpVSvHIuAsbocL9cw__imagepage/img/4hjyTRE6DUV2v4bAsB8H1jK48B4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6892325.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299631/boardgames/black-rose-wars/20251102_193752_mi57zf.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299632/boardgames/black-rose-wars/20251102_193908_aj3gcs.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299639/boardgames/black-rose-wars/20251101_172551_gz23fj.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299639/boardgames/black-rose-wars/20251102_193756_fg2crz.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299653/boardgames/black-rose-wars/20251102_194621_ob0fav.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299658/boardgames/black-rose-wars/20251102_194208_xs26yv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299659/boardgames/black-rose-wars/20251101_172556_j377ng.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299663/boardgames/black-rose-wars/20251102_193643_fycs25.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299670/boardgames/black-rose-wars/20251101_172457_wcewsk.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299674/boardgames/black-rose-wars/20251102_194122_befbtt.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299677/boardgames/black-rose-wars/20251102_194112_q7aitq.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299677/boardgames/black-rose-wars/20251102_194315_de4zkk.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299696/boardgames/black-rose-wars/20251102_194435_ibaaqu.jpg",
     ],
     highlights: [
       "Competitive fantasy deck-building game of mages battling for supremacy in the Lodge",
@@ -490,6 +547,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/seriouspoulp/the-7th-continent-what-goes-up-must-come-down",
     images: [
       "https://cf.geekdo-images.com/OYne8uBCHv5oEgRfpOrV0A__imagepage/img/v6rKjbb4X_1AKBRehocJ3_v-9kQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2648303.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299685/boardgames/the-7th-continent/20251102_194804_u90cfy.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299694/boardgames/the-7th-continent/20251102_194721_l7hixp.jpg",
     ],
     highlights: [
       "Massive solo/co-op exploration game where you lift curses in a mysterious land",
@@ -522,6 +581,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__imagepage/img/ROAuGFhL9abZxxzvXUCJJuvtkOk=/fit-in/900x600/filters:no_upscale():strip_icc()/pic1083380.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299631/boardgames/mage-knight/20251102_194833_hkvyty.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299695/boardgames/mage-knight/20251102_195050_mw9ryi.jpg",
     ],
     highlights: [
       "Epic solo/coop strategy game praised for depth and replayability",
@@ -550,6 +611,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/succubuspublishing/middara-unintentional-malum-the-complete-trilogy",
     images: [
       "https://cf.geekdo-images.com/hRuD1y5BxdNpssgBqamS0A__imagepage/img/3YIXet5DK8WN9Wur_YwMY0jqsCQ=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4595897.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299636/boardgames/middara-unintentional-malum-act-1/20251102_195436_tot8qa.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299637/boardgames/middara-unintentional-malum-act-1/20251102_195433_hubdoy.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299681/boardgames/middara-unintentional-malum-act-1/20251102_195253_qs9lhr.jpg",
     ],
     highlights: [
       "Massive cooperative campaign with anime-inspired art",
@@ -577,6 +641,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/mvE22ut60-N5qzhE9guINw__imagepage/img/LoV1rtyGXoje25DlEb8QNAMfmTc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6973676.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299654/boardgames/black-orchestra/20251102_195713_ak122r.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299669/boardgames/black-orchestra/20251102_195635_amrcqk.jpg",
     ],
     highlights: [
       "Play as conspirators plotting to assassinate Hitler",
@@ -611,6 +677,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__imagepage/img/py7KzNjXVOuVesFZB7LwqCbvALY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7013651.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299655/boardgames/spirit-island/20251102_195918_o2np5u.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299693/boardgames/spirit-island/20251102_195756_f4jknx.jpg",
     ],
     highlights: [
       "Play elemental spirits defending their island from colonizers",
@@ -640,6 +708,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/vanrydergames/the-big-score",
     images: [
       "https://cf.geekdo-images.com/CrEG1gRqArALQXxUgt91lg__imagepage/img/N2Lh5hBzhMQZLORWPXFX8eXomUo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3929782.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299660/boardgames/the-big-score/20251102_200106_tcjt1z.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299693/boardgames/the-big-score/20251102_200032_0_et2d1i.jpg",
     ],
     highlights: [
       "Clever mix of drafting, cooperation, and betrayal",
@@ -677,6 +747,8 @@ export const GAMES: Game[] = [
     images: [
       "https://cf.geekdo-images.com/Tuy9MAvPx4TRGV1vvT6wxQ__imagepagezoom/img/LSablpr36KWc0VDWxSBgYqUPtcg=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic5960363.png",
       "https://cf.geekdo-images.com/Tuy9MAvPx4TRGV1vvT6wxQ__imagepage/img/_wL2RSJvMPIerOryz9ph68zTuyw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5960363.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299663/boardgames/anachrony/20251109_130334_n6j6xa.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299675/boardgames/anachrony/20251109_130339_gixqtm.jpg",
     ],
     highlights: [
       "Time-travel-themed worker placement with deep strategy",
@@ -711,6 +783,11 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/cmon/zombicide-2nd-edition",
     images: [
       "https://cf.geekdo-images.com/81AiTz4hp4TlnzeCMqQMAw__imagepage/img/RuczD90TmVP6o38-MhJPr45vHGU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6091316.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299634/boardgames/zombicide-2nd-edition/20251109_130657_k9nv7x.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299640/boardgames/zombicide-2nd-edition/20251109_130647_c7o4yt.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299659/boardgames/zombicide-2nd-edition/20251109_130633_kk6euz.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299690/boardgames/zombicide-2nd-edition/20251109_130710_mhtfo1.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299698/boardgames/zombicide-2nd-edition/20251109_130406_jdolfl.jpg",
     ],
     highlights: [
       "Revamped version of the classic co-op zombie survival game",
@@ -740,6 +817,8 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/skykingdomgames/the-isofarian-guard",
     images: [
       "https://cf.geekdo-images.com/nrUQztbbeNWfMIrf9ZQ8bQ__imagepage/img/q_p0SFXP0PDCFVgvbvu1SDmtBLw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6428537.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299689/boardgames/the-isofarian-guard/20251109_130829_mc8lqv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299691/boardgames/the-isofarian-guard/20251109_130737_q9w5yf.jpg",
     ],
     highlights: [
       "Story-driven adventure with bag-building combat",
@@ -770,6 +849,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/legendsuntold/legends-untold-as-deep-as-an-rpg-as-fast-as-a-card",
     images: [
       "https://cf.geekdo-images.com/U8xMKqgssP2TRB4Hoxo5Kg__imagepage/img/Lk72KY68pBANEEIjIzHrPmECOxs=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4175300.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299629/boardgames/legends-untold-the-weeping-caves-novice-set/20251109_131005_m9p1rn.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299636/boardgames/legends-untold-the-weeping-caves-novice-set/20251109_130957_vtyvry.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299654/boardgames/legends-untold-the-weeping-caves-novice-set/20251109_131117_phdpkx.jpg",
     ],
     highlights: [
       "Compact, modular dungeon crawl with deep mechanics",
@@ -800,6 +882,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/legendsuntold/legends-untold-as-deep-as-an-rpg-as-fast-as-a-card",
     images: [
       "https://cf.geekdo-images.com/7YzQXGT7fwe1y6C_yxnkyw__imagepage/img/TKmcrKmsEZbQP35dVuP5TbpqEpA=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4178316.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299633/boardgames/legends-untold-the-great-sewers-novice-set/20251109_131129_pdlbdh.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299635/boardgames/legends-untold-the-great-sewers-novice-set/20251109_130957_copy_todi3k.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299662/boardgames/legends-untold-the-great-sewers-novice-set/20251109_131201_ks1mqd.jpg",
     ],
     highlights: [
       "Second standalone set in the Legends Untold series",
@@ -828,6 +913,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/wgHvFfiPzMJUFrP4OLKtwQ__imagepage/img/_hUqxMm_x66gY5ZniEG6p_Qd1QM=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5009864.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299668/boardgames/maquis/20251109_131330_ayywzo.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299672/boardgames/maquis/20251109_131311_udzrvc.jpg",
     ],
     highlights: [
       "Solo worker placement set in Nazi-occupied France",
@@ -857,6 +944,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/weirdgiraffegames/fire-in-the-library-board-game",
     images: [
       "https://cf.geekdo-images.com/SdhKN7EefPC86-qHsIX7Mw__imagepage/img/RSlZBKTeeBV2-FBZ9YkHKdFv4ck=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3995178.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299627/boardgames/fire-in-the-library/20251109_131411_n98igz.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299674/boardgames/fire-in-the-library/20251109_131344_zzyy4n.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299678/boardgames/fire-in-the-library/20251109_131349_d3ufoq.jpg",
     ],
     highlights: [
       "Push-your-luck game about saving books from a burning library",
@@ -886,6 +976,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/travishancock/deadwood-1876-a-safe-robbing-game-of-teamwork-and",
     images: [
       "https://cf.geekdo-images.com/dClkAV6XTDv9Guu7J0ObXA__imagepage/img/kNLvipAey03P95-VP5v07lff5VY=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4252510.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299665/boardgames/deadwood-1876/20251109_131445_w6lykj.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299670/boardgames/deadwood-1876/20251109_131433_vrwg8q.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299683/boardgames/deadwood-1876/20251109_131437_qqyfkh.jpg",
     ],
     highlights: [
       "Hidden-team bluffing and dice duels in the Wild West",
@@ -915,6 +1008,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/travis/tortuga-1667-a-pirate-game-of-mutiny-plunder-and-d",
     images: [
       "https://cf.geekdo-images.com/rT6zVN1zRbEMHok5V_zoGQ__imagepage/img/8EemiWUV9cS7CXBMWAPBtNneugo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3747083.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299686/boardgames/tortuga-1667/20251109_131503_v965af.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299688/boardgames/tortuga-1667/20251109_131510_q52kq9.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299689/boardgames/tortuga-1667/20251109_131433_copy_nb62sd.jpg",
     ],
     highlights: [
       "Pirate-themed social deduction with secret alliances",
@@ -944,6 +1040,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/travishancock/salem-a-strategic-card-game-of-deception-for-4-12",
     images: [
       "https://cf.geekdo-images.com/xUurReSy2Amlx4hGj1fPvQ__imagepage/img/JeVnUUuC07NrrLtz-XG8tW2VxKU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4204062.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299673/boardgames/salem-1692/20251109_131433_copy_2_efsytv.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299677/boardgames/salem-1692/20251109_131525_ocizwk.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299694/boardgames/salem-1692/20251109_131532_zhmjte.jpg",
     ],
     highlights: [
       "Hidden-role witch-hunt game for large groups",
@@ -973,6 +1072,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/sideroomgames/black-sonata-the-fair-youth-expansion",
     images: [
       "https://cf.geekdo-images.com/UgE_mVxqPMMNKOvXWqC71g__imagepage/img/ZQTmGgOtHd0wkdLcUqIaoFumf_4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3657983.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299627/boardgames/black-sonata-the-fair-youth-expansion/20251109_132933_m2sfj1.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299659/boardgames/black-sonata-the-fair-youth-expansion/20251109_131551_pbm8ev.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299665/boardgames/black-sonata-the-fair-youth-expansion/20251109_131548_nqj8wa.jpg",
     ],
     highlights: [
       "Unique solo hidden-movement and deduction hybrid",
@@ -1002,6 +1104,10 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/elanlee/exploding-kittens",
     images: [
       "https://cf.geekdo-images.com/N8bL53-pRU7zaXDTrEaYrw__imagepage/img/qdivOjtkEd8Jma35bdI3mOwaoZg=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2691976.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299639/boardgames/exploding-kittens-hidden-compartment-box/20251109_131858_laumqx.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299661/boardgames/exploding-kittens-hidden-compartment-box/20251109_131631_wrb6or.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299664/boardgames/exploding-kittens-hidden-compartment-box/20251109_131625_xrgaoq.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299666/boardgames/exploding-kittens-hidden-compartment-box/20251109_131621_op3nis.jpg",
     ],
     highlights: [
       "Massively popular quick card game of exploding cats",
@@ -1031,6 +1137,10 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/rockmanorgames/set-a-watch",
     images: [
       "https://cf.geekdo-images.com/E_-9WT4_6-kABS796Q-piA__imagepagezoom/img/9NEQGDK_xq8pDXEw4SXVyNRp1BY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic4162054.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299678/boardgames/set-a-watch-deluxe-edition/20251109_131639_cfxvsr.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299679/boardgames/set-a-watch-deluxe-edition/20251109_131640_wy0k3q.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299687/boardgames/set-a-watch-deluxe-edition/20251109_131648_pel6z9.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299690/boardgames/set-a-watch-deluxe-edition/20251109_131706_ernqzs.jpg",
     ],
     highlights: [
       "Cooperative puzzle and dice management adventure",
@@ -1059,6 +1169,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/sinisterfish/villagers-card-drafting-and-village-building-for-1",
     images: [
       "https://cf.geekdo-images.com/rMMSvnXuBPZSihIaVtVT-A__imagepage/img/LgLkMAZ8deMPvBhphEVrhj0xkW4=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4996383.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299629/boardgames/villagers/20251109_131838_bnvdsz.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299630/boardgames/villagers/20251109_131827_gfpaua.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299654/boardgames/villagers/20251109_131836_fr7a7n.jpg",
     ],
     highlights: [
       "Rebuild a village after a plague through engine-building and drafting",
@@ -1089,6 +1202,9 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/flyosgames/vampire-the-masquerade-chapters",
     images: [
       "https://cf.geekdo-images.com/heM6HlMcOUSvUENmEjKEug__imagepage/img/Mgzpi2-5BG_QOm2wxU05DGj2Lxw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7656159.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299682/boardgames/vampire-the-masquerade-chapters-banu-hakim-expansion/20251109_132537_r6tjbm.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299685/boardgames/vampire-the-masquerade-chapters-banu-hakim-expansion/20251109_132508_twbest.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299696/boardgames/vampire-the-masquerade-chapters-banu-hakim-expansion/20251109_132520_fifnjg.jpg",
     ],
     highlights: [
       "Story-driven board game in the Vampire: The Masquerade universe",
@@ -1116,6 +1232,7 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/ohrUtQ0FGHPSFxfSX2Ltmg__imagepage/img/TgNFfWis7aS_Es1d4zaV2x8v33g=/fit-in/900x600/filters:no_upscale():strip_icc()/pic6411897.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299634/boardgames/joking-hazard/20251109_132858_nzzrrl.jpg",
     ],
     highlights: [
       "Create hilarious 3-panel comics with cards themed around Cyanide & Happiness",
@@ -1144,6 +1261,8 @@ export const GAMES: Game[] = [
     kickstarterLink: undefined,
     images: [
       "https://cf.geekdo-images.com/YgJq8cRIW8RbjW_lHVnZAg__imagepage/img/NuT97ZV-TZb7fTJHuNiUwWLmTyo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4403459.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299681/boardgames/age-of-civilization/20251109_133044_zazjlw.jpg",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299684/boardgames/age-of-civilization/20251109_133042_bmy6t0.jpg",
     ],
     highlights: [
       "Compact civilization game where you lead up to three civilizations",

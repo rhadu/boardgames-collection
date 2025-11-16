@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { startViewTransition } from "@components/view-transition"
@@ -30,6 +30,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const lightboxClosingRef = useRef(false)
 
   const gameSlug = slugify(game.title)
   const baseGamePath = `/games/${gameSlug}`
@@ -38,11 +39,24 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
   const handleImageClick = (index: number) => {
     setLightboxIndex(index)
     setLightboxOpen(true)
+    lightboxClosingRef.current = false
+  }
+
+  const handleLightboxOpenChange = (open: boolean) => {
+    if (!open) {
+      // Mark that we're closing the lightbox
+      lightboxClosingRef.current = true
+      // Reset the flag after a short delay to allow click events to be processed
+      setTimeout(() => {
+        lightboxClosingRef.current = false
+      }, 100)
+    }
+    setLightboxOpen(open)
   }
 
   const handleCardClick = (e: React.MouseEvent) => {
-    // Don't navigate if lightbox is open
-    if (lightboxOpen) {
+    // Don't navigate if lightbox is open or was just closed
+    if (lightboxOpen || lightboxClosingRef.current) {
       return
     }
     
@@ -54,7 +68,8 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
       target.closest('[role="button"]') ||
       target.closest('[data-image-area]') || // Image area
       target.closest('[role="dialog"]') || // Dialog/lightbox
-      target.closest('[data-radix-portal]') // Radix UI portal (where dialogs are rendered)
+      target.closest('[data-radix-portal]') || // Radix UI portal (where dialogs are rendered)
+      target.closest('[data-radix-dialog-overlay]') // Radix UI dialog overlay
     ) {
       return
     }
@@ -237,7 +252,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         alt={game.title}
         initialIndex={lightboxIndex}
         open={lightboxOpen}
-        onOpenChange={setLightboxOpen}
+        onOpenChange={handleLightboxOpenChange}
       />
 
       {/* Contact Dialog */}

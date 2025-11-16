@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "scrape-cover-images": "tsx scripts/scrape-bgg-cover-images.ts"
+    "scrape-cover-images": "tsx scripts/scrape-bgg-cover-images.ts",
+    "add-cloudinary-images": "tsx scripts/add-cloudinary-images.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -41,9 +42,11 @@
     "@vercel/analytics": "^1.3.1",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.8.0",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
     "date-fns": "4.1.0",
+    "dotenv": "^17.2.3",
     "embla-carousel-react": "8.5.1",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",

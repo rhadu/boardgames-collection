@@ -157,7 +157,7 @@ export function ImageLightbox({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent 
-        className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none"
+        className="max-w-7xl w-full h-[90vh] p-0 bg-black/95 border-none overflow-hidden"
         onClick={(e) => {
           // Prevent clicks inside the lightbox from bubbling to parent elements
           e.stopPropagation()
@@ -167,7 +167,7 @@ export function ImageLightbox({
           {alt} - Image {selectedIndex + 1} of {images.length}
         </DialogTitle>
         <div 
-          className="relative w-full h-full flex items-center justify-center"
+          className="relative w-full h-full flex items-center justify-center overflow-hidden"
           onClick={(e) => {
             // Prevent clicks on the image container from bubbling
             e.stopPropagation()
@@ -194,21 +194,25 @@ export function ImageLightbox({
                 return (
                   <div
                     key={index}
-                    className="flex-[0_0_100%] min-w-0 h-full flex items-center justify-center p-4"
+                    className="flex-[0_0_100%] min-w-0 h-full flex items-center justify-center p-4 overflow-hidden"
                   >
                     {isExternal ? (
-                      <img
-                        src={imageSrc}
-                        alt={`${alt} - Image ${index + 1}`}
-                        className="max-w-full max-h-full w-auto h-auto object-contain"
-                        onClick={(e) => {
-                          // Prevent clicks on the image from closing the lightbox or navigating
-                          e.stopPropagation()
-                        }}
-                      />
+                      <div className="relative w-full h-full flex items-center justify-center">
+                        <img
+                          src={imageSrc}
+                          alt={`${alt} - Image ${index + 1}`}
+                          className="max-w-full max-h-full w-auto h-auto object-contain"
+                          style={{ maxWidth: '100%', maxHeight: '100%' }}
+                          onClick={(e) => {
+                            // Prevent clicks on the image from closing the lightbox or navigating
+                            e.stopPropagation()
+                          }}
+                        />
+                      </div>
                     ) : (
                       <div 
-                        className="relative w-full h-full max-w-full max-h-full"
+                        className="relative w-full h-full flex items-center justify-center"
+                        style={{ maxWidth: '100%', maxHeight: '100%' }}
                         onClick={(e) => {
                           // Prevent clicks on the image container from closing the lightbox or navigating
                           e.stopPropagation()
