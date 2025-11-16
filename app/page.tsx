@@ -30,6 +30,13 @@ export default function BoardGameCollection() {
   const [selectedGames, setSelectedGames] = useState<Set<string>>(new Set())
   const [bulkDealDialogOpen, setBulkDealDialogOpen] = useState(false)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+  const [view, setView] = useState<"grid" | "list">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("gameViewPreference")
+      return saved === "list" ? "list" : "grid"
+    }
+    return "grid"
+  })
 
   // Calculate totals
   const totalInventoryValue = useMemo(() => GAMES.reduce((sum, game) => sum + game.price, 0), [])
@@ -109,6 +116,13 @@ export default function BoardGameCollection() {
 
     const queryString = params.toString()
     router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false })
+  }
+
+  const handleViewChange = (newView: "grid" | "list") => {
+    setView(newView)
+    if (typeof window !== "undefined") {
+      localStorage.setItem("gameViewPreference", newView)
+    }
   }
 
   // Save scroll position before navigating away
@@ -212,6 +226,8 @@ export default function BoardGameCollection() {
         onSelectAllFiltered={selectAllFiltered}
         onClearAllFilters={clearAllFilters}
         allGames={GAMES}
+        view={view}
+        onViewChange={handleViewChange}
       />
 
       <section className={`container mx-auto px-4 py-12 md:py-16 max-w-[1280px] ${selectedGames.size > 0 ? "pb-28 md:pb-16" : ""}`}>
@@ -221,6 +237,7 @@ export default function BoardGameCollection() {
           selectedGames={selectedGames}
           onToggleGameSelection={toggleGameSelection}
           onClearAllFilters={clearAllFilters}
+          view={view}
         />
       </section>
 
