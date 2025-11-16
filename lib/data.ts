@@ -6,6 +6,7 @@ export const GAMES: Game[] = [
   {
     id: "251661",
     title: "Oathsworn: Into the Deepwood – Base Game + Secret Box",
+    slug: "oathsworn-into-the-deepwood-base-game-secret-box",
     year: 2020,
     language: "English",
     players: "1–4",
@@ -33,6 +34,7 @@ export const GAMES: Game[] = [
   {
     id: "188920", // BGG ID
     title: "This War of Mine: The Board Game",
+    slug: "this-war-of-mine-the-board-game",
     year: 2017, // published 2017. :contentReference[oaicite:1]{index=1}
     language: "English",
     players: "1–6", // 1 to 6 players. :contentReference[oaicite:2]{index=2}
@@ -61,6 +63,7 @@ export const GAMES: Game[] = [
   {
     id: "167355", // BGG ID
     title: "Nemesis",
+    slug: "nemesis",
     year: 2018, // published 2018. :contentReference[oaicite:8]{index=8}
     language: "English",
     players: "1–5", // 1 to 5 players. :contentReference[oaicite:9]{index=9}
@@ -94,6 +97,7 @@ export const GAMES: Game[] = [
   {
     id: "269385",
     title: "The Lord of the Rings: Journeys in Middle-Earth",
+    slug: "the-lord-of-the-rings-journeys-in-middle-earth",
     year: 2019,
     language: "English",
     players: "1–5",
@@ -122,6 +126,7 @@ export const GAMES: Game[] = [
   {
     id: "1121",
     title: "Aeon Trespass: Odyssey",
+    slug: "aeon-trespass-odyssey",
     year: 2019,
     language: "English",
     players: "1-4",
@@ -160,6 +165,7 @@ export const GAMES: Game[] = [
   {
     id: "13",
     title: "Catan",
+    slug: "catan",
     year: 1995,
     language: "English",
     players: "3–4",
@@ -192,6 +198,7 @@ export const GAMES: Game[] = [
   {
     id: "167791",
     title: "Terraforming Mars (+ Turmoil expansion)",
+    slug: "terraforming-mars-turmoil-expansion",
     year: 2016,
     language: "English",
     players: "1–5",
@@ -225,6 +232,7 @@ export const GAMES: Game[] = [
   {
     id: "275564",
     title: "Maximum Apocalypse: Legendary Edition",
+    slug: "maximum-apocalypse-legendary-edition",
     year: 2020,
     language: "English",
     players: "1–6",
@@ -253,6 +261,7 @@ export const GAMES: Game[] = [
   {
     id: "285192",
     title: "Destinies",
+    slug: "destinies",
     year: 2021,
     language: "English",
     players: "1–3",
@@ -280,6 +289,7 @@ export const GAMES: Game[] = [
   {
     id: "255984",
     title: "Sleeping Gods (+ Tides of Ruin)",
+    slug: "sleeping-gods-tides-of-ruin",
     year: 2021,
     language: "English",
     players: "1–4",
@@ -313,6 +323,7 @@ export const GAMES: Game[] = [
   {
     id: "273703",
     title: "Altar Quest and expansions",
+    slug: "altar-quest-and-expansions",
     year: 2020,
     language: "English",
     players: "1–4",
@@ -341,6 +352,7 @@ export const GAMES: Game[] = [
     id: "264220",
     title:
       "Tainted Grail + Age of Legends & Last Knight campaigns + Echoes of the Past",
+    slug: "tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past",
     year: 2019,
     language: "English",
     players: "1–4",
@@ -375,6 +387,7 @@ export const GAMES: Game[] = [
   {
     id: "280794",
     title: "Etherfields + extensie sigilată",
+    slug: "etherfields-extensie-sigilat",
     year: 2020,
     language: "English",
     players: "1–4",
@@ -402,6 +415,7 @@ export const GAMES: Game[] = [
   {
     id: "191077",
     title: "Bătălia cuplurilor",
+    slug: "btlia-cuplurilor",
     year: 2018,
     language: "Romanian",
     players: "2-8",
@@ -427,6 +441,7 @@ export const GAMES: Game[] = [
   {
     id: "239942",
     title: "Black Rose Wars",
+    slug: "black-rose-wars",
     year: 2018,
     language: "English",
     players: "2-4",
@@ -453,6 +468,7 @@ export const GAMES: Game[] = [
   {
     id: "180263",
     title: "The 7th Continent",
+    slug: "the-7th-continent",
     year: 2017,
     language: "English",
     players: "1-4",
@@ -485,6 +501,7 @@ export const GAMES: Game[] = [
   {
     id: "96848",
     title: "Mage Knight",
+    slug: "mage-knight",
     year: 2011,
     language: "English",
     players: "1-4",
@@ -516,6 +533,7 @@ export const GAMES: Game[] = [
   {
     id: "218148",
     title: "Middara: Unintentional Malum – Act 1",
+    slug: "middara-unintentional-malum-act-1",
     year: 2020,
     language: "English",
     players: "1–4",
@@ -544,6 +562,7 @@ export const GAMES: Game[] = [
   {
     id: "193042",
     title: "Black Orchestra",
+    slug: "black-orchestra",
     year: 2016,
     language: "English",
     players: "1–5",
@@ -571,6 +590,7 @@ export const GAMES: Game[] = [
   {
     id: "162886",
     title: "Spirit Island",
+    slug: "spirit-island",
     year: 2017,
     language: "English",
     players: "1–4",
@@ -604,6 +624,7 @@ export const GAMES: Game[] = [
   {
     id: "231257",
     title: "The Big Score",
+    slug: "the-big-score",
     year: 2018,
     language: "English",
     players: "1–6",
@@ -632,6 +653,7 @@ export const GAMES: Game[] = [
   {
     id: "278292",
     title: "Anachrony",
+    slug: "anachrony",
     year: 2017,
     language: "English",
     players: "1–4",
@@ -667,6 +689,7 @@ export const GAMES: Game[] = [
   {
     id: "268864",
     title: "Zombicide: 2nd Edition",
+    slug: "zombicide-2nd-edition",
     year: 2021,
     language: "English",
     players: "1–6",
@@ -701,6 +724,7 @@ export const GAMES: Game[] = [
   {
     id: "298753",
     title: "The Isofarian Guard",
+    slug: "the-isofarian-guard",
     year: 2024,
     language: "English",
     players: "1–2",
@@ -729,6 +753,7 @@ export const GAMES: Game[] = [
   {
     id: "233840",
     title: "Legends Untold: The Weeping Caves Novice Set",
+    slug: "legends-untold-the-weeping-caves-novice-set",
     year: 2018,
     language: "English",
     players: "1–4",
@@ -758,6 +783,7 @@ export const GAMES: Game[] = [
   {
     id: "233841",
     title: "Legends Untold: The Great Sewers Novice Set",
+    slug: "legends-untold-the-great-sewers-novice-set",
     year: 2018,
     language: "English",
     players: "1–4",
@@ -787,6 +813,7 @@ export const GAMES: Game[] = [
   {
     id: "154736",
     title: "Maquis",
+    slug: "maquis",
     year: 2013,
     language: "English",
     players: "1",
@@ -814,6 +841,7 @@ export const GAMES: Game[] = [
   {
     id: "247615",
     title: "Fire in the Library",
+    slug: "fire-in-the-library",
     year: 2019,
     language: "English",
     players: "1–6",
@@ -842,6 +870,7 @@ export const GAMES: Game[] = [
   {
     id: "245197",
     title: "Deadwood 1876",
+    slug: "deadwood-1876",
     year: 2018,
     language: "English",
     players: "2–9",
@@ -870,6 +899,7 @@ export const GAMES: Game[] = [
   {
     id: "218530",
     title: "Tortuga 1667",
+    slug: "tortuga-1667",
     year: 2017,
     language: "English",
     players: "2–9",
@@ -898,6 +928,7 @@ export const GAMES: Game[] = [
   {
     id: "175549",
     title: "Salem 1692",
+    slug: "salem-1692",
     year: 2017,
     language: "English",
     players: "4–12",
@@ -926,6 +957,7 @@ export const GAMES: Game[] = [
   {
     id: "231218",
     title: "Black Sonata + The Fair Youth Expansion",
+    slug: "black-sonata-the-fair-youth-expansion",
     year: 2017,
     language: "English",
     players: "1",
@@ -954,6 +986,7 @@ export const GAMES: Game[] = [
   {
     id: "172225",
     title: "Exploding Kittens + Hidden Compartment Box",
+    slug: "exploding-kittens-hidden-compartment-box",
     year: 2015,
     language: "English",
     players: "2–5",
@@ -982,6 +1015,7 @@ export const GAMES: Game[] = [
   {
     id: "228855",
     title: "Set a Watch: Deluxe Edition",
+    slug: "set-a-watch-deluxe-edition",
     year: 2019,
     language: "English",
     players: "1–4",
@@ -1009,6 +1043,7 @@ export const GAMES: Game[] = [
   {
     id: "241724",
     title: "Villagers",
+    slug: "villagers",
     year: 2020,
     language: "English",
     players: "1–5",
@@ -1037,6 +1072,7 @@ export const GAMES: Game[] = [
   {
     id: "277025",
     title: "Vampire: The Masquerade – CHAPTERS + Banu Hakim Expansion",
+    slug: "vampire-the-masquerade-chapters-banu-hakim-expansion",
     year: 2023,
     language: "English",
     players: "1–4",
@@ -1065,6 +1101,7 @@ export const GAMES: Game[] = [
   {
     id: "193621",
     title: "Joking Hazard",
+    slug: "joking-hazard",
     year: 2016,
     language: "English",
     players: "3–10",
@@ -1092,6 +1129,7 @@ export const GAMES: Game[] = [
   {
     id: "264647",
     title: "Age of Civilization",
+    slug: "age-of-civilization",
     year: 2019,
     language: "English",
     players: "1–4",
@@ -1118,6 +1156,7 @@ export const GAMES: Game[] = [
   {
     id: "163967",
     title: "Tiny Epic Galaxies",
+    slug: "tiny-epic-galaxies",
     year: 2015,
     language: "English",
     players: "1–5",
@@ -1145,6 +1184,7 @@ export const GAMES: Game[] = [
   {
     id: "315953",
     title: "Tiny Epic Dinosaurs",
+    slug: "tiny-epic-dinosaurs",
     year: 2020,
     language: "English",
     players: "1–4",
@@ -1179,6 +1219,7 @@ export const GAMES: Game[] = [
   {
     id: "266219",
     title: "Tiny Epic Zombies",
+    slug: "tiny-epic-zombies",
     year: 2018,
     language: "English",
     players: "1–5",
@@ -1208,6 +1249,7 @@ export const GAMES: Game[] = [
   {
     id: "313163",
     title: "Tiny Epic Mechs",
+    slug: "tiny-epic-mechs",
     year: 2019,
     language: "English",
     players: "1–4",
@@ -1237,6 +1279,7 @@ export const GAMES: Game[] = [
   {
     id: "268875",
     title: "Tiny Epic Tactics",
+    slug: "tiny-epic-tactics",
     year: 2019,
     language: "English",
     players: "1–4",
@@ -1265,6 +1308,7 @@ export const GAMES: Game[] = [
   {
     id: "155708",
     title: "Tiny Epic Defenders",
+    slug: "tiny-epic-defenders",
     year: 2015,
     language: "English",
     players: "1–4",
@@ -1293,6 +1337,7 @@ export const GAMES: Game[] = [
   {
     id: "228935",
     title: "Tiny Epic Defenders: The Dark War",
+    slug: "tiny-epic-defenders-the-dark-war",
     year: 2018,
     language: "English",
     players: "1–4",
@@ -1321,6 +1366,7 @@ export const GAMES: Game[] = [
   {
     id: "309430",
     title: "Tiny Epic Pirates",
+    slug: "tiny-epic-pirates",
     year: 2021,
     language: "English",
     players: "1–4",
@@ -1348,6 +1394,7 @@ export const GAMES: Game[] = [
   {
     id: "409978",
     title: "Tiny Epic Game of Thrones™",
+    slug: "tiny-epic-game-of-thrones",
     year: 2025,
     language: "English",
     players: "1–5",
@@ -1376,6 +1423,7 @@ export const GAMES: Game[] = [
   {
     id: "331787",
     title: "Tiny Epic Dungeons",
+    slug: "tiny-epic-dungeons",
     year: 2020,
     language: "English",
     players: "1–5",

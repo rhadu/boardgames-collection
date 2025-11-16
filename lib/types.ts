@@ -9,6 +9,7 @@ export enum GameCondition {
 export type Game = {
   id: string
   title: string
+  slug: string
   year?: number
   language: string
   players?: string
