@@ -58,15 +58,16 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
   return (
     <div
       className={cn(
-        "group relative flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border transition-all duration-200 cursor-pointer",
+        "group relative flex gap-4 sm:gap-5 p-4 sm:p-5 rounded-lg border transition-all duration-200 cursor-pointer",
         "hover:shadow-md hover:border-primary/30 hover:-translate-y-0.5",
         "bg-card",
         isSelected ? "ring-2 ring-primary ring-offset-2 shadow-md" : "border-muted-foreground/20"
       )}
       onClick={handleRowClick}
     >
-      {/* Thumbnail */}
-      <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 flex-shrink-0 rounded-md overflow-hidden border border-muted-foreground/20 bg-muted">
+      {/* Thumbnail Container - includes badge on mobile */}
+      <div className="flex flex-col gap-2 flex-shrink-0">
+        <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden border border-muted-foreground/20 bg-muted shadow-sm">
         {(() => {
           const imageSrc = game.images[0] || "/placeholder.svg"
           const isExternal = isExternalUrl(imageSrc)
@@ -87,7 +88,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
               alt={game.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
+              sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
             />
           )
         })()}
@@ -121,62 +122,67 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
             </Badge>
           )}
         </div>
+        </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 min-w-0 flex flex-col gap-3">
+      <div className="flex-1 min-w-0 flex flex-col gap-3 sm:gap-4">
         {/* Top: Title and Meta Info */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-start gap-2 mb-2">
-            <Link
-              href={gameUrl}
-              onClick={(e) => {
-                e.preventDefault()
-                sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
-                startViewTransition(() => {
-                  router.push(gameUrl)
-                })
-              }}
-              className="flex-1 min-w-0"
-            >
-              <h3 className="font-bold text-lg sm:text-xl mb-1.5 leading-tight text-balance group-hover:text-primary transition-colors line-clamp-2">
-                {game.title}
-              </h3>
-            </Link>
-            {game.isKickstarter && (
-              <Badge className="bg-kickstarter text-white text-xs sm:text-sm px-2 py-1 flex-shrink-0">
-                ⚡ {t("kickstarter")}
-              </Badge>
-            )}
+          {/* Title Row with Kickstarter Badge */}
+          <div className="mb-2.5">
+            <div className="flex items-start gap-2 mb-2">
+              <Link
+                href={gameUrl}
+                onClick={(e) => {
+                  e.preventDefault()
+                  sessionStorage.setItem("mainPageScrollPosition", window.scrollY.toString())
+                  startViewTransition(() => {
+                    router.push(gameUrl)
+                  })
+                }}
+                className="flex-1 min-w-0"
+              >
+                <h3 className="font-bold text-lg sm:text-xl leading-tight text-balance group-hover:text-primary transition-colors">
+                  {game.title}
+                </h3>
+              </Link>
+              {/* Kickstarter Badge - Only show on desktop */}
+              {game.isKickstarter && (
+                <Badge className="hidden sm:inline-flex bg-kickstarter text-white text-xs sm:text-sm px-2.5 py-1 font-medium whitespace-nowrap flex-shrink-0">
+                  ⚡ {t("kickstarter")}
+                </Badge>
+              )}
+            </div>
           </div>
           
-          {/* Meta Info Row */}
+          {/* Meta Info Row - Hide players/playtime on smallest mobile */}
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base text-muted-foreground mb-2.5">
             {game.year && <span>{game.year}</span>}
             {game.year && <span className="text-muted-foreground/50">•</span>}
             <span>{game.language}</span>
             {game.players && (
               <>
-                <span className="text-muted-foreground/50">•</span>
-                <span className="flex items-center gap-1.5">
+                <span className="text-muted-foreground/50 hidden sm:inline">•</span>
+                <span className="hidden sm:flex items-center gap-1">
                   <span>👥</span>
-                  <span className="font-medium">{game.players}</span>
+                  <span>{game.players}</span>
                 </span>
               </>
             )}
             {game.playtime && (
               <>
-                <span className="text-muted-foreground/50">•</span>
-                <span className="flex items-center gap-1.5">
+                <span className="text-muted-foreground/50 hidden sm:inline">•</span>
+                <span className="hidden sm:flex items-center gap-1">
                   <span>⏱️</span>
-                  <span className="font-medium">{game.playtime}</span>
+                  <span>{game.playtime}</span>
                 </span>
               </>
             )}
           </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mb-3">
+          {/* Tags - Hide on smallest mobile */}
+          <div className="hidden sm:flex flex-wrap gap-1.5 mb-3">
             {game.tags.slice(0, 3).map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs sm:text-sm font-medium px-2 py-1">
                 {tag}
@@ -190,29 +196,29 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
           </div>
         </div>
 
-        {/* Bottom: Price and Actions - Mobile optimized */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-2 border-t border-muted-foreground/20">
-          {/* Price */}
-          <div className="flex items-center justify-between sm:justify-start sm:gap-4">
-            <div>
-              <div className="text-2xl sm:text-3xl font-bold tracking-tight">
+        {/* Bottom: Price and Actions - Better mobile layout */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-3 border-t border-muted-foreground/20">
+          {/* Price and External Links */}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-shrink-0">
+              <div className="text-xl sm:text-2xl font-bold tracking-tight">
                 {game.price.toLocaleString()}{" "}
-                <span className="text-base sm:text-lg font-normal text-muted-foreground">{game.currency}</span>
+                <span className="text-sm sm:text-base font-normal text-muted-foreground">{game.currency}</span>
               </div>
             </div>
             
-            {/* External Links - Hidden on mobile, shown on desktop */}
-            <div className="hidden sm:flex items-center gap-2">
+            {/* External Links - Show on mobile too, but smaller */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
               {game.bggLink && (
                 <Button
                   variant="outline"
                   size="icon"
                   asChild
-                  className="h-9 w-9 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors"
+                  className="h-8 w-8 sm:h-9 sm:w-9 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors touch-manipulation"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <a href={game.bggLink} target="_blank" rel="noopener noreferrer" title={t("viewBGG")}>
-                    <BGGLogo className="w-4 h-4" />
+                    <BGGLogo className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                 </Button>
               )}
@@ -221,7 +227,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
                   variant="outline"
                   size="icon"
                   asChild
-                  className="h-9 w-9 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors"
+                  className="h-8 w-8 sm:h-9 sm:w-9 border-muted-foreground/30 hover:bg-muted hover:border-muted-foreground/50 transition-colors touch-manipulation"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <a
@@ -230,17 +236,17 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
                     rel="noopener noreferrer"
                     title={t("viewKickstarter")}
                   >
-                    <KickstarterLogo className="w-4 h-4" />
+                    <KickstarterLogo className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                 </Button>
               )}
             </div>
           </div>
           
-          {/* Inquire Button - Full width on mobile */}
+          {/* Inquire Button - Better mobile sizing */}
           <Button
             size="default"
-            className="w-full sm:w-auto shadow-sm hover:shadow-md transition-all duration-200 text-sm sm:text-base px-6 py-2.5 touch-manipulation"
+            className="w-full sm:w-auto min-w-[140px] shadow-sm hover:shadow-md transition-all duration-200 text-sm sm:text-base px-5 py-2.5 touch-manipulation"
             onClick={(e) => {
               e.stopPropagation()
               setContactDialogOpen(true)

@@ -980,7 +980,7 @@ export const GAMES: Game[] = [
 
   // Set a Watch Deluxe Edition
   {
-    id: "256676",
+    id: "228855",
     title: "Set a Watch: Deluxe Edition",
     year: 2019,
     language: "English",
@@ -992,11 +992,11 @@ export const GAMES: Game[] = [
     tags: ["Cooperative", "Puzzle", "Fantasy", "Dice", "Adventure"],
     isKickstarter: true,
     retailPrice: undefined,
-    bggLink: "https://boardgamegeek.com/boardgame/256676/set-a-watch",
+    bggLink: "https://boardgamegeek.com/boardgame/228855/set-a-watch",
     kickstarterLink:
       "https://www.kickstarter.com/projects/rockmanorgames/set-a-watch",
     images: [
-      "https://cf.geekdo-images.com/_tvx1FGPwLhmbazR7d7Mcw__imagepage/img/lnqOSl36oPb1upcxH9yYMem7TtI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic4224442.png",
+      "https://cf.geekdo-images.com/E_-9WT4_6-kABS796Q-piA__imagepagezoom/img/9NEQGDK_xq8pDXEw4SXVyNRp1BY=/fit-in/1200x900/filters:no_upscale():strip_icc()/pic4162054.png",
     ],
     highlights: [
       "Cooperative puzzle and dice management adventure",
