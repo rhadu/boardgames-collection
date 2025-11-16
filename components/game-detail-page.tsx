@@ -24,6 +24,7 @@ import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import KSHover from "@components/ui/icons/ks-hover"
 import { ContactDialog } from "@components/contact-dialog"
+import { getThumbnailUrl, isCloudinaryUrl } from "@/lib/cloudinary"
 
 type GameDetailPageProps = {
   game: Game
@@ -125,6 +126,7 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
                   onImageClick={handleImageClick}
                   objectFit="contain"
                   onIndexChange={handleCarouselIndexChange}
+                  imageSize="carousel"
                 />
               </div>
 
@@ -132,27 +134,42 @@ export function GameDetailPage({ game, language = "ro" }: GameDetailPageProps) {
               {images.length > 1 && (
                 <div className="mt-4">
                   <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1">
-                    {images.map((image, index) => (
-                      <button
-                        key={index}
-                        ref={(el) => {
-                          thumbnailRefs.current[index] = el
-                        }}
-                        onClick={() => handleThumbnailClick(index)}
-                        className={`relative h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors duration-200 bg-muted ${
-                          activeImageIndex === index
-                            ? "border-primary shadow-md"
-                            : "border-transparent hover:border-primary/60"
-                        }`}
-                        aria-label={`View image ${index + 1}`}
-                      >
-                        <img
-                          src={image}
-                          alt={`${game.title} - ${index + 1}`}
-                          className="h-full w-full object-cover"
-                        />
-                      </button>
-                    ))}
+                    {images.map((image, index) => {
+                      const thumbnailSrc = isCloudinaryUrl(image) 
+                        ? getThumbnailUrl(image) 
+                        : image
+                      return (
+                        <button
+                          key={index}
+                          ref={(el) => {
+                            thumbnailRefs.current[index] = el
+                          }}
+                          onClick={() => handleThumbnailClick(index)}
+                          className={`relative h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 rounded-md overflow-hidden border-2 transition-colors duration-200 bg-muted ${
+                            activeImageIndex === index
+                              ? "border-primary shadow-md"
+                              : "border-transparent hover:border-primary/60"
+                          }`}
+                          aria-label={`View image ${index + 1}`}
+                        >
+                          <img
+                            src={thumbnailSrc}
+                            alt={`${game.title} - ${index + 1}`}
+                            className="h-full w-full object-cover"
+                            loading="eager"
+                            onError={(e) => {
+                              console.error("Thumbnail failed to load:", thumbnailSrc, "Falling back to:", image)
+                              if (isCloudinaryUrl(image) && thumbnailSrc !== image) {
+                                (e.target as HTMLImageElement).src = image
+                              }
+                            }}
+                            onLoad={() => {
+                              // Thumbnail loaded successfully
+                            }}
+                          />
+                        </button>
+                      )
+                    })}
                   </div>
                 </div>
               )}

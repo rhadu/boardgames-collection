@@ -14,6 +14,7 @@ import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import { ContactDialog } from "@components/contact-dialog"
 import { slugify, cn } from "@/lib/utils"
 import Image from "next/image"
+import { getThumbnailUrl, isCloudinaryUrl } from "@/lib/cloudinary"
 
 // Check if image is an external URL
 const isExternalUrl = (src: string): boolean => {
@@ -71,24 +72,29 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
         {(() => {
           const imageSrc = game.images[0] || "/placeholder.svg"
           const isExternal = isExternalUrl(imageSrc)
+          const optimizedSrc = isCloudinaryUrl(imageSrc) 
+            ? getThumbnailUrl(imageSrc) 
+            : imageSrc
           
           if (isExternal) {
             return (
               <img
-                src={imageSrc}
+                src={optimizedSrc}
                 alt={game.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
               />
             )
           }
           
           return (
             <Image
-              src={imageSrc}
+              src={optimizedSrc}
               alt={game.title}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
+              loading="lazy"
             />
           )
         })()}
