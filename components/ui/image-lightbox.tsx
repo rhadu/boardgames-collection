@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { Button } from "./button"
 import { Dialog, DialogContent, DialogTitle } from "./dialog"
 import { cn } from "@/lib/utils"
+import { getLightboxUrl, isCloudinaryUrl } from "@/lib/cloudinary"
 
 type ImageLightboxProps = {
   images: string[]
@@ -52,10 +53,38 @@ export function ImageLightbox({
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+    const newIndex = emblaApi.selectedScrollSnap()
+    setSelectedIndex(newIndex)
     setCanScrollPrev(emblaApi.canScrollPrev())
     setCanScrollNext(emblaApi.canScrollNext())
   }, [emblaApi])
+
+  // Preload adjacent images when selectedIndex changes
+  useEffect(() => {
+    if (!open) return
+    
+    // Preload previous image
+    if (selectedIndex > 0) {
+      const prevIndex = selectedIndex - 1
+      const prevImg = document.querySelector(`img[data-lightbox-index="${prevIndex}"]`) as HTMLImageElement
+      if (prevImg && !prevImg.complete && prevImg.src) {
+        // Force load by creating a new image
+        const preloadImg = document.createElement('img')
+        preloadImg.src = prevImg.src
+      }
+    }
+    
+    // Preload next image
+    if (selectedIndex < images.length - 1) {
+      const nextIndex = selectedIndex + 1
+      const nextImg = document.querySelector(`img[data-lightbox-index="${nextIndex}"]`) as HTMLImageElement
+      if (nextImg && !nextImg.complete && nextImg.src) {
+        // Force load by creating a new image
+        const preloadImg = document.createElement('img')
+        preloadImg.src = nextImg.src
+      }
+    }
+  }, [selectedIndex, open, images.length])
 
   useEffect(() => {
     if (!emblaApi) return
@@ -190,19 +219,45 @@ export function ImageLightbox({
               {images.map((image, index) => {
                 const imageSrc = image || "/placeholder.svg"
                 const isExternal = isExternalUrl(imageSrc)
+                const isCloudinary = isCloudinaryUrl(imageSrc)
+                // Always use optimized Cloudinary URLs, or original for non-Cloudinary
+                const optimizedSrc = isCloudinary 
+                  ? getLightboxUrl(imageSrc) 
+                  : imageSrc
+
+                // For Cloudinary URLs or external URLs, use <img> tag
+                // For local Next.js images, use Next.js Image component
+                const useImgTag = isExternal || isCloudinary
+
+                // Load current image and adjacent images eagerly, others lazy
+                const isCurrent = index === selectedIndex
+                const isAdjacent = Math.abs(index - selectedIndex) === 1
+                const shouldLoadEagerly = isCurrent || isAdjacent
 
                 return (
                   <div
                     key={index}
                     className="flex-[0_0_100%] min-w-0 h-full flex items-center justify-center p-4 overflow-hidden"
                   >
-                    {isExternal ? (
+                    {useImgTag ? (
                       <div className="relative w-full h-full flex items-center justify-center">
                         <img
-                          src={imageSrc}
+                          src={optimizedSrc}
                           alt={`${alt} - Image ${index + 1}`}
                           className="max-w-full max-h-full w-auto h-auto object-contain"
-                          style={{ maxWidth: '100%', maxHeight: '100%' }}
+                          style={{ maxWidth: '100%', maxHeight: '100%', display: 'block' }}
+                          loading={shouldLoadEagerly ? "eager" : "lazy"}
+                          data-lightbox-index={index}
+                          onError={(e) => {
+                            // Fallback to original URL if optimized URL fails
+                            console.error("Lightbox image failed to load:", optimizedSrc, "Falling back to:", imageSrc)
+                            if (isCloudinary && optimizedSrc !== imageSrc) {
+                              (e.target as HTMLImageElement).src = imageSrc
+                            }
+                          }}
+                          onLoad={() => {
+                            // Image loaded successfully
+                          }}
                           onClick={(e) => {
                             // Prevent clicks on the image from closing the lightbox or navigating
                             e.stopPropagation()
@@ -219,12 +274,12 @@ export function ImageLightbox({
                         }}
                       >
                         <Image
-                          src={imageSrc}
+                          src={optimizedSrc}
                           alt={`${alt} - Image ${index + 1}`}
                           fill
                           className="object-contain"
                           sizes="90vw"
-                          unoptimized
+                          loading={index === initialIndex ? "eager" : "lazy"}
                         />
                       </div>
                     )}

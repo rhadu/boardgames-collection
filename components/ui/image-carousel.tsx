@@ -12,6 +12,7 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { ImageLightbox } from "./image-lightbox"
 import { cn } from "@/lib/utils"
+import { getOptimizedCloudinaryUrl, isCloudinaryUrl, type ImageSize } from "@/lib/cloudinary"
 
 export type ImageCarouselHandle = {
   scrollTo: (index: number) => void
@@ -24,6 +25,7 @@ type ImageCarouselProps = {
   onImageClick?: (index: number) => void
   objectFit?: "cover" | "contain"
   onIndexChange?: (index: number) => void
+  imageSize?: "thumbnail" | "carousel" | "lightbox" | "full"
 }
 
 // Check if image is an external URL
@@ -33,7 +35,7 @@ const isExternalUrl = (src: string): boolean => {
 
 export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>(
   function ImageCarousel(
-    { images, alt, className, onImageClick, objectFit = "cover", onIndexChange }: ImageCarouselProps,
+    { images, alt, className, onImageClick, objectFit = "cover", onIndexChange, imageSize = "carousel" }: ImageCarouselProps,
     ref,
   ) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" })
@@ -99,10 +101,43 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
     setLightboxIndex(selectedIndex)
   }, [selectedIndex])
 
+  // Preload adjacent images when selectedIndex changes
+  useEffect(() => {
+    // Preload previous image
+    if (selectedIndex > 0) {
+      const prevIndex = selectedIndex - 1
+      const prevImg = document.querySelector(`img[data-carousel-index="${prevIndex}"]`) as HTMLImageElement
+      if (prevImg && !prevImg.complete && prevImg.src) {
+        const preloadImg = document.createElement('img')
+        preloadImg.src = prevImg.src
+      }
+    }
+    
+    // Preload next image
+    if (selectedIndex < images.length - 1) {
+      const nextIndex = selectedIndex + 1
+      const nextImg = document.querySelector(`img[data-carousel-index="${nextIndex}"]`) as HTMLImageElement
+      if (nextImg && !nextImg.complete && nextImg.src) {
+        const preloadImg = document.createElement('img')
+        preloadImg.src = nextImg.src
+      }
+    }
+  }, [selectedIndex, images.length])
+
+  // Helper function to get optimized URL based on imageSize prop
+  const getOptimizedSrc = (src: string): string => {
+    if (!isCloudinaryUrl(src)) return src
+    return getOptimizedCloudinaryUrl(src, imageSize as ImageSize)
+  }
+
   // Don't render carousel if only one image
   if (images.length <= 1) {
     const imageSrc = images[0] || "/placeholder.svg"
     const isExternal = isExternalUrl(imageSrc)
+    const isCloudinary = isCloudinaryUrl(imageSrc)
+    const optimizedSrc = getOptimizedSrc(imageSrc)
+    // Always use <img> tag for external URLs or Cloudinary URLs
+    const useImgTag = isExternal || isCloudinary
     const imageFitClass = objectFit === "contain" ? "object-contain" : "object-cover"
     const containerClass = objectFit === "contain" 
       ? "relative overflow-hidden bg-muted cursor-pointer flex items-center justify-center h-full"
@@ -114,9 +149,9 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
           className={cn(containerClass, "w-full", className)}
           onClick={() => onImageClick ? onImageClick(0) : openLightbox(0)}
         >
-          {isExternal ? (
+          {useImgTag ? (
             <img
-              src={imageSrc}
+              src={optimizedSrc}
               alt={alt}
               className={cn(
                 objectFit === "contain" 
@@ -125,25 +160,44 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
                 imageFitClass,
                 "transition-transform duration-300 hover:scale-105"
               )}
+              loading="eager"
+              style={objectFit === "contain" 
+                ? { objectFit: "contain", display: "block", margin: "0 auto", width: "auto", height: "auto", maxWidth: "100%", maxHeight: "100%" }
+                : { objectFit: imageFitClass === "object-contain" ? "contain" : "cover", width: "100%", height: "100%" }
+              }
+              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                // Fallback to original URL if optimized URL fails
+                const target = e.target as HTMLImageElement
+                console.error("Image failed to load:", optimizedSrc, "Falling back to:", imageSrc)
+                if (isCloudinary && optimizedSrc !== imageSrc) {
+                  console.log("Trying fallback URL:", imageSrc)
+                  target.src = imageSrc
+                }
+              }}
+              onLoad={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                // Image loaded successfully
+              }}
             />
           ) : objectFit === "contain" ? (
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
-                src={imageSrc}
+                src={optimizedSrc}
                 alt={alt}
                 width={800}
                 height={800}
                 className={cn(imageFitClass, "transition-transform duration-300 hover:scale-105 max-w-full max-h-full")}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                loading="lazy"
               />
             </div>
           ) : (
             <Image
-              src={imageSrc}
+              src={optimizedSrc}
               alt={alt}
               fill
               className={cn(imageFitClass, "transition-transform duration-300 hover:scale-105")}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              loading="lazy"
             />
           )}
         </div>
@@ -173,6 +227,15 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
             {images.map((image, index) => {
               const imageSrc = image || "/placeholder.svg"
               const isExternal = isExternalUrl(imageSrc)
+              const isCloudinary = isCloudinaryUrl(imageSrc)
+              const optimizedSrc = getOptimizedSrc(imageSrc)
+              // Always use <img> tag for external URLs or Cloudinary URLs
+              const useImgTag = isExternal || isCloudinary
+              
+              // Load current image and adjacent images eagerly, others lazy
+              const isCurrent = index === selectedIndex
+              const isAdjacent = Math.abs(index - selectedIndex) === 1
+              const shouldLoadEagerly = isCurrent || isAdjacent || index === 0
               
               return (
                 <div key={index} className={cn("flex-[0_0_100%] min-w-0 w-full", objectFit === "contain" && "h-full")}>
@@ -180,9 +243,9 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
                     className={cn(slideContainerClass, objectFit === "contain" && "h-full w-full")}
                     onClick={() => onImageClick ? onImageClick(index) : openLightbox(index)}
                   >
-                    {isExternal ? (
+                    {useImgTag ? (
                       <img
-                        src={imageSrc}
+                        src={optimizedSrc}
                         alt={`${alt} - Image ${index + 1}`}
                         className={cn(
                           objectFit === "contain"
@@ -191,25 +254,45 @@ export const ImageCarousel = forwardRef<ImageCarouselHandle, ImageCarouselProps>
                           imageFitClass,
                           "transition-transform duration-500 group-hover:scale-110"
                         )}
+                        style={objectFit === "contain"
+                          ? { objectFit: "contain", display: "block", margin: "0 auto", width: "auto", height: "auto", maxWidth: "100%", maxHeight: "100%" }
+                          : { objectFit: imageFitClass === "object-contain" ? "contain" : "cover", width: "100%", height: "100%" }
+                        }
+                        loading={shouldLoadEagerly ? "eager" : "lazy"}
+                        onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                          // Fallback to original URL if optimized URL fails
+                          const target = e.target as HTMLImageElement
+                          console.error("Image failed to load:", optimizedSrc, "Falling back to:", imageSrc)
+                          if (isCloudinary && optimizedSrc !== imageSrc) {
+                            console.log("Trying fallback URL:", imageSrc)
+                            target.src = imageSrc
+                          }
+                        }}
+                        onLoad={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                          // Image loaded successfully
+                        }}
+                        data-carousel-index={index}
                       />
                     ) : objectFit === "contain" ? (
                       <div className="relative w-full h-full flex items-center justify-center">
                         <Image
-                          src={imageSrc}
+                          src={optimizedSrc}
                           alt={`${alt} - Image ${index + 1}`}
                           width={800}
                           height={800}
                           className={cn(imageFitClass, "transition-transform duration-500 group-hover:scale-110 max-w-full max-h-full")}
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          loading={index === 0 ? "eager" : "lazy"}
                         />
                       </div>
                     ) : (
                       <Image
-                        src={imageSrc}
+                        src={optimizedSrc}
                         alt={`${alt} - Image ${index + 1}`}
                         fill
                         className={cn(imageFitClass, "transition-transform duration-500 group-hover:scale-110")}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        loading={index === 0 ? "eager" : "lazy"}
                       />
                     )}
                   </div>

@@ -93,6 +93,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
           alt={game.title}
           className="rounded-t-xl"
           onImageClick={handleImageClick}
+          imageSize="thumbnail"
         />
 
         {/* Selection Checkbox */}

@@ -25,6 +25,7 @@ import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import KSHover from "@components/ui/icons/ks-hover"
 import { ContactDialog } from "@components/contact-dialog"
+import { getThumbnailUrl, isCloudinaryUrl } from "@/lib/cloudinary"
 
 type GameDetailViewProps = {
   game: Game | null
@@ -106,19 +107,25 @@ export function GameDetailView({
               {/* Thumbnail Gallery - Hidden on mobile, visible on lg+ */}
               {images.length > 1 && (
                 <div className="hidden lg:grid grid-cols-4 gap-2 mt-4">
-                  {images.slice(0, 4).map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleImageClick(index)}
-                      className="relative aspect-square rounded-md overflow-hidden border-2 border-transparent hover:border-primary transition-colors bg-muted"
-                    >
-                      <img
-                        src={image}
-                        alt={`${game.title} - ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
+                  {images.slice(0, 4).map((image, index) => {
+                    const thumbnailSrc = isCloudinaryUrl(image) 
+                      ? getThumbnailUrl(image) 
+                      : image
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => handleImageClick(index)}
+                        className="relative aspect-square rounded-md overflow-hidden border-2 border-transparent hover:border-primary transition-colors bg-muted"
+                      >
+                        <img
+                          src={thumbnailSrc}
+                          alt={`${game.title} - ${index + 1}`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </button>
+                    )
+                  })}
                   {images.length > 4 && (
                     <button
                       onClick={() => handleImageClick(4)}
