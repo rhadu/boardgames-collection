@@ -70,19 +70,19 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
       <div className="flex flex-col gap-2 flex-shrink-0">
         <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden border border-muted-foreground/20 bg-muted shadow-sm">
         {(() => {
-          const imageSrc = game.images[0] || "/placeholder.svg"
-          const isExternal = isExternalUrl(imageSrc)
-          const optimizedSrc = isCloudinaryUrl(imageSrc) 
-            ? getThumbnailUrl(imageSrc) 
-            : imageSrc
-          
+          const primaryImage = game.images[0] || "/placeholder.svg"
+          const isExternal = isExternalUrl(primaryImage)
+          const optimizedSrc = isCloudinaryUrl(primaryImage)
+            ? getThumbnailUrl(primaryImage)
+            : primaryImage
+
           if (isExternal) {
             return (
               <img
                 src={optimizedSrc}
                 alt={game.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
+                loading="eager"
               />
             )
           }
@@ -94,7 +94,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
-              loading="lazy"
+              loading="eager"
             />
           )
         })()}
