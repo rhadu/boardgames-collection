@@ -32,6 +32,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
   const router = useRouter()
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+  const [imageError, setImageError] = useState(false)
 
   const gameSlug = slugify(game.title)
   const baseGamePath = `/games/${gameSlug}`
@@ -72,10 +73,16 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
         {(() => {
           const imageSrc = game.images[0] || "/placeholder.svg"
           const isExternal = isExternalUrl(imageSrc)
-          const optimizedSrc = isCloudinaryUrl(imageSrc) 
-            ? getThumbnailUrl(imageSrc) 
+          const optimizedSrc = isCloudinaryUrl(imageSrc) && !imageError
+            ? getThumbnailUrl(imageSrc)
             : imageSrc
-          
+
+          const handleImageError = () => {
+            if (!imageError) {
+              setImageError(true)
+            }
+          }
+
           if (isExternal) {
             return (
               <img
@@ -83,10 +90,11 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
                 alt={game.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
+                onError={handleImageError}
               />
             )
           }
-          
+
           return (
             <Image
               src={optimizedSrc}
@@ -95,6 +103,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
               loading="lazy"
+              onError={handleImageError}
             />
           )
         })()}
