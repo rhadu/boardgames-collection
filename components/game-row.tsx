@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { startViewTransition } from "@components/view-transition"
@@ -32,7 +32,18 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
   const router = useRouter()
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(language, key)
   const [contactDialogOpen, setContactDialogOpen] = useState(false)
+  const [imageIndex, setImageIndex] = useState(() => {
+    // Prefer a Cloudinary/custom image for reliability; otherwise use the first image
+    const preferredIndex = game.images.findIndex((src) => isCloudinaryUrl(src))
+    return preferredIndex >= 0 ? preferredIndex : 0
+  })
   const [imageError, setImageError] = useState(false)
+
+  useEffect(() => {
+    const preferredIndex = game.images.findIndex((src) => isCloudinaryUrl(src))
+    setImageIndex(preferredIndex >= 0 ? preferredIndex : 0)
+    setImageError(false)
+  }, [game.id, game.images])
 
   const gameSlug = slugify(game.title)
   const baseGamePath = `/games/${gameSlug}`
@@ -71,16 +82,22 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
       <div className="flex flex-col gap-2 flex-shrink-0">
         <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden border border-muted-foreground/20 bg-muted shadow-sm">
         {(() => {
-          const imageSrc = game.images[0] || "/placeholder.svg"
+          const fallbackImages = game.images.length ? game.images : ["/placeholder.svg"]
+          const imageSrc = fallbackImages[imageIndex] || "/placeholder.svg"
           const isExternal = isExternalUrl(imageSrc)
           const optimizedSrc = isCloudinaryUrl(imageSrc) && !imageError
             ? getThumbnailUrl(imageSrc)
             : imageSrc
 
           const handleImageError = () => {
-            if (!imageError) {
-              setImageError(true)
+            // Try the next available image before falling back to the original URL
+            if (imageIndex < fallbackImages.length - 1) {
+              setImageIndex((prev) => prev + 1)
+              setImageError(false)
+              return
             }
+
+            if (!imageError) setImageError(true)
           }
 
           if (isExternal) {
