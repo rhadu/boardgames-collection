@@ -23,8 +23,8 @@ export type Game = {
   bggLink?: string
   kickstarterLink?: string
   images: string[] // Array of images: first is official, rest are custom
-  highlights: string[]
-  notes?: string
+  highlights: string[] | { ro?: string[]; en?: string[] }
+  notes?: string | { ro?: string; en?: string }
 }
 
 // Helper function to map GameCondition enum to translation keys
@@ -39,4 +39,63 @@ export const getConditionTranslationKey = (
     [GameCondition.GOOD]: "good",
   }
   return translationMap[condition]
+}
+
+// Helper function to get localized highlights
+export const getLocalizedHighlights = (
+  highlights: string[] | { ro?: string[]; en?: string[] },
+  language: "ro" | "en",
+): string[] => {
+  // Backward compatibility: if it's a string array, return it as is
+  if (Array.isArray(highlights)) {
+    return highlights
+  }
+  
+  // Try to get the language-specific version
+  const langHighlights = highlights[language]
+  if (langHighlights) {
+    return langHighlights
+  }
+  
+  // Fallback to the other language if available
+  const fallbackLang = language === "ro" ? "en" : "ro"
+  const fallbackHighlights = highlights[fallbackLang]
+  if (fallbackHighlights) {
+    return fallbackHighlights
+  }
+  
+  // If neither is available, return empty array
+  return []
+}
+
+// Helper function to get localized notes
+export const getLocalizedNotes = (
+  notes: string | { ro?: string; en?: string } | undefined,
+  language: "ro" | "en",
+): string | undefined => {
+  // Backward compatibility: if it's a string, return it as is
+  if (typeof notes === "string") {
+    return notes
+  }
+  
+  // If it's undefined, return undefined
+  if (!notes) {
+    return undefined
+  }
+  
+  // Try to get the language-specific version
+  const langNotes = notes[language]
+  if (langNotes) {
+    return langNotes
+  }
+  
+  // Fallback to the other language if available
+  const fallbackLang = language === "ro" ? "en" : "ro"
+  const fallbackNotes = notes[fallbackLang]
+  if (fallbackNotes) {
+    return fallbackNotes
+  }
+  
+  // If neither is available, return undefined
+  return undefined
 }

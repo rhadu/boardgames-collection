@@ -68,21 +68,31 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
     >
       {/* Thumbnail Container - includes badge on mobile */}
       <div className="flex flex-col gap-2 flex-shrink-0">
-        <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-lg overflow-hidden border border-muted-foreground/20 bg-muted shadow-sm">
+        <div className="relative w-36 h-36 rounded-lg overflow-hidden border border-muted-foreground/20 bg-muted shadow-sm">
         {(() => {
           const imageSrc = game.images[0] || "/placeholder.svg"
           const isExternal = isExternalUrl(imageSrc)
-          const optimizedSrc = isCloudinaryUrl(imageSrc) 
+          const isCloudinary = isCloudinaryUrl(imageSrc)
+          const optimizedSrc = isCloudinary 
             ? getThumbnailUrl(imageSrc) 
             : imageSrc
           
-          if (isExternal) {
+          // Always use <img> tag for external URLs or Cloudinary URLs
+          const useImgTag = isExternal || isCloudinary
+          
+          if (useImgTag) {
             return (
               <img
                 src={optimizedSrc}
                 alt={game.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
+                loading="eager"
+                onError={(e) => {
+                  // Fallback to original URL if optimized URL fails
+                  if (isCloudinary && optimizedSrc !== imageSrc) {
+                    (e.target as HTMLImageElement).src = imageSrc
+                  }
+                }}
               />
             )
           }
@@ -94,7 +104,7 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
-              loading="lazy"
+              loading="eager"
             />
           )
         })()}
@@ -118,12 +128,12 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
         {/* Condition Badge */}
         <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 z-10">
           {game.condition === GameCondition.FACTORY_SEALED && (
-            <Badge className="bg-sealed text-white shadow-md backdrop-blur-sm border-0 px-2 py-1 text-[11px] sm:text-xs">
+            <Badge className="bg-primary text-primary-foreground shadow-md backdrop-blur-sm border-0 px-2 py-1 text-[10px]">
               🎁 {t("sealed")}
             </Badge>
           )}
           {game.condition === GameCondition.OPENED_UNPLAYED && (
-            <Badge className="bg-primary text-primary-foreground shadow-md backdrop-blur-sm border-0 px-2 py-1 text-[11px] sm:text-xs">
+            <Badge className="bg-primary text-primary-foreground shadow-md backdrop-blur-sm border-0 px-2 py-1 text-[10px]">
               ✨ {t("unplayed")}
             </Badge>
           )}
@@ -153,17 +163,11 @@ export function GameRow({ game, language, isSelected, onToggleSelection }: GameR
                   {game.title}
                 </h3>
               </Link>
-              {/* Kickstarter Badge - Only show on desktop */}
-              {game.isKickstarter && (
-                <Badge className="hidden sm:inline-flex bg-kickstarter text-white text-xs sm:text-sm px-2.5 py-1 font-medium whitespace-nowrap flex-shrink-0">
-                  ⚡ {t("kickstarter")}
-                </Badge>
-              )}
             </div>
           </div>
           
           {/* Meta Info Row - Hide players/playtime on smallest mobile */}
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base text-muted-foreground mb-2.5">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm sm:text-base text-muted-foreground sm:mb-2.5">
             {game.year && <span>{game.year}</span>}
             {game.year && <span className="text-muted-foreground/50">•</span>}
             <span>{game.language}</span>
