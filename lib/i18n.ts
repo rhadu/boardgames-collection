@@ -110,6 +110,12 @@ export const translations = {
     priceLabel: "Preț",
     viewGrid: "Vizualizare grilă",
     viewList: "Vizualizare listă",
+
+    // Metadata
+    siteTitle: "Colecție Premium de Jocuri de Masă",
+    siteDescription: "Colecție curată de jocuri de masă premium din casă fără fumători. Multe jocuri Kickstarter, păstrate vertical în condiție impecabilă. Cumpărați individual sau luați întreaga colecție la 65% din valoarea de retail.",
+    gameDetailTitle: "{{title}} - Colecție Premium de Jocuri de Masă",
+    gameDetailDescription: "{{title}} - {{condition}} - {{price}} RON. {{description}}",
   },
   en: {
     // Hero Section
@@ -220,6 +226,12 @@ export const translations = {
     priceLabel: "Price",
     viewGrid: "Grid view",
     viewList: "List view",
+
+    // Metadata
+    siteTitle: "Premium Board Game Collection",
+    siteDescription: "Curated premium board game collection from smoke-free home. Many Kickstarter games, stored vertically in pristine condition. Buy individually or take the entire collection at 65% of retail value.",
+    gameDetailTitle: "{{title}} - Premium Board Game Collection",
+    gameDetailDescription: "{{title}} - {{condition}} - {{price}} RON. {{description}}",
   },
 }
 

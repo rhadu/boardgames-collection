@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect, useRef } from "react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { type Language } from "@/lib/i18n"
+import { type Language, translations } from "@/lib/i18n"
 import { GAMES } from "@/lib/data"
 import { type Game, GameCondition } from "@/lib/types"
 import { HeroSection } from "@components/sections/hero-section"
@@ -100,8 +100,21 @@ export default function BoardGameCollection() {
   useEffect(() => {
     const langParam = searchParams.get("lang")
     const normalizedLang: Language = langParam === "en" ? "en" : "ro"
-    setLanguage((prev) => (prev === normalizedLang ? prev : normalizedLang))
+    setLanguage((prev) => (prev !== normalizedLang ? normalizedLang : prev))
   }, [searchParams])
+
+  // Update document title and lang attribute based on locale
+  useEffect(() => {
+    const t = translations[language]
+    document.title = t.siteTitle
+    document.documentElement.lang = language
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute("content", t.siteDescription)
+    }
+  }, [language])
 
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang)
