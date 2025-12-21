@@ -11,8 +11,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–4",
     playtime: "30-90",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.FACTORY_SEALED,
+    price: 800,
     currency: "RON",
     tags: ["Cooperative", "Campaign", "Miniatures", "Dark fantasy"],
     isKickstarter: true,
@@ -26,11 +26,20 @@ export const GAMES: Game[] = [
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299681/boardgames/oathsworn-into-the-deepwood-base-game-secret-box/20251109_132829_cslc7o.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299684/boardgames/oathsworn-into-the-deepwood-base-game-secret-box/20251109_132833_lmo2jl.jpg",
     ],
-    highlights: [
-      "High-budget campaign game with rich components and story",
-      "Secret Box version adds collector extras",
-    ],
-    notes: "",
+    highlights: {
+      en: [
+        "High-budget campaign game with rich components and story",
+        "Secret Box version adds collector extras",
+      ],
+      ro: [
+        "Joc de campanie cu buget mare, componente bogate și poveste",
+        "Versiunea Secret Box adaugă extra-uri pentru colecționari",
+      ],
+    },
+    notes: {
+      en: "",
+      ro: "",
+    },
   },
   // This War of Mine: The Board Game
   {
@@ -41,9 +50,9 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–6", // 1 to 6 players. :contentReference[oaicite:2]{index=2}
     playtime: "45–120 minutes", // advertised time. :contentReference[oaicite:3]{index=3}
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0, // your selling price (fill in)
-    currency: "EUR", // set your currency
+    condition: GameCondition.VERY_GOOD,
+    price: 200, // your selling price (fill in)
+    currency: "RON", // set your currency
     tags: ["Cooperative", "Survival", "Story-driven", "Modern war", "Campaign"], // based on theme & mechanics
     isKickstarter: true, // this game had a Kickstarter launch. :contentReference[oaicite:4]{index=4}
     retailPrice: 69.99, // MSRP $69.99 USD. :contentReference[oaicite:5]{index=5}
@@ -66,15 +75,15 @@ export const GAMES: Game[] = [
   // Nemesis
   {
     id: "167355", // BGG ID
-    title: "Nemesis",
+    title: "Nemesis 2.0",
     slug: "nemesis",
-    year: 2018, // published 2018. :contentReference[oaicite:8]{index=8}
+    year: 2020, // published 2018. :contentReference[oaicite:8]{index=8}
     language: "English",
     players: "1–5", // 1 to 5 players. :contentReference[oaicite:9]{index=9}
     playtime: "90–180 minutes", // typical time. :contentReference[oaicite:10]{index=10}
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
-    currency: "EUR",
+    condition: GameCondition.VERY_GOOD,
+    price: 350,
+    currency: "RON",
     tags: [
       "Semi-cooperative",
       "Sci-fi horror",
@@ -110,8 +119,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–5",
     playtime: "60–120 minutes",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 250, // your selling price (fill in)
+    condition: GameCondition.VERY_GOOD,
+    price: 400, // your selling price (fill in)
     currency: "RON",
     tags: ["Cooperative", "Fantasy", "App-driven", "Campaign", "Middle-earth"],
     isKickstarter: false,
@@ -135,15 +144,15 @@ export const GAMES: Game[] = [
   // Aeon Trespass: Odyssey
   {
     id: "1121",
-    title: "Aeon Trespass: Odyssey",
+    title: "Aeon Trespass: Odyssey - Core Game",
     slug: "aeon-trespass-odyssey",
     year: 2019,
     language: "English",
     players: "1-4",
     playtime: "200+ hours (campaign)",
     condition: GameCondition.FACTORY_SEALED,
-    price: 0,
-    currency: "N/A",
+    price: 1200,
+    currency: "RON",
     tags: [
       "Cooperative",
       "Campaign",
@@ -171,7 +180,7 @@ export const GAMES: Game[] = [
       "Multiple successful Kickstarter campaigns, including a 'Second Printing Plus All-New Content' campaign that raised €2,865,907.",
     ],
     notes:
-      "Considered a very heavy and complicated game, often compared to Kingdom Death Monster. Designed for multi-session play with extensive campaign progression and story. Features multiple cycles and expansions, with the core game offering three cycles.",
+      "Considered a very heavy and complicated game, often compared to Kingdom Death Monster. Designed for multi-session play with extensive campaign progression and story. Features multiple cycles and expansions, with the core game offering three cycles. ",
   },
 
   // Catan (aka Settlers of Catan)
@@ -179,12 +188,12 @@ export const GAMES: Game[] = [
     id: "13",
     title: "Catan",
     slug: "catan",
-    year: 1995,
+    year: 2018,
     language: "English",
     players: "3–4",
     playtime: "60–120",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 50,
     currency: "RON",
     tags: [
       "Trading",
@@ -218,8 +227,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–5",
     playtime: "120",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.FACTORY_SEALED,
+    price: 400,
     currency: "RON",
     tags: [
       "Engine building",
@@ -256,7 +265,7 @@ export const GAMES: Game[] = [
     players: "1–6",
     playtime: "45–90",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 400,
     currency: "RON",
     tags: ["Cooperative", "Survival", "Scenario", "Modular map", "Campaign"],
     isKickstarter: true,
@@ -267,11 +276,11 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/mikegnade/maximum-apocalypse-legendary-edition-with-miniatur",
     images: [
       "https://cf.geekdo-images.com/VbKia1bW_oUcSfrX4HeGKA__imagepage/img/to9beka9cPwga2gBrBFufVrvDPE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5152233.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299692/boardgames/maximum-apocalypse-legendary-edition/20251101_165929_qeickr.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299638/boardgames/maximum-apocalypse-legendary-edition/20251101_170050_yghqfo.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299669/boardgames/maximum-apocalypse-legendary-edition/20251101_170842_akvfnq.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299675/boardgames/maximum-apocalypse-legendary-edition/20251101_170824_apsfab.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299683/boardgames/maximum-apocalypse-legendary-edition/20251101_170820_xaj34h.jpg",
-      "https://res.cloudinary.com/vfbaby/image/upload/v1763299692/boardgames/maximum-apocalypse-legendary-edition/20251101_165929_qeickr.jpg",
     ],
     highlights: [
       "Co-op roguelike missions in multiple apocalypses",
@@ -289,8 +298,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–3",
     playtime: "120–150",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.FACTORY_SEALED,
+    price: 420,
     currency: "RON",
     tags: ["App-driven", "Story-driven", "Adventure", "Fantasy", "Competitive"],
     isKickstarter: true,
@@ -302,12 +311,24 @@ export const GAMES: Game[] = [
       "https://cf.geekdo-images.com/oaD1ZQ3yGj6lacLdtqgdnQ__imagepage/img/fk6BConHqwDOSHeKbOavfrFs7Fo=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5558118.png",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299655/boardgames/destinies/20251101_170248_jyj22b.jpg",
     ],
-    highlights: [
-      "App-assisted narrative quests in a dark medieval world",
-      "No GM needed; competitive race to fulfill destinies",
-      "Multiple scenarios with meaningful choices",
-    ],
-    notes: "10, sigilat.",
+    highlights: {
+      en: [
+        "App-assisted narrative quests in a dark medieval world",
+        "No GM needed; competitive race to fulfill destinies",
+        "Multiple scenarios with meaningful choices",
+        "King Pledge includes Core Box, Sea of Sand expansion, and Myth and Folklore expansion",
+      ],
+      ro: [
+        "Questuri narative asistate de aplicație într-o lume medievală întunecată",
+        "Fără nevoie de GM; cursă competitivă pentru îndeplinirea destinelor",
+        "Multiple scenarii cu alegeri semnificative",
+        "King Pledge include Core Box, expansiunea Sea of Sand și expansiunea Myth and Folklore",
+      ],
+    },
+    notes: {
+      en: "Factory sealed. King Pledge from Kickstarter.",
+      ro: "Sigilat. King Pledge de pe Kickstarter.",
+    },
   },
   // Sleeping Gods (+ Tides of Ruin expansion)
   {
@@ -319,7 +340,7 @@ export const GAMES: Game[] = [
     players: "1–4",
     playtime: "60–120",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 500,
     currency: "RON",
     tags: [
       "Cooperative",
@@ -338,12 +359,22 @@ export const GAMES: Game[] = [
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299685/boardgames/sleeping-gods-tides-of-ruin/20251101_170445_by0uid.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299694/boardgames/sleeping-gods-tides-of-ruin/20251101_170533_sir93x.jpg",
     ],
-    highlights: [
-      "Massive open-world campaign with branching stories",
-      "Seamless save system for multi-session play",
-      "Tides of Ruin adds a second atlas & more content",
-    ],
-    notes: "9.5, desigilat dar nejucat. Include expansion Tides of Ruin.",
+    highlights: {
+      en: [
+        "Massive open-world campaign with branching stories",
+        "Seamless save system for multi-session play",
+        "Tides of Ruin adds a second atlas & more content",
+      ],
+      ro: [
+        "Campanie masivă în lume deschisă cu povești ramificate",
+        "Sistem de salvare fără întreruperi pentru joc în mai multe sesiuni",
+        "Tides of Ruin adaugă un al doilea atlas și mai mult conținut",
+      ],
+    },
+    notes: {
+      en: "Opened but never played. Tides of Ruin expansion from Kickstarter.",
+      ro: "Deschis dar niciodată jucat. Expansiunea Tides of Ruin de pe Kickstarter.",
+    },
   },
   // Altar Quest and expansions
   {
@@ -355,7 +386,7 @@ export const GAMES: Game[] = [
     players: "1–4",
     playtime: "90–180",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 850,
     currency: "RON",
     tags: ["Dungeon crawl", "Card driven", "Modular", "Campaign"],
     isKickstarter: true,
@@ -365,21 +396,35 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/blacklistgames/altar-quest",
     images: [
       "https://cf.geekdo-images.com/lFwe59N5i-m2lhGA48vizw__imagepage/img/6gVyN2cktEJoT0CfTVtRYwp4Xu0=/fit-in/900x600/filters:no_upscale():strip_icc()/pic5871397.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299665/boardgames/altar-quest-and-expansions/20251101_171329_r1htd6.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299625/boardgames/altar-quest-and-expansions/20251101_171246_v2gpiu.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/altar-quest-and-expansions/20251109_131746_ftl0m6.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299628/boardgames/altar-quest-and-expansions/20251101_171354_sm9baf.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299628/boardgames/altar-quest-and-expansions/20251101_171352_gyjc9a.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299632/boardgames/altar-quest-and-expansions/20251101_171256_torbu7.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299663/boardgames/altar-quest-and-expansions/20251101_171236_apbhmo.jpg",
-      "https://res.cloudinary.com/vfbaby/image/upload/v1763299665/boardgames/altar-quest-and-expansions/20251101_171329_r1htd6.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299687/boardgames/altar-quest-and-expansions/20251101_171442_v5ohye.jpg",
     ],
-    highlights: [
-      "Modern card-driven dungeon crawl",
-      "Modular scenarios, high replayability",
-      "Includes expansions for more content",
-    ],
-    notes: "",
+    highlights: {
+      en: [
+        "Modern card-driven dungeon crawl",
+        "Modular scenarios, high replayability",
+        "Kickstarter exclusive 'Call of the Lunarin' expansion by Isaac Childres (Gloomhaven creator)",
+        "Includes The First Four Hero Pack and Ruins of Arkenspire Campaign Box",
+        "All unlocked stretch goals included",
+      ],
+      ro: [
+        "Dungeon crawl modern bazat pe cărți",
+        "Scenarii modulare, rejucabilitate ridicată",
+        "Expansiune exclusivă Kickstarter 'Call of the Lunarin' de Isaac Childres (creatorul Gloomhaven)",
+        "Include The First Four Hero Pack și Ruins of Arkenspire Campaign Box",
+        "Toate stretch goal-urile deblocate incluse",
+      ],
+    },
+    notes: {
+      en: "",
+      ro: "",
+    },
   },
   // Tainted Grail + Age of Legends & Last Knight campaigns + Echoes of the Past
   {
@@ -392,7 +437,7 @@ export const GAMES: Game[] = [
     players: "1–4",
     playtime: "120–180",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 600,
     currency: "RON",
     tags: [
       "Narrative",
@@ -415,24 +460,38 @@ export const GAMES: Game[] = [
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299688/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_171558_e1iugw.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299690/boardgames/tainted-grail-age-of-legends-last-knight-campaigns-echoes-of-the-past/20251101_172330_yknz0v.jpg",
     ],
-    highlights: [
-      "Epic cooperative campaign in a dark fantasy Arthurian world",
-      "Multiple story campaigns included",
-      "Strong narrative and high immersion",
-    ],
-    notes: "",
+    highlights: {
+      en: [
+        "Epic cooperative campaign in a dark fantasy Arthurian world",
+        "Multiple story campaigns included",
+        "Strong narrative and high immersion",
+        "Kickstarter edition with all unlocked stretch goals",
+        "Echoes of the Past expansion included",
+      ],
+      ro: [
+        "Campanie cooperativă epică într-o lume arthuriană de fantezie întunecată",
+        "Mai multe campanii de poveste incluse",
+        "Narațiune puternică și imersiune ridicată",
+        "Ediție Kickstarter cu toate stretch goal-urile deblocate",
+        "Expansiunea Echoes of the Past inclusă",
+      ],
+    },
+    notes: {
+      en: "",
+      ro: "",
+    },
   },
   // Etherfields (sigilat) + extensie sigilată
   {
     id: "280794",
-    title: "Etherfields + extensie sigilată",
+    title: "Etherfields + expansions",
     slug: "etherfields-extensie-sigilat",
     year: 2020,
     language: "English",
     players: "1–4",
     playtime: "90–150",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.FACTORY_SEALED,
+    price: 700,
     currency: "RON",
     tags: ["Narrative", "Dream world", "Exploration", "Cooperative"],
     isKickstarter: true,
@@ -442,10 +501,10 @@ export const GAMES: Game[] = [
       "https://www.kickstarter.com/projects/awakenrealms/etherfields-board-game",
     images: [
       "https://cf.geekdo-images.com/K1yVmbbWCsQuiWk-7x-V-Q__imagepage/img/m1-zglSNfjIgV6pqXAhb9ThePEI=/fit-in/900x600/filters:no_upscale():strip_icc()/pic7455627.png",
+      "https://res.cloudinary.com/vfbaby/image/upload/v1763299679/boardgames/etherfields-extensie-sigilat/20251101_172112_r3qnqb.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299626/boardgames/etherfields-extensie-sigilat/20251101_172255_y1lfdt.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299670/boardgames/etherfields-extensie-sigilat/20251101_172243_imeamv.jpg",
       "https://res.cloudinary.com/vfbaby/image/upload/v1763299671/boardgames/etherfields-extensie-sigilat/20251101_172240_anv86l.jpg",
-      "https://res.cloudinary.com/vfbaby/image/upload/v1763299679/boardgames/etherfields-extensie-sigilat/20251101_172112_r3qnqb.jpg",
     ],
     highlights: [
       "Narrative-heavy “dream crawler” cooperative adventure",
@@ -463,8 +522,8 @@ export const GAMES: Game[] = [
     language: "Romanian",
     players: "2-8",
     playtime: "45-60 minutes",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 50,
     currency: "RON",
     tags: ["Party", "Adult", "Couples", "Social"],
     isKickstarter: false,
@@ -491,7 +550,7 @@ export const GAMES: Game[] = [
     players: "2-4",
     playtime: "90+",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 1000,
     currency: "RON",
     tags: ["Deck-building", "Fantasy", "Combat", "Strategy", "Miniatures"],
     isKickstarter: true,
@@ -530,8 +589,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1-4",
     playtime: "1000+ minutes (campaign)",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 200,
     currency: "RON",
     tags: [
       "Exploration",
@@ -565,8 +624,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1-4",
     playtime: "60-240 minutes",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 300,
     currency: "RON",
     tags: [
       "Strategy",
@@ -600,7 +659,7 @@ export const GAMES: Game[] = [
     players: "1–4",
     playtime: "90–240",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 1000,
     currency: "RON",
     tags: ["Dungeon crawl", "Campaign", "Cooperative", "Narrative", "Fantasy"],
     isKickstarter: true,
@@ -631,8 +690,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–5",
     playtime: "90–120",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 180,
     currency: "RON",
     tags: ["Cooperative", "Historical", "Strategy", "WWII", "Deduction"],
     isKickstarter: false,
@@ -661,8 +720,8 @@ export const GAMES: Game[] = [
     language: "English",
     players: "1–4",
     playtime: "90–120",
-    condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    condition: GameCondition.VERY_GOOD,
+    price: 280,
     currency: "RON",
     tags: [
       "Cooperative",
@@ -698,7 +757,7 @@ export const GAMES: Game[] = [
     players: "1–6",
     playtime: "30–60",
     condition: GameCondition.OPENED_UNPLAYED,
-    price: 0,
+    price: 230,
     currency: "RON",
     tags: ["Heist", "Drafting", "Push your luck", "Party", "Simultaneous play"],
     isKickstarter: true,
@@ -722,14 +781,14 @@ export const GAMES: Game[] = [
   // Anachrony
   {
     id: "278292",
-    title: "Anachrony",
+    title: "Anachrony - Infinity Box",
     slug: "anachrony",
-    year: 2017,
+    year: 2017, 
     language: "English",
     players: "1–4",
     playtime: "30–120",
     condition: GameCondition.FACTORY_SEALED,
-    price: 0,
+    price: 1000,
     currency: "RON",
     tags: [
       "Worker placement",

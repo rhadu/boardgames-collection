@@ -20,7 +20,7 @@ import {
   Tag,
 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
-import { type Game, GameCondition, getConditionTranslationKey } from "@/lib/types"
+import { type Game, GameCondition, getConditionTranslationKey, getLocalizedHighlights, getLocalizedNotes } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import KSHover from "@components/ui/icons/ks-hover"
@@ -241,39 +241,45 @@ export function GameDetailView({
               </div>
 
               {/* Scrollable Highlights Section (XL only) */}
-              {game.highlights.length > 0 && (
-                <div className="flex flex-col flex-1 min-h-0 mt-6 xl:mt-6">
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3 shrink-0">
-                    {t("highlights")}
-                  </h3>
-                  <ul className="space-y-2 overflow-y-auto xl:flex-1 min-h-0">
-                    {game.highlights.map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-primary text-sm font-bold shrink-0">
-                          •
-                        </span>
-                        <span className="text-sm leading-relaxed">
-                          {highlight}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              {(() => {
+                const localizedHighlights = getLocalizedHighlights(game.highlights, language)
+                return localizedHighlights.length > 0 && (
+                  <div className="flex flex-col flex-1 min-h-0 mt-6 xl:mt-6">
+                    <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3 shrink-0">
+                      {t("highlights")}
+                    </h3>
+                    <ul className="space-y-2 overflow-y-auto xl:flex-1 min-h-0">
+                      {localizedHighlights.map((highlight, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-primary text-sm font-bold shrink-0">
+                            •
+                          </span>
+                          <span className="text-sm leading-relaxed">
+                            {highlight}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )
+              })()}
 
               {/* Fixed Content Section - Notes and Price */}
               <div className="space-y-6 shrink-0 mt-6">
                 {/* Notes */}
-                {game.notes && (
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-                      {t("notes")}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {game.notes}
-                    </p>
-                  </div>
-                )}
+                {(() => {
+                  const localizedNotes = getLocalizedNotes(game.notes, language)
+                  return localizedNotes && (
+                    <div>
+                      <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                        {t("notes")}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground">
+                        {localizedNotes}
+                      </p>
+                    </div>
+                  )
+                })()}
 
                 {/* Price Section */}
                 <div className="pt-6 border-t border-muted-foreground/20">

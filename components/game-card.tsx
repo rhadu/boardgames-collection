@@ -11,7 +11,7 @@ import { ImageCarousel } from "@components/ui/image-carousel"
 import { ImageLightbox } from "@components/ui/image-lightbox"
 import { CheckCircle2 } from "lucide-react"
 import { type Language, getTranslation } from "@/lib/i18n"
-import { type Game, GameCondition } from "@/lib/types"
+import { type Game, GameCondition, getLocalizedHighlights } from "@/lib/types"
 import { BGGLogo } from "@components/logos/bgg-logo"
 import { KickstarterLogo } from "@components/logos/kickstarter-logo"
 import { ContactDialog } from "@components/contact-dialog"
@@ -93,7 +93,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
           alt={game.title}
           className="rounded-t-xl"
           onImageClick={handleImageClick}
-          imageSize="thumbnail"
+          imageSize="carousel"
         />
 
         {/* Selection Checkbox */}
@@ -114,7 +114,7 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         {/* Condition Badge */}
         <div className="absolute top-3 right-3 z-20">
           {game.condition === GameCondition.FACTORY_SEALED && (
-            <Badge className="bg-sealed text-white shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
+            <Badge className="bg-primary text-primary-foreground shadow-lg backdrop-blur-sm border-0 px-2.5 py-1">
               🎁 {t("sealed")}
             </Badge>
           )}
@@ -185,14 +185,19 @@ export function GameCard({ game, language, isSelected, onToggleSelection }: Game
         </div>
 
         {/* Highlights */}
-        <ul className="text-sm space-y-1.5 mb-5 grow">
-          {game.highlights.slice(0, 2).map((highlight, i) => (
-            <li key={i} className="flex items-start gap-2 text-muted-foreground">
-              <span className="text-primary mt-0.5 font-bold">•</span>
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
+        {(() => {
+          const localizedHighlights = getLocalizedHighlights(game.highlights, language)
+          return localizedHighlights.length > 0 && (
+            <ul className="text-sm space-y-1.5 mb-5 grow">
+              {localizedHighlights.slice(0, 2).map((highlight, i) => (
+                <li key={i} className="flex items-start gap-2 text-muted-foreground">
+                  <span className="text-primary mt-0.5 font-bold">•</span>
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        })()}
 
         {/* Price & Actions */}
         <div className="flex items-center justify-between pt-4 border-t border-muted-foreground/20 mb-4">
