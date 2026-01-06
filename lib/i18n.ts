@@ -3,25 +3,25 @@ export type Language = "ro" | "en"
 export const translations = {
   ro: {
     // Hero Section
-    premiumCollectionSale: "Colecție Premium de Vânzare",
-    heroTitle: "Colecție de jocuri de masă curată din casă fără fumători",
+    premiumCollectionSale: "Colecție personală de vânzare – prefer pachet mare / en-gros",
+    heroTitle: "Colecție Premium de Board Games",
     heroDescription:
-      "jocuri premium, multe de pe Kickstarter. Toate păstrate vertical în condiție impecabilă. Cumpărați individual sau luați întreaga colecție la",
-    heroDiscountText: "65% din valoarea de retail",
+      " de jocuri premium din București, multe de pe Kickstarter, păstrate vertical în casă fără fumători. Le poți lua pe rând sau poți prelua toată colecția cu",
+    heroDiscountText: "o reducere de 30% față de prețurile individuale",
 
     // Trust Badges
-    nonSmokerHome: "Casă fără fumători",
-    storedVertically: "Păstrat vertical",
-    kickstarterExclusives: "Exclusivități Kickstarter",
-    manySealed: "Multe sigilate",
+    nonSmokerHome: "Casă fără fumători, fără animale",
+    storedVertically: "Jocuri păstrate vertical",
+    kickstarterExclusives: "Ediții și extensii Kickstarter",
+    manySealed: "Multe jocuri sigilate",
 
     // Bulk Deal
-    bulkDealTitle: "Oferta Colecției Complete",
+    bulkDealTitle: "Oferta pentru Colecția Completă",
     bulkDealDescription: "Toate cele",
     bulkDealGames: "jocuri pentru",
     bulkDealSave: "Economisești",
-    bulkDealDiscount: "reducere",
-    contactBulkDeal: "Contact pentru Oferta en-gros",
+    bulkDealDiscount: "reducere față de prețurile individuale",
+    contactBulkDeal: "Contact pentru oferta en-gros",
 
     // Filters
     searchPlaceholder: "Caută jocuri...",
@@ -63,14 +63,14 @@ export const translations = {
     clearAllFilters: "Șterge toate filtrele",
 
     // Contact Section
-    readyToAdd: "Gata să adaugi la colecția ta?",
+    readyToAdd: "Colecție personală în București, de vânzare",
     contactDescription:
-      "Ridicare locală în București sau livrare disponibilă. Contactează-mă pentru fotografii, detalii sau pentru a face o ofertă.",
-    contactMe: "Contactează-mă",
+      "Prefer să vând colecția completă sau pachete mai mari, cu discount suplimentar față de prețurile individuale. Ridicare locală în București sau livrare în toată țara. Contactează-mă pentru fotografii detaliate, întrebări sau oferte pentru achiziții en-gros.",
+    contactMe: "Trimite-mi un mesaj",
     email: "Email: adresa.ta@example.com",
     whatsapp: "WhatsApp / Telefon",
     contactFooter:
-      "Toate jocurile din casă fără fumători, fără animale. Păstrate vertical pentru a preveni deteriorarea cutiilor. Multe jocuri sunt exclusivități Kickstarter cu extra-uri. Bucuros să ofer fotografii suplimentare și să răspund la întrebări.",
+      "Colecție personală, casă fără fumători și fără animale. Toate jocurile sunt păstrate vertical pentru a proteja cutiile și componentele, multe fiind ediții Kickstarter cu extra-uri. Pentru pachete mari sau preluarea întregii colecții ofer condiții preferențiale și reduceri suplimentare.",
 
     // Footer
     copyright: "Colecție Premium de Jocuri de Masă",
@@ -113,31 +113,32 @@ export const translations = {
 
     // Metadata
     siteTitle: "Colecție Premium de Jocuri de Masă",
-    siteDescription: "Colecție curată de jocuri de masă premium din casă fără fumători. Multe jocuri Kickstarter, păstrate vertical în condiție impecabilă. Cumpărați individual sau luați întreaga colecție la 65% din valoarea de retail.",
+    siteDescription:
+      "Colecție curată de jocuri de masă premium din București, din casă fără fumători. Multe jocuri Kickstarter, păstrate vertical în condiție impecabilă. Cumpărați individual sau luați întreaga colecție cu reducere de 30% față de prețurile listate.",
     gameDetailTitle: "{{title}} - Colecție Premium de Jocuri de Masă",
     gameDetailDescription: "{{title}} - {{condition}} - {{price}} RON. {{description}}",
   },
   en: {
     // Hero Section
-    premiumCollectionSale: "Premium Collection Sale",
-    heroTitle: "Curated board game collection from smoke-free home",
+    premiumCollectionSale: "Premium collection for sale – bulk deal preferred",
+    heroTitle: "Premium Board Games Collection",
     heroDescription:
-      "premium titles, many from Kickstarter. All stored vertically in pristine condition. Buy individually or take the entire collection at",
-    heroDiscountText: "65% of retail value",
+      "premium titles from my personal collection in Bucharest, many from Kickstarter. All stored vertically in pristine condition in a smoke-free home. Buy individually or take the entire collection with",
+    heroDiscountText: "an extra 30% discount compared to the individual prices",
 
     // Trust Badges
-    nonSmokerHome: "Non-smoker home",
-    storedVertically: "Stored vertically",
-    kickstarterExclusives: "Kickstarter exclusives",
-    manySealed: "Many sealed",
+    nonSmokerHome: "Smoke-free, pet-free home",
+    storedVertically: "Games stored vertically",
+    kickstarterExclusives: "Kickstarter editions & expansions",
+    manySealed: "Many sealed games",
 
     // Bulk Deal
-    bulkDealTitle: "Complete Collection Offer",
+    bulkDealTitle: "Complete Collection Bulk Offer",
     bulkDealDescription: "All",
     bulkDealGames: "games for",
     bulkDealSave: "Save",
-    bulkDealDiscount: "discount",
-    contactBulkDeal: "Contact for Bulk Deal",
+    bulkDealDiscount: "discount versus individual prices",
+    contactBulkDeal: "Contact for bulk collection offer",
 
     // Filters
     searchPlaceholder: "Search games...",
@@ -179,14 +180,14 @@ export const translations = {
     clearAllFilters: "Clear all filters",
 
     // Contact Section
-    readyToAdd: "Ready to add to your collection?",
+    readyToAdd: "Personal collection in Bucharest, now for sale",
     contactDescription:
-      "Local pickup in Bucharest or shipping available. Contact me for photos, details, or to make an offer.",
-    contactMe: "Contact Me",
+      "I prefer to sell the full collection or larger bundles, with an extra discount on top of the individual prices. Local pickup in Bucharest or shipping across Romania. Contact me for detailed photos, questions, or bulk purchase offers.",
+    contactMe: "Send me a message",
     email: "Email: your.email@example.com",
     whatsapp: "WhatsApp / Phone",
     contactFooter:
-      "All games from a non-smoking, pet-free home. Stored vertically to prevent box damage. Many games are Kickstarter exclusives with extras. Happy to provide additional photos and answer questions.",
+      "Personal collection from a non-smoking, pet-free home. All games are stored vertically to protect boxes and components, many being Kickstarter editions with extras. For large bundles or taking over the full collection I can offer preferential conditions and additional discounts.",
 
     // Footer
     copyright: "Premium Board Game Collection",
@@ -229,7 +230,8 @@ export const translations = {
 
     // Metadata
     siteTitle: "Premium Board Game Collection",
-    siteDescription: "Curated premium board game collection from smoke-free home. Many Kickstarter games, stored vertically in pristine condition. Buy individually or take the entire collection at 65% of retail value.",
+    siteDescription:
+      "Curated premium board game collection in Bucharest from a smoke-free home. Many Kickstarter games stored vertically in pristine condition. Buy individually or take the entire collection with a 30% discount versus the listed prices.",
     gameDetailTitle: "{{title}} - Premium Board Game Collection",
     gameDetailDescription: "{{title}} - {{condition}} - {{price}} RON. {{description}}",
   },

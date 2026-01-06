@@ -99,7 +99,7 @@ export function HeroSection({
                     </span>
                   </p>
                   <p className="text-sm font-medium text-primary">
-                    {t("bulkDealSave")} {(totalInventoryValue - bulkDiscountPrice).toLocaleString()} RON (35%{" "}
+                    {t("bulkDealSave")} {(totalInventoryValue - bulkDiscountPrice).toLocaleString()} RON (30%{" "}
                     {t("bulkDealDiscount")})
                   </p>
                 </div>

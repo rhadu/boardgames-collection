@@ -41,7 +41,7 @@ export default function BoardGameCollection() {
   // Calculate totals
   const totalInventoryValue = useMemo(() => GAMES.reduce((sum, game) => sum + game.price, 0), [])
 
-  const bulkDiscountPrice = useMemo(() => Math.round(totalInventoryValue * 0.65), [totalInventoryValue])
+  const bulkDiscountPrice = useMemo(() => Math.round(totalInventoryValue * 0.7), [totalInventoryValue])
 
   const selectedGamesPrice = useMemo(() => {
     return Array.from(selectedGames).reduce((sum, id) => {
