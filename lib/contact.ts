@@ -1,6 +1,6 @@
 // Contact information configuration
 export const contactInfo = {
-  email: "your.email@example.com", // Replace with actual email
+  email: "boardgames@turtoi.com", // Replace with actual email
   phone: "+40 728 428 170", // Replace with actual phone number (format: +country code number)
 }
 
